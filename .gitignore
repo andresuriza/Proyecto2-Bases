@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+# datos del lago (se regeneran con dataset/)
+datalake/*
+!datalake/.gitkeep
+datalake_grande/*
+!datalake_grande/.gitkeep
+# datos generados localmente
+dataset/salida/
+dataset/out/
+datalake_validacion/
+datos/*.parquet
+# evidence: NO se ignora (se versionan los resultados); sólo temporales
+evidence/**/*.tmp
+*.log
+.env
