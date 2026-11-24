@@ -1,0 +1,4 @@
+fastapi>=0.110,<1
+uvicorn>=0.29
+redis>=5.0,<7
+pyarrow>=16
