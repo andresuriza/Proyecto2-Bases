@@ -1,0 +1,387 @@
+{
+ "prueba": "p4_frescura_q1",
+ "titulo": "P4 (frescura). Del HTTP 200 de la aprobación a verla en Q1",
+ "fecha_hora": "2026-10-31T01:24:39",
+ "objetivo": "Medir, sin estimar, cuántos segundos pasan desde el HTTP 200 de la aprobación de una tarea hasta que Q1 (aprobadas por día UTC y modalidad, sobre Parquet) la cuenta, que es la frescura del lago hasta un resultado de Q1.",
+ "configuracion": {
+  "muestras": 10,
+  "modalidad": "texto",
+  "flujo_por_muestra": "siguiente, enviar, revision iniciar, revision aprobar",
+  "deteccion": "Q1 por el gateway en bucle continuo hasta que la fila (dia UTC, modalidad) alcanza base + k aprobaciones propias",
+  "reloj": "time.monotonic() del host",
+  "lago_host": "C:/p2work/datalake",
+  "escritores_concurrentes": "ninguno (prueba ejecutada sola, stack en reposo)"
+ },
+ "comando": "python pruebas/p4_frescura_q1.py --trials 10",
+ "maquina": {
+  "so": "Windows-11-10.0.26200-SP0",
+  "python_host": "3.14.4",
+  "cpu_logicos": 12,
+  "docker": "29.9.2",
+  "docker_cpus": 12,
+  "docker_mem_gib": 15.5,
+  "docker_so": "Docker Desktop",
+  "detalle": "evidence/entorno.txt"
+ },
+ "resultado": {
+  "n": 10,
+  "visibles": 10,
+  "q1_visible_desde_http200_s": {
+   "n": 10,
+   "min": 6.08,
+   "p50": 9.5,
+   "p95": 11.75,
+   "p99": 11.75,
+   "max": 11.75
+  },
+  "inicio_consulta_que_lo_vio_s": {
+   "n": 10,
+   "min": 0.0,
+   "p50": 0.0,
+   "p95": 0.0,
+   "p99": 0.0,
+   "max": 0.0
+  },
+  "archivo_en_disco_desde_http200_s": {
+   "n": 10,
+   "min": 2.45,
+   "p50": 2.49,
+   "p95": 2.74,
+   "p99": 2.74,
+   "max": 2.74
+  },
+  "tiempo_s_q1_por_consulta": {
+   "n": 10,
+   "min": 6.043,
+   "p50": 9.436,
+   "p95": 11.693,
+   "p99": 11.693,
+   "max": 11.693
+  },
+  "consultas_q1_por_muestra": {
+   "n": 10,
+   "min": 1,
+   "p50": 1,
+   "p95": 1,
+   "p99": 1,
+   "max": 1
+  },
+  "resolucion_s": "una consulta de Q1 (p50 9.436 s, max 11.693 s)"
+ },
+ "pasos": [
+  {
+   "titulo": "Estado del historial al inicio",
+   "hora": "01:24:42",
+   "datos": {
+    "xlen": 101020,
+    "lag": 0,
+    "pendientes": 0,
+    "lotes": 386,
+    "eventos_escritos": 18430,
+    "archivos_escritos": 386
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Línea base de Q1",
+   "hora": "01:24:59",
+   "datos": {
+    "dia_utc": "2026-10-31",
+    "modalidad": "texto",
+    "aprobadas_base": 3192
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Resultado por muestra",
+   "hora": "01:27:06",
+   "datos": {
+    "resumen": {
+     "n": 10,
+     "visibles": 10,
+     "q1_visible_desde_http200_s": {
+      "n": 10,
+      "min": 6.08,
+      "p50": 9.5,
+      "p95": 11.75,
+      "p99": 11.75,
+      "max": 11.75
+     },
+     "inicio_consulta_que_lo_vio_s": {
+      "n": 10,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+     },
+     "archivo_en_disco_desde_http200_s": {
+      "n": 10,
+      "min": 2.45,
+      "p50": 2.49,
+      "p95": 2.74,
+      "p99": 2.74,
+      "max": 2.74
+     },
+     "tiempo_s_q1_por_consulta": {
+      "n": 10,
+      "min": 6.043,
+      "p50": 9.436,
+      "p95": 11.693,
+      "p99": 11.693,
+      "max": 11.693
+     },
+     "consultas_q1_por_muestra": {
+      "n": 10,
+      "min": 1,
+      "p50": 1,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+     },
+     "resolucion_s": "una consulta de Q1 (p50 9.436 s, max 11.693 s)"
+    },
+    "muestras": [
+     {
+      "muestra": 1,
+      "tarea_id": "6790e977",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3193,
+      "aprobadas_vistas": 3193,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.74,
+      "s_hasta_q1_visible": 6.08,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 6.043,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 6.08,
+        "tiempo_s_q1": 6.043,
+        "aprobadas": 3193
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431502222-0_1793431502222-0.parquet"
+     },
+     {
+      "muestra": 2,
+      "tarea_id": "2ce34015",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3194,
+      "aprobadas_vistas": 3194,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.45,
+      "s_hasta_q1_visible": 6.83,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 6.778,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 6.83,
+        "tiempo_s_q1": 6.778,
+        "aprobadas": 3194
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431512026-0_1793431512026-0.parquet"
+     },
+     {
+      "muestra": 3,
+      "tarea_id": "59e458df",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3195,
+      "aprobadas_vistas": 3195,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.52,
+      "s_hasta_q1_visible": 7.4,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 7.35,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 7.4,
+        "tiempo_s_q1": 7.35,
+        "aprobadas": 3195
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431522669-0_1793431522669-0.parquet"
+     },
+     {
+      "muestra": 4,
+      "tarea_id": "c137cdfd",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3196,
+      "aprobadas_vistas": 3196,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.45,
+      "s_hasta_q1_visible": 7.84,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 7.788,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 7.84,
+        "tiempo_s_q1": 7.788,
+        "aprobadas": 3196
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431533812-0_1793431533812-0.parquet"
+     },
+     {
+      "muestra": 5,
+      "tarea_id": "7453c66d",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3197,
+      "aprobadas_vistas": 3197,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.56,
+      "s_hasta_q1_visible": 9.5,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 9.436,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 9.5,
+        "tiempo_s_q1": 9.436,
+        "aprobadas": 3197
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431545408-0_1793431545408-0.parquet"
+     },
+     {
+      "muestra": 6,
+      "tarea_id": "6d372ffa",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3198,
+      "aprobadas_vistas": 3198,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.49,
+      "s_hasta_q1_visible": 9.57,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 9.526,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 9.57,
+        "tiempo_s_q1": 9.526,
+        "aprobadas": 3198
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431558653-0_1793431558653-0.parquet"
+     },
+     {
+      "muestra": 7,
+      "tarea_id": "6bbddb47",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3199,
+      "aprobadas_vistas": 3199,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.46,
+      "s_hasta_q1_visible": 9.76,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 9.688,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 9.76,
+        "tiempo_s_q1": 9.688,
+        "aprobadas": 3199
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431571966-0_1793431571966-0.parquet"
+     },
+     {
+      "muestra": 8,
+      "tarea_id": "a471d9c6",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3200,
+      "aprobadas_vistas": 3200,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.55,
+      "s_hasta_q1_visible": 10.34,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 10.269,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 10.34,
+        "tiempo_s_q1": 10.269,
+        "aprobadas": 3200
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431585521-0_1793431585521-0.parquet"
+     },
+     {
+      "muestra": 9,
+      "tarea_id": "cb961772",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3201,
+      "aprobadas_vistas": 3201,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.45,
+      "s_hasta_q1_visible": 10.84,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 10.796,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 10.84,
+        "tiempo_s_q1": 10.796,
+        "aprobadas": 3201
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431599595-0_1793431599595-0.parquet"
+     },
+     {
+      "muestra": 10,
+      "tarea_id": "d09a5190",
+      "http_aprobar": 200,
+      "dia_utc": "2026-10-31",
+      "aprobadas_esperadas": 3202,
+      "aprobadas_vistas": 3202,
+      "visible": true,
+      "s_hasta_archivo_en_disco": 2.57,
+      "s_hasta_q1_visible": 11.75,
+      "s_inicio_de_la_consulta_que_lo_vio": 0.0,
+      "consultas_q1": 1,
+      "tiempo_s_q1_ultima": 11.693,
+      "polls": [
+       {
+        "inicio_s": 0.0,
+        "fin_s": 11.75,
+        "tiempo_s_q1": 11.693,
+        "aprobadas": 3202
+       }
+      ],
+      "archivo": "eventos/mes=2026-10/part-1793431614177-0_1793431614177-0.parquet"
+     }
+    ]
+   },
+   "nota": null
+  }
+ ],
+ "interpretacion": "La frescura hasta Q1 es el tiempo entre el 200 de la aprobación y el fin de la primera consulta de Q1 que cuenta esa aprobación. Incluye el micro-lote (T=2 s, el archivo aparece en disco en ~2 s), la espera hasta que empieza la siguiente consulta y la propia ejecución de Q1 (~4-6 s). Como se consulta en bucle, el instante exacto de visibilidad sólo se acota entre el inicio y el fin de la consulta que la vio ('inicio_consulta_que_lo_vio_s' y 'q1_visible_desde_http200_s'): la resolución es la duración de una consulta de Q1.",
+ "archivos": [
+  "evidence/p4_frescura_q1_20261031T0124.json",
+  "evidence/p4_frescura_q1_20261031T0124.md"
+ ],
+ "duracion_s": 147.7,
+ "archivo": "evidence/p4_frescura_q1_20261031T0124.json"
+}

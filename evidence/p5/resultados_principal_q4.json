@@ -1,0 +1,1304 @@
+{
+ "consulta": "q4",
+ "conjunto": "principal",
+ "filas": [
+  {
+   "cliente_id": "04fc6d82-7d15-4385-92fb-e43b99546eb4",
+   "proyecto_id": "2bffe17b-5324-41fc-b758-dce20556daea",
+   "rechazadas": 126,
+   "aprobadas": 307,
+   "proporcion_rechazadas": 0.290993
+  },
+  {
+   "cliente_id": "04fc6d82-7d15-4385-92fb-e43b99546eb4",
+   "proyecto_id": "f10bce9c-582b-41ee-b8e8-035b0c00988a",
+   "rechazadas": 254,
+   "aprobadas": 414,
+   "proporcion_rechazadas": 0.38024
+  },
+  {
+   "cliente_id": "0822e8f3-6c03-4199-972a-846916419f82",
+   "proyecto_id": "3e5a87e3-5560-4b22-896b-5edb0cf2b69b",
+   "rechazadas": 340,
+   "aprobadas": 642,
+   "proporcion_rechazadas": 0.346232
+  },
+  {
+   "cliente_id": "0822e8f3-6c03-4199-972a-846916419f82",
+   "proyecto_id": "7930ba20-8b04-4f49-90be-73eefd372539",
+   "rechazadas": 303,
+   "aprobadas": 461,
+   "proporcion_rechazadas": 0.396597
+  },
+  {
+   "cliente_id": "0822e8f3-6c03-4199-972a-846916419f82",
+   "proyecto_id": "980cb95c-19d4-4deb-9139-fa1234c1c3ea",
+   "rechazadas": 201,
+   "aprobadas": 409,
+   "proporcion_rechazadas": 0.329508
+  },
+  {
+   "cliente_id": "0bbb2599-11ce-4dd2-b45e-d1f03139d32c",
+   "proyecto_id": "5e70f65f-9280-45aa-8dd4-595b5c63b6f3",
+   "rechazadas": 397,
+   "aprobadas": 1108,
+   "proporcion_rechazadas": 0.263787
+  },
+  {
+   "cliente_id": "0bbb2599-11ce-4dd2-b45e-d1f03139d32c",
+   "proyecto_id": "9fd34579-4667-42ce-a04e-178c10d08d11",
+   "rechazadas": 489,
+   "aprobadas": 840,
+   "proporcion_rechazadas": 0.367946
+  },
+  {
+   "cliente_id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+   "proyecto_id": "340de049-4147-4506-be2b-f9c9636f6e5c",
+   "rechazadas": 281,
+   "aprobadas": 553,
+   "proporcion_rechazadas": 0.33693
+  },
+  {
+   "cliente_id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+   "proyecto_id": "3712f2d1-87cd-46a1-bf01-2e32177d6e7e",
+   "rechazadas": 150,
+   "aprobadas": 481,
+   "proporcion_rechazadas": 0.237718
+  },
+  {
+   "cliente_id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+   "proyecto_id": "8b48f496-86ab-44e7-b412-436011536e99",
+   "rechazadas": 163,
+   "aprobadas": 374,
+   "proporcion_rechazadas": 0.303538
+  },
+  {
+   "cliente_id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+   "proyecto_id": "c86c6544-a7d4-4f50-b791-f1e543f9cd6b",
+   "rechazadas": 295,
+   "aprobadas": 351,
+   "proporcion_rechazadas": 0.456656
+  },
+  {
+   "cliente_id": "0dde29a6-baa4-471a-9d24-67ac778eedb3",
+   "proyecto_id": "1747f387-7d23-4479-9549-2a82b787ef8d",
+   "rechazadas": 652,
+   "aprobadas": 1051,
+   "proporcion_rechazadas": 0.382854
+  },
+  {
+   "cliente_id": "0dde29a6-baa4-471a-9d24-67ac778eedb3",
+   "proyecto_id": "73069588-45d5-468d-a90a-3abbc35b9fea",
+   "rechazadas": 370,
+   "aprobadas": 485,
+   "proporcion_rechazadas": 0.432749
+  },
+  {
+   "cliente_id": "0dde29a6-baa4-471a-9d24-67ac778eedb3",
+   "proyecto_id": "da003f16-b946-4bcf-8082-cbb948bddb3e",
+   "rechazadas": 385,
+   "aprobadas": 716,
+   "proporcion_rechazadas": 0.349682
+  },
+  {
+   "cliente_id": "0f844fef-1931-49ee-a56c-0941fbf24050",
+   "proyecto_id": "f7baf55e-4f6b-48c8-998d-daeceaafe543",
+   "rechazadas": 158,
+   "aprobadas": 278,
+   "proporcion_rechazadas": 0.362385
+  },
+  {
+   "cliente_id": "11b7e948-d0e6-4660-bc69-dee1bb5e4bcf",
+   "proyecto_id": "1d30d990-a21b-4307-82af-085c138d994c",
+   "rechazadas": 302,
+   "aprobadas": 892,
+   "proporcion_rechazadas": 0.252931
+  },
+  {
+   "cliente_id": "11b7e948-d0e6-4660-bc69-dee1bb5e4bcf",
+   "proyecto_id": "80a8a23d-17ea-4c83-8892-042f9d4b2bf9",
+   "rechazadas": 177,
+   "aprobadas": 513,
+   "proporcion_rechazadas": 0.256522
+  },
+  {
+   "cliente_id": "12476f57-a5e5-45ab-aefc-fad8efc89849",
+   "proyecto_id": "aa448259-5001-4b7b-ad40-67f450032b35",
+   "rechazadas": 140,
+   "aprobadas": 442,
+   "proporcion_rechazadas": 0.24055
+  },
+  {
+   "cliente_id": "12476f57-a5e5-45ab-aefc-fad8efc89849",
+   "proyecto_id": "dda4f4a7-0c3c-4284-87e5-3bbbdcb51c53",
+   "rechazadas": 509,
+   "aprobadas": 892,
+   "proporcion_rechazadas": 0.363312
+  },
+  {
+   "cliente_id": "142c3fe8-60e7-4113-ac1b-8ca1f91e1d4c",
+   "proyecto_id": "0f9240e1-07f9-4d05-b6ca-6b8ba4b1f991",
+   "rechazadas": 938,
+   "aprobadas": 1968,
+   "proporcion_rechazadas": 0.32278
+  },
+  {
+   "cliente_id": "146d3f31-fc37-4a4c-8a15-544dc5e7ce8a",
+   "proyecto_id": "345af934-b42a-4d93-9aba-0f15b2149062",
+   "rechazadas": 211,
+   "aprobadas": 568,
+   "proporcion_rechazadas": 0.27086
+  },
+  {
+   "cliente_id": "146d3f31-fc37-4a4c-8a15-544dc5e7ce8a",
+   "proyecto_id": "3cd5fd7f-49c1-4669-86b3-3fe61c76bdf6",
+   "rechazadas": 219,
+   "aprobadas": 609,
+   "proporcion_rechazadas": 0.264493
+  },
+  {
+   "cliente_id": "146d3f31-fc37-4a4c-8a15-544dc5e7ce8a",
+   "proyecto_id": "4b7e6b3c-87d2-42a6-98ee-ac2bfe9fecaa",
+   "rechazadas": 174,
+   "aprobadas": 336,
+   "proporcion_rechazadas": 0.341176
+  },
+  {
+   "cliente_id": "1a2a73ed-562b-4f79-8374-59eef50bea63",
+   "proyecto_id": "2a1f1b61-265c-49d9-8962-8f6e929c93b3",
+   "rechazadas": 223,
+   "aprobadas": 554,
+   "proporcion_rechazadas": 0.287001
+  },
+  {
+   "cliente_id": "1a2a73ed-562b-4f79-8374-59eef50bea63",
+   "proyecto_id": "bde13c1b-2073-4f6d-8d6a-05b343ef2016",
+   "rechazadas": 255,
+   "aprobadas": 700,
+   "proporcion_rechazadas": 0.267016
+  },
+  {
+   "cliente_id": "1a3d1fa7-bc89-40a9-a3b8-c1e9392456de",
+   "proyecto_id": "f2f25eef-1f45-4bfd-b7dc-67e030974b2b",
+   "rechazadas": 203,
+   "aprobadas": 333,
+   "proporcion_rechazadas": 0.378731
+  },
+  {
+   "cliente_id": "1aaf1e75-817b-4916-a8f1-239d0a42d4f0",
+   "proyecto_id": "7f546067-18df-4d6f-ae01-063d84f19beb",
+   "rechazadas": 3,
+   "aprobadas": 4,
+   "proporcion_rechazadas": 0.428571
+  },
+  {
+   "cliente_id": "1c8eaee9-5715-4d6f-a416-1293c4c2e2e3",
+   "proyecto_id": "0ba078e8-4ef4-42c1-aac9-331686e52753",
+   "rechazadas": 97,
+   "aprobadas": 296,
+   "proporcion_rechazadas": 0.246819
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "09f64405-0b99-4034-8a4e-255280051b10",
+   "rechazadas": 196,
+   "aprobadas": 542,
+   "proporcion_rechazadas": 0.265583
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "507b9072-65e5-4f34-9df0-6e8c878aaed9",
+   "rechazadas": 195,
+   "aprobadas": 526,
+   "proporcion_rechazadas": 0.270458
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "5ef787b8-f2e6-495f-b32e-2016add702c9",
+   "rechazadas": 278,
+   "aprobadas": 456,
+   "proporcion_rechazadas": 0.378747
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "8cc36f3b-c3af-4cfe-b34a-6ca38116e3fc",
+   "rechazadas": 181,
+   "aprobadas": 338,
+   "proporcion_rechazadas": 0.348748
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "a96b3c42-f6d2-4a7b-aec7-6a82148b4376",
+   "rechazadas": 292,
+   "aprobadas": 804,
+   "proporcion_rechazadas": 0.266423
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "proyecto_id": "d4578ad9-a867-4096-add8-77c89be71737",
+   "rechazadas": 209,
+   "aprobadas": 371,
+   "proporcion_rechazadas": 0.360345
+  },
+  {
+   "cliente_id": "2720797d-32eb-4689-9be5-78c781f631d4",
+   "proyecto_id": "0e2f8958-de43-4e06-a924-706980bbae52",
+   "rechazadas": 153,
+   "aprobadas": 404,
+   "proporcion_rechazadas": 0.274686
+  },
+  {
+   "cliente_id": "2720797d-32eb-4689-9be5-78c781f631d4",
+   "proyecto_id": "6fac1673-0ad4-4230-bdf6-6ba5dc9c96de",
+   "rechazadas": 197,
+   "aprobadas": 580,
+   "proporcion_rechazadas": 0.253539
+  },
+  {
+   "cliente_id": "28028470-0d63-4d22-9612-44f4c74900c2",
+   "proyecto_id": "38678d86-9591-470a-82fe-5296667873ca",
+   "rechazadas": 1,
+   "aprobadas": 0,
+   "proporcion_rechazadas": 1.0
+  },
+  {
+   "cliente_id": "38602ab6-96a4-42f2-bae8-cc938dcdcd03",
+   "proyecto_id": "a508dc95-13a4-4492-897d-e16dd4ea120a",
+   "rechazadas": 197,
+   "aprobadas": 618,
+   "proporcion_rechazadas": 0.241718
+  },
+  {
+   "cliente_id": "3a9bedd4-0f12-49e0-a18f-f6b6b535106e",
+   "proyecto_id": "13fe8a29-5c9d-4ee0-b42a-045687365a84",
+   "rechazadas": 276,
+   "aprobadas": 364,
+   "proporcion_rechazadas": 0.43125
+  },
+  {
+   "cliente_id": "3a9bedd4-0f12-49e0-a18f-f6b6b535106e",
+   "proyecto_id": "dd34aa18-9001-4ed4-8bb4-01e769f753f1",
+   "rechazadas": 206,
+   "aprobadas": 455,
+   "proporcion_rechazadas": 0.311649
+  },
+  {
+   "cliente_id": "3a9bedd4-0f12-49e0-a18f-f6b6b535106e",
+   "proyecto_id": "f4488385-8de7-4d6c-9490-77c27674456f",
+   "rechazadas": 215,
+   "aprobadas": 589,
+   "proporcion_rechazadas": 0.267413
+  },
+  {
+   "cliente_id": "3eabedcb-baa8-4dd4-88bd-64072bcfbe01",
+   "proyecto_id": "15da705c-d4ef-40aa-975a-81ec112fa612",
+   "rechazadas": 425,
+   "aprobadas": 872,
+   "proporcion_rechazadas": 0.327679
+  },
+  {
+   "cliente_id": "3eabedcb-baa8-4dd4-88bd-64072bcfbe01",
+   "proyecto_id": "cdfd9531-302b-4831-92a1-fe7ddfa59722",
+   "rechazadas": 604,
+   "aprobadas": 1156,
+   "proporcion_rechazadas": 0.343182
+  },
+  {
+   "cliente_id": "3fa7f104-1bf9-4e27-9c96-925eccf3a171",
+   "proyecto_id": "a4bbf962-606e-4e1c-8f15-84494f40c22f",
+   "rechazadas": 560,
+   "aprobadas": 953,
+   "proporcion_rechazadas": 0.370126
+  },
+  {
+   "cliente_id": "3fa7f104-1bf9-4e27-9c96-925eccf3a171",
+   "proyecto_id": "af5b8f47-ceae-41cf-8e00-0af03eb05181",
+   "rechazadas": 225,
+   "aprobadas": 421,
+   "proporcion_rechazadas": 0.348297
+  },
+  {
+   "cliente_id": "47229389-571a-4876-ac30-7511b2b9437a",
+   "proyecto_id": "3ce915e7-c9d6-463b-8a3c-6f5f5bb5c40c",
+   "rechazadas": 652,
+   "aprobadas": 922,
+   "proporcion_rechazadas": 0.414231
+  },
+  {
+   "cliente_id": "47378190-96da-4dac-b2ff-5d2a386ecbe0",
+   "proyecto_id": "2cabd7e7-cc6b-46e5-802a-df9c8a4b8f7c",
+   "rechazadas": 276,
+   "aprobadas": 643,
+   "proporcion_rechazadas": 0.300326
+  },
+  {
+   "cliente_id": "4761a454-ec09-46e0-8dba-59764e47ffca",
+   "proyecto_id": "676fa800-9135-4ba7-82ff-888d1f8056c4",
+   "rechazadas": 1,
+   "aprobadas": 7,
+   "proporcion_rechazadas": 0.125
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "proyecto_id": "81e5c9f6-93f2-47cc-9a85-910d5a057c11",
+   "rechazadas": 138,
+   "aprobadas": 408,
+   "proporcion_rechazadas": 0.252747
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "proyecto_id": "c5a11f5c-ad05-4912-9ab2-8d4a8bd88fcd",
+   "rechazadas": 166,
+   "aprobadas": 277,
+   "proporcion_rechazadas": 0.374718
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "proyecto_id": "c7bf4fbc-d43c-4d6d-a0c1-ff1e20da8972",
+   "rechazadas": 304,
+   "aprobadas": 715,
+   "proporcion_rechazadas": 0.298332
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "proyecto_id": "d40ac5e9-81df-4517-961c-921097fe56c5",
+   "rechazadas": 985,
+   "aprobadas": 1338,
+   "proporcion_rechazadas": 0.424021
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "proyecto_id": "d9af6e09-b91e-4d6e-bd1a-8f4b88ffbd40",
+   "rechazadas": 377,
+   "aprobadas": 1076,
+   "proporcion_rechazadas": 0.259463
+  },
+  {
+   "cliente_id": "5304317f-af42-412f-b838-b3268e944239",
+   "proyecto_id": "5a856750-692a-4139-9f4a-8ca1ab85fd59",
+   "rechazadas": 207,
+   "aprobadas": 401,
+   "proporcion_rechazadas": 0.340461
+  },
+  {
+   "cliente_id": "5304317f-af42-412f-b838-b3268e944239",
+   "proyecto_id": "750565f5-9f70-4368-8b3c-f8caa3925731",
+   "rechazadas": 379,
+   "aprobadas": 797,
+   "proporcion_rechazadas": 0.322279
+  },
+  {
+   "cliente_id": "5304317f-af42-412f-b838-b3268e944239",
+   "proyecto_id": "fb37afae-cd85-43ca-993e-638d774c0afa",
+   "rechazadas": 159,
+   "aprobadas": 254,
+   "proporcion_rechazadas": 0.384988
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "proyecto_id": "4d9dbaeb-553d-4625-a833-4da5de95d695",
+   "rechazadas": 362,
+   "aprobadas": 1141,
+   "proporcion_rechazadas": 0.240852
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "proyecto_id": "51b1943c-1b2e-4edb-8fc8-5fc083d5bceb",
+   "rechazadas": 351,
+   "aprobadas": 513,
+   "proporcion_rechazadas": 0.40625
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "proyecto_id": "56ab087a-8bc7-4e81-9a30-45280b599562",
+   "rechazadas": 149,
+   "aprobadas": 423,
+   "proporcion_rechazadas": 0.26049
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "proyecto_id": "7634c169-4f76-4388-92fe-28bf81e0d489",
+   "rechazadas": 279,
+   "aprobadas": 488,
+   "proporcion_rechazadas": 0.363755
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "proyecto_id": "8fd33afc-91fd-4a4f-8d18-ab95668c8477",
+   "rechazadas": 146,
+   "aprobadas": 237,
+   "proporcion_rechazadas": 0.381201
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "proyecto_id": "5cae9610-c72c-4fe3-b2c2-2a1679eb4168",
+   "rechazadas": 221,
+   "aprobadas": 628,
+   "proporcion_rechazadas": 0.260306
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "proyecto_id": "725d4259-3c4b-4eec-a231-ee7342c2d2eb",
+   "rechazadas": 712,
+   "aprobadas": 1150,
+   "proporcion_rechazadas": 0.382385
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "proyecto_id": "ac2b0cfc-c5c5-4060-9911-21e793d563ae",
+   "rechazadas": 240,
+   "aprobadas": 323,
+   "proporcion_rechazadas": 0.426288
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "proyecto_id": "b61e5fdb-1a43-4206-af2d-dcc48df661da",
+   "rechazadas": 335,
+   "aprobadas": 540,
+   "proporcion_rechazadas": 0.382857
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "proyecto_id": "fa8dae42-ba54-4920-a099-d18087623997",
+   "rechazadas": 163,
+   "aprobadas": 510,
+   "proporcion_rechazadas": 0.242199
+  },
+  {
+   "cliente_id": "5ab33edf-6e59-4ed3-a8b3-17fa18d0752b",
+   "proyecto_id": "55ab946d-a5b5-4dc2-a181-c85eca0ac6ac",
+   "rechazadas": 205,
+   "aprobadas": 429,
+   "proporcion_rechazadas": 0.323344
+  },
+  {
+   "cliente_id": "5ab33edf-6e59-4ed3-a8b3-17fa18d0752b",
+   "proyecto_id": "6c93a791-8b60-4511-b816-8aebac6a7c85",
+   "rechazadas": 1050,
+   "aprobadas": 1354,
+   "proporcion_rechazadas": 0.436772
+  },
+  {
+   "cliente_id": "5ab33edf-6e59-4ed3-a8b3-17fa18d0752b",
+   "proyecto_id": "ef4afa88-5299-4505-a976-aab22a26f770",
+   "rechazadas": 624,
+   "aprobadas": 1720,
+   "proporcion_rechazadas": 0.266212
+  },
+  {
+   "cliente_id": "5fe67b75-57b2-482f-a060-15ddb3cbcb9c",
+   "proyecto_id": "9bff221d-ee23-44eb-a2e2-bd455c129ea8",
+   "rechazadas": 1,
+   "aprobadas": 6,
+   "proporcion_rechazadas": 0.142857
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "proyecto_id": "486bb6bf-eafd-47d9-9f73-3a3e5d286aa4",
+   "rechazadas": 78,
+   "aprobadas": 221,
+   "proporcion_rechazadas": 0.26087
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "proyecto_id": "56ce4b42-fc9e-4dcb-8b7e-62685f89ed12",
+   "rechazadas": 154,
+   "aprobadas": 295,
+   "proporcion_rechazadas": 0.342984
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "proyecto_id": "a9320094-53f2-4f11-947f-65701a43db54",
+   "rechazadas": 81,
+   "aprobadas": 181,
+   "proporcion_rechazadas": 0.30916
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "proyecto_id": "b74eba93-1027-4b53-a285-b2efcfbe4fe9",
+   "rechazadas": 401,
+   "aprobadas": 803,
+   "proporcion_rechazadas": 0.333056
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "proyecto_id": "fef7d9ea-7f8e-4483-a8ca-aa1dc35bec2c",
+   "rechazadas": 354,
+   "aprobadas": 524,
+   "proporcion_rechazadas": 0.403189
+  },
+  {
+   "cliente_id": "6c006f61-23e2-4cb4-b2d8-567d894a05e4",
+   "proyecto_id": "822c4d32-6c64-4c15-aba3-01cba561e1e9",
+   "rechazadas": 221,
+   "aprobadas": 440,
+   "proporcion_rechazadas": 0.334342
+  },
+  {
+   "cliente_id": "6c006f61-23e2-4cb4-b2d8-567d894a05e4",
+   "proyecto_id": "a4364fcd-f2d3-4761-8ba3-627914cb0564",
+   "rechazadas": 102,
+   "aprobadas": 329,
+   "proporcion_rechazadas": 0.236659
+  },
+  {
+   "cliente_id": "6c006f61-23e2-4cb4-b2d8-567d894a05e4",
+   "proyecto_id": "d11376e0-38d7-4b9a-a916-da57f24823ab",
+   "rechazadas": 391,
+   "aprobadas": 956,
+   "proporcion_rechazadas": 0.290275
+  },
+  {
+   "cliente_id": "759cde66-bacf-43d0-8b1f-9163ce9ff57f",
+   "proyecto_id": "504e2687-70e7-4756-84d9-145e30d73df7",
+   "rechazadas": 233,
+   "aprobadas": 283,
+   "proporcion_rechazadas": 0.45155
+  },
+  {
+   "cliente_id": "759cde66-bacf-43d0-8b1f-9163ce9ff57f",
+   "proyecto_id": "9d77a45e-f206-4269-b8b7-7c0780fb9296",
+   "rechazadas": 540,
+   "aprobadas": 1137,
+   "proporcion_rechazadas": 0.322004
+  },
+  {
+   "cliente_id": "759cde66-bacf-43d0-8b1f-9163ce9ff57f",
+   "proyecto_id": "ba370623-bc5f-44dd-992f-3c1edf70fb2a",
+   "rechazadas": 201,
+   "aprobadas": 426,
+   "proporcion_rechazadas": 0.320574
+  },
+  {
+   "cliente_id": "7fcd9eb1-a7ca-4415-b66e-b16f508ebad7",
+   "proyecto_id": "6dda4f8d-cea6-4f4c-b9e5-8ff092f837d4",
+   "rechazadas": 242,
+   "aprobadas": 375,
+   "proporcion_rechazadas": 0.39222
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "3ccec76c-b836-4448-ad26-1ec55d42b9e9",
+   "rechazadas": 182,
+   "aprobadas": 482,
+   "proporcion_rechazadas": 0.274096
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "58ab4778-143b-45e3-b6d1-f6bbf48f709c",
+   "rechazadas": 234,
+   "aprobadas": 529,
+   "proporcion_rechazadas": 0.306684
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "7f7f6c0a-07c0-4116-a394-ed549e3c5a88",
+   "rechazadas": 315,
+   "aprobadas": 653,
+   "proporcion_rechazadas": 0.325413
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "80599b93-79c2-42e4-9ae1-a991524f93ff",
+   "rechazadas": 244,
+   "aprobadas": 474,
+   "proporcion_rechazadas": 0.339833
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "e2c328aa-3310-4475-8a86-22250b36e356",
+   "rechazadas": 201,
+   "aprobadas": 578,
+   "proporcion_rechazadas": 0.258023
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "proyecto_id": "ef06fccb-8f7c-4d59-994b-2a3a7ad465a1",
+   "rechazadas": 108,
+   "aprobadas": 268,
+   "proporcion_rechazadas": 0.287234
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "20156a72-12e1-43a6-932c-ae01d2c65ee4",
+   "rechazadas": 258,
+   "aprobadas": 544,
+   "proporcion_rechazadas": 0.321696
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "317304b5-c1dd-484a-aca5-8d95915a1c30",
+   "rechazadas": 79,
+   "aprobadas": 234,
+   "proporcion_rechazadas": 0.252396
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "3240d7a1-4027-4b7d-9430-29a9d88f1c94",
+   "rechazadas": 378,
+   "aprobadas": 657,
+   "proporcion_rechazadas": 0.365217
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "78f2ce6b-d46b-415d-aada-79a34970ed9a",
+   "rechazadas": 411,
+   "aprobadas": 551,
+   "proporcion_rechazadas": 0.427235
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "83f82f16-e4a4-474c-9b33-e3a42620f9a9",
+   "rechazadas": 860,
+   "aprobadas": 1102,
+   "proporcion_rechazadas": 0.438328
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "8685abaa-7a76-4555-a987-b218ff84faef",
+   "rechazadas": 279,
+   "aprobadas": 843,
+   "proporcion_rechazadas": 0.248663
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "92170475-3d95-4e3f-9a52-26e69d642932",
+   "rechazadas": 459,
+   "aprobadas": 723,
+   "proporcion_rechazadas": 0.388325
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "proyecto_id": "cbdc4318-4d85-43d2-a1a2-748571348c2a",
+   "rechazadas": 306,
+   "aprobadas": 655,
+   "proporcion_rechazadas": 0.318418
+  },
+  {
+   "cliente_id": "8a0b3c33-36d8-493a-bc44-1fe7ab4220a7",
+   "proyecto_id": "2f12b150-605f-41eb-8cc5-7e0d26332018",
+   "rechazadas": 309,
+   "aprobadas": 541,
+   "proporcion_rechazadas": 0.363529
+  },
+  {
+   "cliente_id": "8a0b3c33-36d8-493a-bc44-1fe7ab4220a7",
+   "proyecto_id": "57eb89b1-d65e-49dd-a62d-2d06cf9b8558",
+   "rechazadas": 197,
+   "aprobadas": 524,
+   "proporcion_rechazadas": 0.273232
+  },
+  {
+   "cliente_id": "8a0b3c33-36d8-493a-bc44-1fe7ab4220a7",
+   "proyecto_id": "c42cbc39-e05b-46c5-9636-3094a97431db",
+   "rechazadas": 113,
+   "aprobadas": 344,
+   "proporcion_rechazadas": 0.247265
+  },
+  {
+   "cliente_id": "8ce21ea3-db20-456e-9c81-5fe7ceda8bbb",
+   "proyecto_id": "c40d4874-22ab-4752-84db-5a622e13418d",
+   "rechazadas": 129,
+   "aprobadas": 250,
+   "proporcion_rechazadas": 0.340369
+  },
+  {
+   "cliente_id": "8ce21ea3-db20-456e-9c81-5fe7ceda8bbb",
+   "proyecto_id": "d82c7565-4bb9-47ec-93c1-175427aa7cbc",
+   "rechazadas": 118,
+   "aprobadas": 345,
+   "proporcion_rechazadas": 0.25486
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "proyecto_id": "186b2880-ab54-4a15-a69d-01ff1634725b",
+   "rechazadas": 183,
+   "aprobadas": 238,
+   "proporcion_rechazadas": 0.434679
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "proyecto_id": "73b911d8-12f5-431a-9a52-d2ee22bf18f5",
+   "rechazadas": 184,
+   "aprobadas": 461,
+   "proporcion_rechazadas": 0.285271
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "proyecto_id": "b15e54f6-d4d3-4795-ae4b-ebc429890880",
+   "rechazadas": 267,
+   "aprobadas": 454,
+   "proporcion_rechazadas": 0.370319
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "proyecto_id": "beed10b6-4f6e-474b-9eda-b0276550f74a",
+   "rechazadas": 412,
+   "aprobadas": 600,
+   "proporcion_rechazadas": 0.407115
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "proyecto_id": "f1053252-3990-42c9-8c6a-70f48edec44d",
+   "rechazadas": 193,
+   "aprobadas": 380,
+   "proporcion_rechazadas": 0.336824
+  },
+  {
+   "cliente_id": "93829b43-922f-415a-a1e3-db63ef7ddc76",
+   "proyecto_id": "fdb1429e-7010-4d13-b526-b22d3f6c21f7",
+   "rechazadas": 442,
+   "aprobadas": 759,
+   "proporcion_rechazadas": 0.368027
+  },
+  {
+   "cliente_id": "93829b43-922f-415a-a1e3-db63ef7ddc76",
+   "proyecto_id": "febec0db-9a3a-4103-ae3c-453214348f62",
+   "rechazadas": 530,
+   "aprobadas": 1004,
+   "proporcion_rechazadas": 0.345502
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "3dba6da8-5844-49fc-914b-9547c9dc72b8",
+   "rechazadas": 193,
+   "aprobadas": 445,
+   "proporcion_rechazadas": 0.302508
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "9acb394a-cd1f-4318-b31f-63fbd11fc8c0",
+   "rechazadas": 128,
+   "aprobadas": 208,
+   "proporcion_rechazadas": 0.380952
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "d6d441cc-195d-42f8-ae4a-9b5d519554e3",
+   "rechazadas": 172,
+   "aprobadas": 472,
+   "proporcion_rechazadas": 0.267081
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "ebe9e207-4f19-4ec0-832d-4526b3e4110a",
+   "rechazadas": 430,
+   "aprobadas": 1156,
+   "proporcion_rechazadas": 0.271122
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "effa2002-3040-413c-8690-fb1527b608dc",
+   "rechazadas": 435,
+   "aprobadas": 707,
+   "proporcion_rechazadas": 0.380911
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "proyecto_id": "ff11c8ba-36ee-4640-b23e-f466b43bd27f",
+   "rechazadas": 104,
+   "aprobadas": 229,
+   "proporcion_rechazadas": 0.312312
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "284c03d2-27d4-45b6-8d77-c5a0e222b6a6",
+   "rechazadas": 206,
+   "aprobadas": 519,
+   "proporcion_rechazadas": 0.284138
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "379ef467-8a2d-42e6-bbfd-a8a6705fddf5",
+   "rechazadas": 651,
+   "aprobadas": 1075,
+   "proporcion_rechazadas": 0.377173
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "3c5bf3a7-5fbb-40b1-8083-89c8657e01c9",
+   "rechazadas": 451,
+   "aprobadas": 662,
+   "proporcion_rechazadas": 0.405211
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "8f0d5540-0ec7-4662-905c-7bdd74f0beae",
+   "rechazadas": 136,
+   "aprobadas": 280,
+   "proporcion_rechazadas": 0.326923
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "c8cc7cfe-cf01-4944-b731-57494f3949a8",
+   "rechazadas": 428,
+   "aprobadas": 899,
+   "proporcion_rechazadas": 0.322532
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "ca9e4a62-fae3-414b-a3b4-42bd46494296",
+   "rechazadas": 258,
+   "aprobadas": 458,
+   "proporcion_rechazadas": 0.360335
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "proyecto_id": "ec9f9c54-5e0a-42ab-bf5d-b163b12b6680",
+   "rechazadas": 371,
+   "aprobadas": 932,
+   "proporcion_rechazadas": 0.284728
+  },
+  {
+   "cliente_id": "9a1de644-815e-46d1-bb8f-aa1837f8a88b",
+   "proyecto_id": "350843f0-8de0-4fc2-83e1-5a85d46ef104",
+   "rechazadas": 444,
+   "aprobadas": 931,
+   "proporcion_rechazadas": 0.322909
+  },
+  {
+   "cliente_id": "9a1de644-815e-46d1-bb8f-aa1837f8a88b",
+   "proyecto_id": "d942644c-248d-41ec-87f8-d4f0f3ea0184",
+   "rechazadas": 146,
+   "aprobadas": 422,
+   "proporcion_rechazadas": 0.257042
+  },
+  {
+   "cliente_id": "9a1de644-815e-46d1-bb8f-aa1837f8a88b",
+   "proyecto_id": "ec50ace4-80a5-4e65-afa2-855967c96204",
+   "rechazadas": 530,
+   "aprobadas": 720,
+   "proporcion_rechazadas": 0.424
+  },
+  {
+   "cliente_id": "9b49bd26-df57-459a-8715-a10343dac043",
+   "proyecto_id": "9a36d1ec-2c6a-4e9a-b280-67a14187222b",
+   "rechazadas": 894,
+   "aprobadas": 1304,
+   "proporcion_rechazadas": 0.406733
+  },
+  {
+   "cliente_id": "a013ac6e-deda-4e16-9b3d-bd5ce9a1fa6f",
+   "proyecto_id": "54cc1e2a-5e4c-4287-8442-51dbd0d4ea67",
+   "rechazadas": 354,
+   "aprobadas": 719,
+   "proporcion_rechazadas": 0.329916
+  },
+  {
+   "cliente_id": "a013ac6e-deda-4e16-9b3d-bd5ce9a1fa6f",
+   "proyecto_id": "8011316b-3ae8-4926-b423-ccde88575117",
+   "rechazadas": 223,
+   "aprobadas": 712,
+   "proporcion_rechazadas": 0.238503
+  },
+  {
+   "cliente_id": "a2bc372f-7412-4293-8729-4739614ff3d7",
+   "proyecto_id": "19bd4f93-78ef-4666-b7a4-c719548e1f6b",
+   "rechazadas": 184,
+   "aprobadas": 493,
+   "proporcion_rechazadas": 0.271787
+  },
+  {
+   "cliente_id": "a2bc372f-7412-4293-8729-4739614ff3d7",
+   "proyecto_id": "1d4a3d81-b3a7-40e0-8b08-587d1963c26d",
+   "rechazadas": 239,
+   "aprobadas": 441,
+   "proporcion_rechazadas": 0.351471
+  },
+  {
+   "cliente_id": "ab9099a4-35a2-40ae-9af3-05535ec42e08",
+   "proyecto_id": "0cf477ef-18c8-4616-a410-8e9a3f779cae",
+   "rechazadas": 522,
+   "aprobadas": 817,
+   "proporcion_rechazadas": 0.389843
+  },
+  {
+   "cliente_id": "ab9099a4-35a2-40ae-9af3-05535ec42e08",
+   "proyecto_id": "0f9aeb70-4670-4cd6-8ced-a16469df14e9",
+   "rechazadas": 355,
+   "aprobadas": 477,
+   "proporcion_rechazadas": 0.426683
+  },
+  {
+   "cliente_id": "ab9099a4-35a2-40ae-9af3-05535ec42e08",
+   "proyecto_id": "56c438e4-69ef-4fb1-ba7e-8e14e359eee1",
+   "rechazadas": 166,
+   "aprobadas": 478,
+   "proporcion_rechazadas": 0.257764
+  },
+  {
+   "cliente_id": "ae340454-cac5-468c-a8f4-9481a0a04dc4",
+   "proyecto_id": "b8ba8368-4fc7-4768-9ebb-cca5284bf962",
+   "rechazadas": 319,
+   "aprobadas": 510,
+   "proporcion_rechazadas": 0.384801
+  },
+  {
+   "cliente_id": "b2566b41-47d1-49fd-a69d-db8054d44427",
+   "proyecto_id": "34d4e218-5351-487b-9022-214ba94ba6a6",
+   "rechazadas": 1,
+   "aprobadas": 1,
+   "proporcion_rechazadas": 0.5
+  },
+  {
+   "cliente_id": "b38a088c-a65e-4389-b74d-0fb132e70629",
+   "proyecto_id": "3defa849-9336-4f7e-83ef-a9f3a1c7cc8a",
+   "rechazadas": 203,
+   "aprobadas": 472,
+   "proporcion_rechazadas": 0.300741
+  },
+  {
+   "cliente_id": "b38a088c-a65e-4389-b74d-0fb132e70629",
+   "proyecto_id": "e68933a9-c9e4-4e8c-a5c6-1c45c63d04ee",
+   "rechazadas": 114,
+   "aprobadas": 300,
+   "proporcion_rechazadas": 0.275362
+  },
+  {
+   "cliente_id": "b38a088c-a65e-4389-b74d-0fb132e70629",
+   "proyecto_id": "ef40d162-0f6c-49bf-be7e-e3628a89b0f0",
+   "rechazadas": 143,
+   "aprobadas": 360,
+   "proporcion_rechazadas": 0.284294
+  },
+  {
+   "cliente_id": "badcc32a-c159-4f53-8a0f-4efbedcd465e",
+   "proyecto_id": "37c86152-beed-4af9-80c5-9f30d1031424",
+   "rechazadas": 303,
+   "aprobadas": 593,
+   "proporcion_rechazadas": 0.33817
+  },
+  {
+   "cliente_id": "badcc32a-c159-4f53-8a0f-4efbedcd465e",
+   "proyecto_id": "c2874f06-9050-47ef-8123-5c9176c5a0dc",
+   "rechazadas": 188,
+   "aprobadas": 427,
+   "proporcion_rechazadas": 0.305691
+  },
+  {
+   "cliente_id": "bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+   "proyecto_id": "a5135ea0-fa53-434d-a6d5-901d8b621d41",
+   "rechazadas": 140,
+   "aprobadas": 411,
+   "proporcion_rechazadas": 0.254083
+  },
+  {
+   "cliente_id": "bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+   "proyecto_id": "c1836315-330f-4be1-a689-b4247a3a10e1",
+   "rechazadas": 195,
+   "aprobadas": 354,
+   "proporcion_rechazadas": 0.355191
+  },
+  {
+   "cliente_id": "c30ff46e-8026-495f-b8cd-a88b436d76e2",
+   "proyecto_id": "7f54a511-01fa-464e-9eb7-4b5653ffd3a2",
+   "rechazadas": 231,
+   "aprobadas": 476,
+   "proporcion_rechazadas": 0.326733
+  },
+  {
+   "cliente_id": "ce88cb2d-d4e8-4839-bc3e-058be0f3eab0",
+   "proyecto_id": "22498f66-6e51-484d-9b84-edc3d8e049de",
+   "rechazadas": 212,
+   "aprobadas": 625,
+   "proporcion_rechazadas": 0.253286
+  },
+  {
+   "cliente_id": "ce88cb2d-d4e8-4839-bc3e-058be0f3eab0",
+   "proyecto_id": "5dc7b3e6-a529-44ff-874c-c8903c6a3174",
+   "rechazadas": 215,
+   "aprobadas": 564,
+   "proporcion_rechazadas": 0.275995
+  },
+  {
+   "cliente_id": "ce88cb2d-d4e8-4839-bc3e-058be0f3eab0",
+   "proyecto_id": "6f887f28-3e49-4d09-9b19-d8b8d8302081",
+   "rechazadas": 795,
+   "aprobadas": 1580,
+   "proporcion_rechazadas": 0.334737
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "proyecto_id": "51beb80e-b7e6-414c-9c8a-49225005680f",
+   "rechazadas": 222,
+   "aprobadas": 509,
+   "proporcion_rechazadas": 0.303694
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "proyecto_id": "9b69554d-7c54-435f-ac8c-3b6aa974d079",
+   "rechazadas": 106,
+   "aprobadas": 176,
+   "proporcion_rechazadas": 0.375887
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "proyecto_id": "a5f60735-757b-4b29-bb2a-a1462999394c",
+   "rechazadas": 102,
+   "aprobadas": 293,
+   "proporcion_rechazadas": 0.258228
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "proyecto_id": "aa0217d0-cd4f-4b2b-899a-c252c1e1b94a",
+   "rechazadas": 135,
+   "aprobadas": 258,
+   "proporcion_rechazadas": 0.343511
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "proyecto_id": "ffe575f6-65ed-4fe3-8f2d-ad3f10d4de39",
+   "rechazadas": 396,
+   "aprobadas": 818,
+   "proporcion_rechazadas": 0.326194
+  },
+  {
+   "cliente_id": "e2817efd-ae84-4217-9d53-434bb88139b9",
+   "proyecto_id": "0ec0713d-ea2c-4a51-b688-d11fce4758be",
+   "rechazadas": 160,
+   "aprobadas": 358,
+   "proporcion_rechazadas": 0.30888
+  },
+  {
+   "cliente_id": "e2817efd-ae84-4217-9d53-434bb88139b9",
+   "proyecto_id": "585d3f86-1d23-44e6-8329-20b7c143f426",
+   "rechazadas": 515,
+   "aprobadas": 959,
+   "proporcion_rechazadas": 0.349389
+  },
+  {
+   "cliente_id": "e2817efd-ae84-4217-9d53-434bb88139b9",
+   "proyecto_id": "c7332304-4822-4120-84f9-eccd7630a8a7",
+   "rechazadas": 200,
+   "aprobadas": 686,
+   "proporcion_rechazadas": 0.225734
+  },
+  {
+   "cliente_id": "e2acf72f-9e57-4f7a-a0ee-89aed453dd32",
+   "proyecto_id": "718d4d05-e8e2-4743-b65f-eea97d824264",
+   "rechazadas": 612,
+   "aprobadas": 873,
+   "proporcion_rechazadas": 0.412121
+  },
+  {
+   "cliente_id": "e2acf72f-9e57-4f7a-a0ee-89aed453dd32",
+   "proyecto_id": "8acbbe09-8ccc-4cea-909f-d8eeb5a47200",
+   "rechazadas": 566,
+   "aprobadas": 1247,
+   "proporcion_rechazadas": 0.31219
+  },
+  {
+   "cliente_id": "e2acf72f-9e57-4f7a-a0ee-89aed453dd32",
+   "proyecto_id": "edaf3766-1b78-4ede-9a4f-fc0c9165f2ed",
+   "rechazadas": 164,
+   "aprobadas": 197,
+   "proporcion_rechazadas": 0.454294
+  },
+  {
+   "cliente_id": "ec24a3c5-c754-408f-b418-8f3f8a14be62",
+   "proyecto_id": "67884209-92ca-425a-ade5-93329364f3d0",
+   "rechazadas": 1205,
+   "aprobadas": 1657,
+   "proporcion_rechazadas": 0.421034
+  },
+  {
+   "cliente_id": "ec24a3c5-c754-408f-b418-8f3f8a14be62",
+   "proyecto_id": "b89f7039-a107-4c46-8634-17182ba6adb3",
+   "rechazadas": 134,
+   "aprobadas": 243,
+   "proporcion_rechazadas": 0.355438
+  },
+  {
+   "cliente_id": "ec5b227c-dfde-4fbf-bff3-50bf766ecb15",
+   "proyecto_id": "577bc55a-36d5-4494-b37f-d50d2e25b5ee",
+   "rechazadas": 171,
+   "aprobadas": 433,
+   "proporcion_rechazadas": 0.283113
+  },
+  {
+   "cliente_id": "ec5b227c-dfde-4fbf-bff3-50bf766ecb15",
+   "proyecto_id": "a6129a1c-889d-4b76-b75c-30b561730c48",
+   "rechazadas": 118,
+   "aprobadas": 285,
+   "proporcion_rechazadas": 0.292804
+  },
+  {
+   "cliente_id": "ec5b227c-dfde-4fbf-bff3-50bf766ecb15",
+   "proyecto_id": "c9b7c9bc-65a1-4fa9-9611-69a1ff46a6bf",
+   "rechazadas": 243,
+   "aprobadas": 512,
+   "proporcion_rechazadas": 0.321854
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "0f5ae9d3-8e6e-4003-a14f-3f12cfd01cbd",
+   "rechazadas": 294,
+   "aprobadas": 831,
+   "proporcion_rechazadas": 0.261333
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "28e213bc-e6fd-47af-9d84-caccf6729464",
+   "rechazadas": 674,
+   "aprobadas": 1169,
+   "proporcion_rechazadas": 0.365708
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "59fefbbc-71a3-4ad2-b094-6d2a2aa93b43",
+   "rechazadas": 147,
+   "aprobadas": 347,
+   "proporcion_rechazadas": 0.297571
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "d1812f77-6500-4423-baeb-cd19e5508ea2",
+   "rechazadas": 642,
+   "aprobadas": 1781,
+   "proporcion_rechazadas": 0.264961
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "d9df0d0e-225a-4d6c-b045-8043e3a68a70",
+   "rechazadas": 335,
+   "aprobadas": 929,
+   "proporcion_rechazadas": 0.265032
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "proyecto_id": "fc31a597-1f11-4c0f-b967-e60a823dd107",
+   "rechazadas": 318,
+   "aprobadas": 873,
+   "proporcion_rechazadas": 0.267003
+  },
+  {
+   "cliente_id": "f16287e4-e9c3-49e0-b602-f8ac10f1bc81",
+   "proyecto_id": "b1594847-5c0b-4b10-a757-cb1042f525b9",
+   "rechazadas": 105,
+   "aprobadas": 189,
+   "proporcion_rechazadas": 0.357143
+  },
+  {
+   "cliente_id": "f16287e4-e9c3-49e0-b602-f8ac10f1bc81",
+   "proyecto_id": "d86a6460-59a1-420e-9bb4-3332d8e7012f",
+   "rechazadas": 439,
+   "aprobadas": 788,
+   "proporcion_rechazadas": 0.357783
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "30c36756-d453-4867-b97e-6224891f6912",
+   "rechazadas": 127,
+   "aprobadas": 339,
+   "proporcion_rechazadas": 0.272532
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "848af440-7fc1-4858-afa0-d842bc55300b",
+   "rechazadas": 692,
+   "aprobadas": 1135,
+   "proporcion_rechazadas": 0.378763
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "b87b6384-9fdd-4e2e-a8a2-b7ad2bd3cdcd",
+   "rechazadas": 93,
+   "aprobadas": 315,
+   "proporcion_rechazadas": 0.227941
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "be4969ec-6667-43bb-a3b5-63606fdc0bad",
+   "rechazadas": 498,
+   "aprobadas": 1036,
+   "proporcion_rechazadas": 0.324641
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "d1a69d87-f54e-4019-ba35-844e59e1ac09",
+   "rechazadas": 156,
+   "aprobadas": 368,
+   "proporcion_rechazadas": 0.29771
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "proyecto_id": "eedaa802-4568-4426-89e0-3e22d3f4a49b",
+   "rechazadas": 318,
+   "aprobadas": 848,
+   "proporcion_rechazadas": 0.272727
+  },
+  {
+   "cliente_id": "f42d47cc-00d4-4f59-b427-3ca3287d06ca",
+   "proyecto_id": "64ab851b-f1fa-46e7-970d-750705eee1d4",
+   "rechazadas": 143,
+   "aprobadas": 361,
+   "proporcion_rechazadas": 0.28373
+  },
+  {
+   "cliente_id": "f42d47cc-00d4-4f59-b427-3ca3287d06ca",
+   "proyecto_id": "7eb162f1-4806-4804-8cf0-374c0c74dc0f",
+   "rechazadas": 246,
+   "aprobadas": 750,
+   "proporcion_rechazadas": 0.246988
+  },
+  {
+   "cliente_id": "f42d47cc-00d4-4f59-b427-3ca3287d06ca",
+   "proyecto_id": "a2bb522b-0b25-4279-b85a-c5d0df92a621",
+   "rechazadas": 393,
+   "aprobadas": 688,
+   "proporcion_rechazadas": 0.363552
+  },
+  {
+   "cliente_id": "f42d47cc-00d4-4f59-b427-3ca3287d06ca",
+   "proyecto_id": "f200c261-4d29-41ab-b455-12f701f7c7ec",
+   "rechazadas": 195,
+   "aprobadas": 555,
+   "proporcion_rechazadas": 0.26
+  },
+  {
+   "cliente_id": "fec21bbe-6624-4bfa-8fcc-a39ab683d2e6",
+   "proyecto_id": "41843b03-04dd-4054-9448-23f7e7e646c7",
+   "rechazadas": 234,
+   "aprobadas": 635,
+   "proporcion_rechazadas": 0.269275
+  },
+  {
+   "cliente_id": "fec21bbe-6624-4bfa-8fcc-a39ab683d2e6",
+   "proyecto_id": "50ee7a92-a091-41e0-b891-b0c3dd3f487e",
+   "rechazadas": 265,
+   "aprobadas": 440,
+   "proporcion_rechazadas": 0.375887
+  },
+  {
+   "cliente_id": "fec21bbe-6624-4bfa-8fcc-a39ab683d2e6",
+   "proyecto_id": "7a6a2107-2231-4050-b515-94943818cfd3",
+   "rechazadas": 244,
+   "aprobadas": 475,
+   "proporcion_rechazadas": 0.33936
+  },
+  {
+   "cliente_id": "fec21bbe-6624-4bfa-8fcc-a39ab683d2e6",
+   "proyecto_id": "e7ba26ac-ab7a-4d1c-8cfe-f6833e11bafe",
+   "rechazadas": 214,
+   "aprobadas": 406,
+   "proporcion_rechazadas": 0.345161
+  },
+  {
+   "cliente_id": "ff50bde4-3825-47b8-9cab-cc97663f1c97",
+   "proyecto_id": "7bf7e1d3-6a66-4fce-b089-fc6d2877f5d9",
+   "rechazadas": 363,
+   "aprobadas": 962,
+   "proporcion_rechazadas": 0.273962
+  },
+  {
+   "cliente_id": "ff50bde4-3825-47b8-9cab-cc97663f1c97",
+   "proyecto_id": "a847bce7-90fa-4b57-a4ac-2130deaf528d",
+   "rechazadas": 558,
+   "aprobadas": 969,
+   "proporcion_rechazadas": 0.365422
+  }
+ ],
+ "n_filas": 185,
+ "tiempo_s": 4.346,
+ "n_ejecucion": 33
+}

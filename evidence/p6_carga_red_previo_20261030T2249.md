@@ -1,0 +1,1822 @@
+# P6. Carga con 10, 40 y 100 usuarios virtuales (simulador dentro de la red docker, contra gateway:8000)
+
+- **Fecha y hora:** 2026-10-30T22:49:04 (duración 1013.8 s)
+- **Comando ejecutado:** `python pruebas/p6_carga.py --modo red`
+- **Máquina:** Windows-11-10.0.26200-SP0; CPU lógicos=12; Docker 29.9.2 (12 vCPU, 15.5 GiB); detalle en `evidence/entorno.txt`
+- **Archivos que respaldan:** `evidence/p6_carga_red_previo_20261030T2249.json`, `evidence/p6_carga_red_previo_20261030T2249.md`, `p6_red_previo/sim_10vu_run1.jsonl`, `p6_red_previo/sim_10vu_run2.jsonl`, `p6_red_previo/sim_10vu_run3.jsonl`, `p6_red_previo/sim_40vu_run1.jsonl`, `p6_red_previo/sim_40vu_run2.jsonl`, `p6_red_previo/sim_40vu_run3.jsonl`, `p6_red_previo/sim_100vu_run1.jsonl`, `p6_red_previo/sim_100vu_run2.jsonl`, `p6_red_previo/sim_100vu_run3.jsonl`, `p6_red_previo/docker_stats.csv`, `p6_red_previo/resumen_p6.json`, `p6_red_previo/resumen_p6.md`
+
+## Objetivo
+
+Medir p50/p95/p99 por endpoint, envíos por minuto, tasa de errores y consumo de recursos (docker stats) con 10, 40 y 100 VUs, con calentamiento de 30 s y 3 corridas de 90 s por nivel.
+
+## Configuración
+
+```json
+{
+ "niveles_vus": [
+  10,
+  40,
+  100
+ ],
+ "calentamiento_s": 30,
+ "corridas_por_nivel": 3,
+ "duracion_corrida_s": 90,
+ "mezcla_roles": "70 % anotadores, 20 % revisores, 10 % consumidores (exportar/salud; analítica desactivada para no competir por CPU)",
+ "anotador": "siguiente -> borrador cada 2 s durante 2-10 s -> enviar; 5 % liberar; 3 % interrupción+recuperar",
+ "revisor": "iniciar -> 1-3 s -> aprobar 80 % / rechazar 20 %",
+ "proyectos": "cada anotador elige un proyecto activo al azar (120)",
+ "percentiles": "nearest-rank sobre todas las peticiones de las corridas (sin calentamiento)",
+ "simulador": "simulador/simulador.py dentro del contenedor `herramientas` (red p2net), HTTP a http://gateway:8000",
+ "lock_ttl_ms": 120000,
+ "mongo_w": "majority"
+}
+```
+
+## Resultado observado
+
+```json
+{
+ "niveles": {
+  "10": {
+   "envios_por_min_media": 64.0,
+   "rps": 8.4,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "enviar": {
+    "p50": 27.07,
+    "p95": 48.45,
+    "p99": 97.73,
+    "n": 288
+   },
+   "siguiente": {
+    "p50": 27.24,
+    "p95": 86.08,
+    "p99": 179.95,
+    "n": 318
+   }
+  },
+  "40": {
+   "envios_por_min_media": 249.8,
+   "rps": 33.8,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "enviar": {
+    "p50": 31.88,
+    "p95": 54.55,
+    "p99": 82.88,
+    "n": 1124
+   },
+   "siguiente": {
+    "p50": 33.13,
+    "p95": 326.79,
+    "p99": 493.3,
+    "n": 1264
+   }
+  },
+  "100": {
+   "envios_por_min_media": 524.9,
+   "rps": 70.6,
+   "errores": 1,
+   "tasa_error_pct": 0.005,
+   "enviar": {
+    "p50": 251.5,
+    "p95": 1284.92,
+    "p99": 2382.16,
+    "n": 2363
+   },
+   "siguiente": {
+    "p50": 282.29,
+    "p95": 2188.39,
+    "p99": 2945.9,
+    "n": 2683
+   }
+  }
+ },
+ "tareas_disponibles_inicio": 57590,
+ "tareas_disponibles_fin": 54200,
+ "reposicion_del_dataset": "no fue necesaria"
+}
+```
+
+### Tareas disponibles al inicio  _(22:49:07)_
+
+```json
+{
+ "disponible": 57590
+}
+```
+
+### 10 VUs: calentamiento terminado  _(22:49:39)_
+
+```json
+{
+ "segundos": 30
+}
+```
+
+### 10 VUs, corrida 1: 64.0 envios/min, 8.5 req/s, errores=0  _(22:51:10)_
+
+```json
+{
+ "corrida": 1,
+ "inicio": 1793422179.2311797,
+ "n_peticiones": 766,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 96,
+ "envios_por_min": 64.0,
+ "rps": 8.5,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 25,
+   "p50": 17.3,
+   "p95": 31.41,
+   "p99": 34.8,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 7,
+   "p50": 14.83,
+   "p95": 27.2,
+   "p99": 27.2,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 4,
+   "p50": 10.13,
+   "p95": 19.47,
+   "p99": 19.47,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 106,
+   "p50": 24.7,
+   "p95": 80.92,
+   "p99": 96.14,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 96,
+   "p50": 25.9,
+   "p95": 58.15,
+   "p99": 137.57,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 10,
+   "p50": 30.21,
+   "p95": 38.39,
+   "p99": 38.39,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 174,
+   "p50": 18.3,
+   "p95": 29.34,
+   "p99": 33.7,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 344,
+   "p50": 8.92,
+   "p95": 16.44,
+   "p99": 26.43,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 10 VUs, corrida 2: 61.3 envios/min, 8.4 req/s, errores=0  _(22:52:46)_
+
+```json
+{
+ "corrida": 2,
+ "inicio": 1793422275.3084166,
+ "n_peticiones": 754,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 92,
+ "envios_por_min": 61.3,
+ "rps": 8.4,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 18,
+   "p50": 20.95,
+   "p95": 51.76,
+   "p99": 51.76,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 12,
+   "p50": 19.88,
+   "p95": 27.02,
+   "p99": 27.02,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 3,
+   "p50": 19.19,
+   "p95": 25.52,
+   "p99": 25.52,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 101,
+   "p50": 33.92,
+   "p95": 177.72,
+   "p99": 190.6,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 92,
+   "p50": 33.19,
+   "p95": 50.39,
+   "p99": 92.37,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 9,
+   "p50": 21.69,
+   "p95": 32.09,
+   "p99": 32.09,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 176,
+   "p50": 21.3,
+   "p95": 34.92,
+   "p99": 72.21,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 343,
+   "p50": 11.21,
+   "p95": 19.88,
+   "p99": 27.99,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 10 VUs, corrida 3: 66.7 envios/min, 8.4 req/s, errores=0  _(22:54:22)_
+
+```json
+{
+ "corrida": 3,
+ "inicio": 1793422371.5005558,
+ "n_peticiones": 760,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 100,
+ "envios_por_min": 66.7,
+ "rps": 8.4,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 24,
+   "p50": 12.31,
+   "p95": 21.53,
+   "p99": 22.74,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 7,
+   "p50": 14.12,
+   "p95": 19.24,
+   "p99": 19.24,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 4,
+   "p50": 11.1,
+   "p95": 12.13,
+   "p99": 12.13,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 111,
+   "p50": 24.26,
+   "p95": 82.31,
+   "p99": 111.84,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 100,
+   "p50": 25.33,
+   "p95": 37.86,
+   "p99": 52.8,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 11,
+   "p50": 29.6,
+   "p95": 36.36,
+   "p99": 36.36,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 158,
+   "p50": 17.36,
+   "p95": 28.31,
+   "p99": 38.64,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 345,
+   "p50": 8.62,
+   "p95": 14.5,
+   "p99": 18.62,
+   "errores": 0
+  }
+ }
+}
+```
+
+### Resumen del nivel 10 VUs  _(22:54:28)_
+
+```json
+{
+ "corridas": [
+  {
+   "corrida": 1,
+   "inicio": 1793422179.2311797,
+   "n_peticiones": 766,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 96,
+   "envios_por_min": 64.0,
+   "rps": 8.5,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 25,
+     "p50": 17.3,
+     "p95": 31.41,
+     "p99": 34.8,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 7,
+     "p50": 14.83,
+     "p95": 27.2,
+     "p99": 27.2,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 4,
+     "p50": 10.13,
+     "p95": 19.47,
+     "p99": 19.47,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 106,
+     "p50": 24.7,
+     "p95": 80.92,
+     "p99": 96.14,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 96,
+     "p50": 25.9,
+     "p95": 58.15,
+     "p99": 137.57,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 10,
+     "p50": 30.21,
+     "p95": 38.39,
+     "p99": 38.39,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 174,
+     "p50": 18.3,
+     "p95": 29.34,
+     "p99": 33.7,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 344,
+     "p50": 8.92,
+     "p95": 16.44,
+     "p99": 26.43,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 2,
+   "inicio": 1793422275.3084166,
+   "n_peticiones": 754,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 92,
+   "envios_por_min": 61.3,
+   "rps": 8.4,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 18,
+     "p50": 20.95,
+     "p95": 51.76,
+     "p99": 51.76,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 12,
+     "p50": 19.88,
+     "p95": 27.02,
+     "p99": 27.02,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 3,
+     "p50": 19.19,
+     "p95": 25.52,
+     "p99": 25.52,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 101,
+     "p50": 33.92,
+     "p95": 177.72,
+     "p99": 190.6,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 92,
+     "p50": 33.19,
+     "p95": 50.39,
+     "p99": 92.37,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 9,
+     "p50": 21.69,
+     "p95": 32.09,
+     "p99": 32.09,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 176,
+     "p50": 21.3,
+     "p95": 34.92,
+     "p99": 72.21,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 343,
+     "p50": 11.21,
+     "p95": 19.88,
+     "p99": 27.99,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 3,
+   "inicio": 1793422371.5005558,
+   "n_peticiones": 760,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 100,
+   "envios_por_min": 66.7,
+   "rps": 8.4,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 24,
+     "p50": 12.31,
+     "p95": 21.53,
+     "p99": 22.74,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 7,
+     "p50": 14.12,
+     "p95": 19.24,
+     "p99": 19.24,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 4,
+     "p50": 11.1,
+     "p95": 12.13,
+     "p99": 12.13,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 111,
+     "p50": 24.26,
+     "p95": 82.31,
+     "p99": 111.84,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 100,
+     "p50": 25.33,
+     "p95": 37.86,
+     "p99": 52.8,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 11,
+     "p50": 29.6,
+     "p95": 36.36,
+     "p99": 36.36,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 158,
+     "p50": 17.36,
+     "p95": 28.31,
+     "p99": 38.64,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 345,
+     "p50": 8.62,
+     "p95": 14.5,
+     "p99": 18.62,
+     "errores": 0
+    }
+   }
+  }
+ ],
+ "envios_por_min": {
+  "media": 64.0,
+  "min": 61.3,
+  "max": 66.7
+ },
+ "rps_medio": 8.4,
+ "n_peticiones": 2280,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 67,
+   "p50": 16.65,
+   "p95": 31.41,
+   "p99": 51.76,
+   "media": 18.12,
+   "max": 51.76,
+   "status": {
+    "200": 67
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 26,
+   "p50": 16.3,
+   "p95": 27.02,
+   "p99": 27.2,
+   "media": 17.21,
+   "max": 27.2,
+   "status": {
+    "200": 26
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 11,
+   "p50": 12.13,
+   "p95": 25.52,
+   "p99": 25.52,
+   "media": 14.57,
+   "max": 25.52,
+   "status": {
+    "200": 11
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 318,
+   "p50": 27.24,
+   "p95": 86.08,
+   "p99": 179.95,
+   "media": 35.47,
+   "max": 238.58,
+   "status": {
+    "200": 318
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 288,
+   "p50": 27.07,
+   "p95": 48.45,
+   "p99": 97.73,
+   "media": 30.51,
+   "max": 137.57,
+   "status": {
+    "200": 288
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 30,
+   "p50": 29.6,
+   "p95": 37.88,
+   "p99": 38.39,
+   "media": 27.52,
+   "max": 38.39,
+   "status": {
+    "200": 30
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 508,
+   "p50": 18.94,
+   "p95": 30.37,
+   "p99": 46.37,
+   "media": 20.44,
+   "max": 101.66,
+   "status": {
+    "200": 508
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 1032,
+   "p50": 9.44,
+   "p95": 17.17,
+   "p99": 26.12,
+   "media": 10.44,
+   "max": 99.92,
+   "status": {
+    "200": 1032
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "docker_stats": {
+  "analitica": {
+   "cpu_pct_media": 0.8,
+   "cpu_pct_max": 3.7,
+   "mem_mib_max": 753.8,
+   "muestras": 64
+  },
+  "gateway": {
+   "cpu_pct_media": 7.6,
+   "cpu_pct_max": 32.2,
+   "mem_mib_max": 66.2,
+   "muestras": 64
+  },
+  "herramientas": {
+   "cpu_pct_media": 3.1,
+   "cpu_pct_max": 14.3,
+   "mem_mib_max": 24.6,
+   "muestras": 64
+  },
+  "historial":
+... (truncado; ver el .json)
+```
+
+### 40 VUs: calentamiento terminado  _(22:55:10)_
+
+```json
+{
+ "segundos": 30
+}
+```
+
+### 40 VUs, corrida 1: 251.3 envios/min, 34.1 req/s, errores=0  _(22:56:41)_
+
+```json
+{
+ "corrida": 1,
+ "inicio": 1793422510.2461865,
+ "n_peticiones": 3067,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 377,
+ "envios_por_min": 251.3,
+ "rps": 34.1,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 72,
+   "p50": 16.33,
+   "p95": 43.06,
+   "p99": 120.62,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 54,
+   "p50": 18.3,
+   "p95": 43.78,
+   "p99": 91.31,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 12,
+   "p50": 17.5,
+   "p95": 107.91,
+   "p99": 107.91,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 427,
+   "p50": 31.03,
+   "p95": 253.91,
+   "p99": 405.85,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 377,
+   "p50": 30.25,
+   "p95": 53.06,
+   "p99": 80.55,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 50,
+   "p50": 70.64,
+   "p95": 295.03,
+   "p99": 375.23,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 688,
+   "p50": 20.33,
+   "p95": 38.03,
+   "p99": 76.78,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 1387,
+   "p50": 10.09,
+   "p95": 19.56,
+   "p99": 34.29,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 40 VUs, corrida 2: 248.0 envios/min, 33.5 req/s, errores=0  _(22:58:18)_
+
+```json
+{
+ "corrida": 2,
+ "inicio": 1793422606.701938,
+ "n_peticiones": 3018,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 372,
+ "envios_por_min": 248.0,
+ "rps": 33.5,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 83,
+   "p50": 15.93,
+   "p95": 33.05,
+   "p99": 44.61,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 54,
+   "p50": 16.92,
+   "p95": 37.58,
+   "p99": 40.45,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 15,
+   "p50": 16.62,
+   "p95": 29.18,
+   "p99": 29.18,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 415,
+   "p50": 34.16,
+   "p95": 419.34,
+   "p99": 523.58,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 372,
+   "p50": 32.3,
+   "p95": 55.44,
+   "p99": 82.21,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 43,
+   "p50": 34.7,
+   "p95": 98.98,
+   "p99": 109.33,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 674,
+   "p50": 20.2,
+   "p95": 37.01,
+   "p99": 60.15,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 1362,
+   "p50": 10.32,
+   "p95": 23.63,
+   "p99": 39.51,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 40 VUs, corrida 3: 250.0 envios/min, 33.8 req/s, errores=0  _(22:59:54)_
+
+```json
+{
+ "corrida": 3,
+ "inicio": 1793422703.0171518,
+ "n_peticiones": 3039,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 375,
+ "envios_por_min": 250.0,
+ "rps": 33.8,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 82,
+   "p50": 17.25,
+   "p95": 31.76,
+   "p99": 65.5,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 57,
+   "p50": 18.9,
+   "p95": 32.4,
+   "p99": 38.25,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 7,
+   "p50": 23.93,
+   "p95": 27.24,
+   "p99": 27.24,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 422,
+   "p50": 33.72,
+   "p95": 337.71,
+   "p99": 412.99,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 375,
+   "p50": 32.85,
+   "p95": 56.63,
+   "p99": 86.26,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 47,
+   "p50": 149.85,
+   "p95": 366.39,
+   "p99": 430.74,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 660,
+   "p50": 21.02,
+   "p95": 39.33,
+   "p99": 112.32,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 1389,
+   "p50": 10.76,
+   "p95": 22.1,
+   "p99": 45.56,
+   "errores": 0
+  }
+ }
+}
+```
+
+### Resumen del nivel 40 VUs  _(23:00:04)_
+
+```json
+{
+ "corridas": [
+  {
+   "corrida": 1,
+   "inicio": 1793422510.2461865,
+   "n_peticiones": 3067,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 377,
+   "envios_por_min": 251.3,
+   "rps": 34.1,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 72,
+     "p50": 16.33,
+     "p95": 43.06,
+     "p99": 120.62,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 54,
+     "p50": 18.3,
+     "p95": 43.78,
+     "p99": 91.31,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 12,
+     "p50": 17.5,
+     "p95": 107.91,
+     "p99": 107.91,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 427,
+     "p50": 31.03,
+     "p95": 253.91,
+     "p99": 405.85,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 377,
+     "p50": 30.25,
+     "p95": 53.06,
+     "p99": 80.55,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 50,
+     "p50": 70.64,
+     "p95": 295.03,
+     "p99": 375.23,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 688,
+     "p50": 20.33,
+     "p95": 38.03,
+     "p99": 76.78,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 1387,
+     "p50": 10.09,
+     "p95": 19.56,
+     "p99": 34.29,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 2,
+   "inicio": 1793422606.701938,
+   "n_peticiones": 3018,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 372,
+   "envios_por_min": 248.0,
+   "rps": 33.5,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 83,
+     "p50": 15.93,
+     "p95": 33.05,
+     "p99": 44.61,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 54,
+     "p50": 16.92,
+     "p95": 37.58,
+     "p99": 40.45,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 15,
+     "p50": 16.62,
+     "p95": 29.18,
+     "p99": 29.18,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 415,
+     "p50": 34.16,
+     "p95": 419.34,
+     "p99": 523.58,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 372,
+     "p50": 32.3,
+     "p95": 55.44,
+     "p99": 82.21,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 43,
+     "p50": 34.7,
+     "p95": 98.98,
+     "p99": 109.33,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 674,
+     "p50": 20.2,
+     "p95": 37.01,
+     "p99": 60.15,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 1362,
+     "p50": 10.32,
+     "p95": 23.63,
+     "p99": 39.51,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 3,
+   "inicio": 1793422703.0171518,
+   "n_peticiones": 3039,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 375,
+   "envios_por_min": 250.0,
+   "rps": 33.8,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 82,
+     "p50": 17.25,
+     "p95": 31.76,
+     "p99": 65.5,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 57,
+     "p50": 18.9,
+     "p95": 32.4,
+     "p99": 38.25,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 7,
+     "p50": 23.93,
+     "p95": 27.24,
+     "p99": 27.24,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 422,
+     "p50": 33.72,
+     "p95": 337.71,
+     "p99": 412.99,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 375,
+     "p50": 32.85,
+     "p95": 56.63,
+     "p99": 86.26,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 47,
+     "p50": 149.85,
+     "p95": 366.39,
+     "p99": 430.74,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 660,
+     "p50": 21.02,
+     "p95": 39.33,
+     "p99": 112.32,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 1389,
+     "p50": 10.76,
+     "p95": 22.1,
+     "p99": 45.56,
+     "errores": 0
+    }
+   }
+  }
+ ],
+ "envios_por_min": {
+  "media": 249.8,
+  "min": 248.0,
+  "max": 251.3
+ },
+ "rps_medio": 33.8,
+ "n_peticiones": 9124,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 237,
+   "p50": 16.41,
+   "p95": 35.61,
+   "p99": 44.61,
+   "media": 18.91,
+   "max": 120.62,
+   "status": {
+    "200": 237
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 165,
+   "p50": 18.45,
+   "p95": 37.58,
+   "p99": 47.66,
+   "media": 20.41,
+   "max": 91.31,
+   "status": {
+    "200": 165
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 34,
+   "p50": 17.57,
+   "p95": 41.75,
+   "p99": 107.91,
+   "media": 22.56,
+   "max": 107.91,
+   "status": {
+    "200": 34
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 1264,
+   "p50": 33.13,
+   "p95": 326.79,
+   "p99": 493.3,
+   "media": 57.99,
+   "max": 534.53,
+   "status": {
+    "200": 1264
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 1124,
+   "p50": 31.88,
+   "p95": 54.55,
+   "p99": 82.88,
+   "media": 34.24,
+   "max": 162.12,
+   "status": {
+    "200": 1124
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 140,
+   "p50": 56.54,
+   "p95": 328.81,
+   "p99": 391.88,
+   "media": 115.45,
+   "max": 430.74,
+   "status": {
+    "200": 140
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 2022,
+   "p50": 20.52,
+   "p95": 38.05,
+   "p99": 71.33,
+   "media": 23.57,
+   "max": 454.94,
+   "status": {
+    "200": 2022
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 4138,
+   "p50": 10.38,
+   "p95": 21.75,
+   "p99": 38.71,
+   "media": 11.99,
+   "max": 153.6,
+   "status": {
+    "200": 4138
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "docker_stats": {
+  "analitica": {
+   "cpu_pct_media": 1.1,
+   "cpu_pct_max": 3.4,
+   "mem_mib_max": 754.0,
+   "muestras": 65
+  },
+  "gateway": {
+   "cpu_pct_media": 22.9,
+   "cpu_pct_max": 70.0,
+   "mem_mib_max": 67.6,
+   "muestras": 65
+  },
+  "herramientas": {
+   "cpu_pct_media": 11.7,
+   "cpu_pct_max"
+... (truncado; ver el .json)
+```
+
+### 100 VUs: calentamiento terminado  _(23:00:48)_
+
+```json
+{
+ "segundos": 30
+}
+```
+
+### 100 VUs, corrida 1: 478.0 envios/min, 64.0 req/s, errores=1  _(23:02:21)_
+
+```json
+{
+ "corrida": 1,
+ "inicio": 1793422848.6417441,
+ "n_peticiones": 5758,
+ "errores": 1,
+ "tasa_error_pct": 0.017,
+ "envios_ok": 717,
+ "envios_por_min": 478.0,
+ "rps": 64.0,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 210,
+   "p50": 130.14,
+   "p95": 963.0,
+   "p99": 1889.07,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 107,
+   "p50": 197.08,
+   "p95": 808.54,
+   "p99": 965.73,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 10,
+   "p50": 277.4,
+   "p95": 2449.59,
+   "p99": 2449.59,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 824,
+   "p50": 513.2,
+   "p95": 2331.6,
+   "p99": 3545.89,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 718,
+   "p50": 489.68,
+   "p95": 2051.86,
+   "p99": 3464.43,
+   "errores": 1
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 105,
+   "p50": 838.23,
+   "p95": 1787.53,
+   "p99": 1895.04,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 1340,
+   "p50": 172.43,
+   "p95": 947.63,
+   "p99": 1870.3,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 2444,
+   "p50": 178.48,
+   "p95": 1168.64,
+   "p99": 2372.76,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 100 VUs, corrida 2: 554.7 envios/min, 74.3 req/s, errores=0  _(23:03:59)_
+
+```json
+{
+ "corrida": 2,
+ "inicio": 1793422946.844021,
+ "n_peticiones": 6684,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 832,
+ "envios_por_min": 554.7,
+ "rps": 74.3,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 227,
+   "p50": 82.2,
+   "p95": 268.21,
+   "p99": 447.67,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 118,
+   "p50": 100.71,
+   "p95": 272.84,
+   "p99": 356.11,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 30,
+   "p50": 109.18,
+   "p95": 483.63,
+   "p99": 1096.57,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 939,
+   "p50": 202.8,
+   "p95": 2215.1,
+   "p99": 2947.42,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 832,
+   "p50": 176.63,
+   "p95": 944.77,
+   "p99": 1297.94,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 106,
+   "p50": 523.61,
+   "p95": 1335.52,
+   "p99": 1472.77,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 1516,
+   "p50": 92.05,
+   "p95": 281.67,
+   "p99": 524.69,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 2916,
+   "p50": 65.35,
+   "p95": 435.17,
+   "p99": 795.66,
+   "errores": 0
+  }
+ }
+}
+```
+
+### 100 VUs, corrida 3: 542.0 envios/min, 73.4 req/s, errores=0  _(23:05:37)_
+
+```json
+{
+ "corrida": 3,
+ "inicio": 1793423044.6841762,
+ "n_peticiones": 6606,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 813,
+ "envios_por_min": 542.0,
+ "rps": 73.4,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 241,
+   "p50": 87.98,
+   "p95": 336.57,
+   "p99": 659.71,
+   "errores": 0
+  },
+  "GET /salud": {
+   "n": 121,
+   "p50": 103.21,
+   "p95": 294.72,
+   "p99": 682.19,
+   "errores": 0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 34,
+   "p50": 237.49,
+   "p95": 1405.95,
+   "p99": 1443.66,
+   "errores": 0
+  },
+  "POST /tareas/siguiente": {
+   "n": 920,
+   "p50": 229.51,
+   "p95": 1935.61,
+   "p99": 2448.95,
+   "errores": 0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 813,
+   "p50": 215.38,
+   "p95": 861.72,
+   "p99": 1261.15,
+   "errores": 0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 107,
+   "p50": 433.26,
+   "p95": 1556.36,
+   "p99": 1602.5,
+   "errores": 0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 1478,
+   "p50": 103.0,
+   "p95": 312.27,
+   "p99": 1092.66,
+   "errores": 0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 2892,
+   "p50": 82.21,
+   "p95": 463.99,
+   "p99": 834.17,
+   "errores": 0
+  }
+ }
+}
+```
+
+### Resumen del nivel 100 VUs  _(23:05:45)_
+
+```json
+{
+ "corridas": [
+  {
+   "corrida": 1,
+   "inicio": 1793422848.6417441,
+   "n_peticiones": 5758,
+   "errores": 1,
+   "tasa_error_pct": 0.017,
+   "envios_ok": 717,
+   "envios_por_min": 478.0,
+   "rps": 64.0,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 210,
+     "p50": 130.14,
+     "p95": 963.0,
+     "p99": 1889.07,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 107,
+     "p50": 197.08,
+     "p95": 808.54,
+     "p99": 965.73,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 10,
+     "p50": 277.4,
+     "p95": 2449.59,
+     "p99": 2449.59,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 824,
+     "p50": 513.2,
+     "p95": 2331.6,
+     "p99": 3545.89,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 718,
+     "p50": 489.68,
+     "p95": 2051.86,
+     "p99": 3464.43,
+     "errores": 1
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 105,
+     "p50": 838.23,
+     "p95": 1787.53,
+     "p99": 1895.04,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 1340,
+     "p50": 172.43,
+     "p95": 947.63,
+     "p99": 1870.3,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 2444,
+     "p50": 178.48,
+     "p95": 1168.64,
+     "p99": 2372.76,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 2,
+   "inicio": 1793422946.844021,
+   "n_peticiones": 6684,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 832,
+   "envios_por_min": 554.7,
+   "rps": 74.3,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 227,
+     "p50": 82.2,
+     "p95": 268.21,
+     "p99": 447.67,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 118,
+     "p50": 100.71,
+     "p95": 272.84,
+     "p99": 356.11,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 30,
+     "p50": 109.18,
+     "p95": 483.63,
+     "p99": 1096.57,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 939,
+     "p50": 202.8,
+     "p95": 2215.1,
+     "p99": 2947.42,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 832,
+     "p50": 176.63,
+     "p95": 944.77,
+     "p99": 1297.94,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 106,
+     "p50": 523.61,
+     "p95": 1335.52,
+     "p99": 1472.77,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 1516,
+     "p50": 92.05,
+     "p95": 281.67,
+     "p99": 524.69,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 2916,
+     "p50": 65.35,
+     "p95": 435.17,
+     "p99": 795.66,
+     "errores": 0
+    }
+   }
+  },
+  {
+   "corrida": 3,
+   "inicio": 1793423044.6841762,
+   "n_peticiones": 6606,
+   "errores": 0,
+   "tasa_error_pct": 0.0,
+   "envios_ok": 813,
+   "envios_por_min": 542.0,
+   "rps": 73.4,
+   "por_endpoint": {
+    "GET /proyectos/{id}/exportar": {
+     "n": 241,
+     "p50": 87.98,
+     "p95": 336.57,
+     "p99": 659.71,
+     "errores": 0
+    },
+    "GET /salud": {
+     "n": 121,
+     "p50": 103.21,
+     "p95": 294.72,
+     "p99": 682.19,
+     "errores": 0
+    },
+    "POST /sesiones/recuperar": {
+     "n": 34,
+     "p50": 237.49,
+     "p95": 1405.95,
+     "p99": 1443.66,
+     "errores": 0
+    },
+    "POST /tareas/siguiente": {
+     "n": 920,
+     "p50": 229.51,
+     "p95": 1935.61,
+     "p99": 2448.95,
+     "errores": 0
+    },
+    "POST /tareas/{id}/enviar": {
+     "n": 813,
+     "p50": 215.38,
+     "p95": 861.72,
+     "p99": 1261.15,
+     "errores": 0
+    },
+    "POST /tareas/{id}/liberar": {
+     "n": 107,
+     "p50": 433.26,
+     "p95": 1556.36,
+     "p99": 1602.5,
+     "errores": 0
+    },
+    "POST /tareas/{id}/revision": {
+     "n": 1478,
+     "p50": 103.0,
+     "p95": 312.27,
+     "p99": 1092.66,
+     "errores": 0
+    },
+    "PUT /tareas/{id}/borrador": {
+     "n": 2892,
+     "p50": 82.21,
+     "p95": 463.99,
+     "p99": 834.17,
+     "errores": 0
+    }
+   }
+  }
+ ],
+ "envios_por_min": {
+  "media": 524.9,
+  "min": 478.0,
+  "max": 554.7
+ },
+ "rps_medio": 70.6,
+ "n_peticiones": 19048,
+ "errores": 1,
+ "tasa_error_pct": 0.005,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 678,
+   "p50": 97.08,
+   "p95": 495.21,
+   "p99": 1425.27,
+   "media": 153.8,
+   "max": 2238.72,
+   "status": {
+    "200": 678
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 346,
+   "p50": 126.57,
+   "p95": 542.98,
+   "p99": 901.94,
+   "media": 172.1,
+   "max": 1179.22,
+   "status": {
+    "200": 346
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 74,
+   "p50": 166.06,
+   "p95": 1102.62,
+   "p99": 2449.59,
+   "media": 302.36,
+   "max": 2449.59,
+   "status": {
+    "200": 74
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 2683,
+   "p50": 282.29,
+   "p95": 2188.39,
+   "p99": 2945.9,
+   "media": 548.11,
+   "max": 6031.09,
+   "status": {
+    "200": 2681,
+    "409": 2
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 2363,
+   "p50": 251.5,
+   "p95": 1284.92,
+   "p99": 2382.16,
+   "media": 423.49,
+   "max": 5627.14,
+   "status": {
+    "200": 2362,
+    "503": 1
+   },
+   "errores": 1,
+   "tasa_error_pct": 0.042
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 318,
+   "p50": 608.08,
+   "p95": 1588.98,
+   "p99": 1812.32,
+   "media": 718.82,
+   "max": 1994.6,
+   "status": {
+    "200": 318
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 4334,
+   "p50": 117.01,
+   "p95": 514.99,
+   "p99": 1421.56,
+   "media": 178.68,
+   "max": 3074.74,
+   "status": {
+    "200": 4334
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 8252,
+   "p50": 94.31,
+   "p95": 659.92,
+   "p99": 1433.24,
+   "media": 191.34,
+   "max": 6013.9,
+   "status": {
+    "200": 8252
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "docker_stats": {
+  "analitica": {
+   "cpu_pct_media": 1.7,
+   "cpu_pct_max": 3.5,
+   "mem_mib_max": 754.1,
+   "muestras": 66
+  },
+  "gateway
+... (truncado; ver el .json)
+```
+
+## Interpretación
+
+La latencia por endpoint y los envíos por minuto se midieron sobre 3 corridas de 90 s por nivel tras 30 s de calentamiento. Las tablas por endpoint, los envíos/min y los docker stats están en p6_red_previo/resumen_p6.md/json; los registros por petición en p6/*.jsonl. El generador de carga corre en el mismo equipo que Docker (12 vCPU lógicos compartidos), de modo que la saturación observada mezcla la capacidad de la plataforma con la del propio simulador: los números describen este equipo, no un despliegue distribuido.

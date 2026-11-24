@@ -1,0 +1,33 @@
+{
+ "q1": {
+  "coincide": true,
+  "filas_obtenidas": 8,
+  "filas_esperadas": 8,
+  "tiempo_s": 1.905
+ },
+ "q2": {
+  "coincide": true,
+  "filas_obtenidas": 6,
+  "filas_esperadas": 6,
+  "tiempo_s": 1.597
+ },
+ "q3": {
+  "coincide": true,
+  "filas_obtenidas": 4,
+  "filas_esperadas": 4,
+  "tiempo_s": 1.019
+ },
+ "q4": {
+  "coincide": true,
+  "filas_obtenidas": 3,
+  "filas_esperadas": 3,
+  "tiempo_s": 0.838
+ },
+ "q5": {
+  "coincide": true,
+  "filas_obtenidas": 2,
+  "filas_esperadas": 2,
+  "tiempo_s": 0.954
+ },
+ "todas_coinciden": true
+}

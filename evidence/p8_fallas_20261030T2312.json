@@ -1,0 +1,917 @@
+{
+ "prueba": "p8_fallas",
+ "titulo": "P8. Fallas y recuperación con escrituras en curso",
+ "fecha_hora": "2026-10-30T23:12:02",
+ "objetivo": "Provocar fallas de un secundario, del primario (ordenada y abrupta), pérdida de mayoría y reinicio de Valkey mientras se escribe; medir RTO, 503 durante la elección y verificar RPO = 0 para toda escritura confirmada (HTTP 200).",
+ "configuracion": {
+  "escritores_concurrentes": 6,
+  "ciclo": "siguiente -> enviar (reintento manual cada 1 s ante 503)",
+  "mongo_w": "majority",
+  "wTimeoutMS": 3000,
+  "serverSelectionTimeoutMS": 2500,
+  "electionTimeout_mongo": "10 s (por defecto)",
+  "inyeccion": "docker compose stop / docker kill / docker compose restart"
+ },
+ "comando": "python pruebas/p8_fallas.py",
+ "maquina": {
+  "so": "Windows-11-10.0.26200-SP0",
+  "python_host": "3.14.4",
+  "cpu_logicos": 12,
+  "docker": "29.9.2",
+  "docker_cpus": 12,
+  "docker_mem_gib": 15.5,
+  "docker_so": "Docker Desktop",
+  "detalle": "evidence/entorno.txt"
+ },
+ "resultado": {
+  "escenarios": {
+   "S0_linea_base": {
+    "ventana": {
+     "siguiente": {
+      "n": 214,
+      "status": {
+       "200": 214
+      },
+      "p50_ms": 64.99,
+      "p95_ms": 123.52,
+      "p99_ms": 158.71
+     },
+     "enviar": {
+      "n": 211,
+      "status": {
+       "200": 211
+      },
+      "p50_ms": 60.42,
+      "p95_ms": 118.97,
+      "p99_ms": 147.91
+     }
+    }
+   },
+   "S1_secundario_detenido": {
+    "ventana": {
+     "siguiente": {
+      "n": 381,
+      "status": {
+       "200": 381
+      },
+      "p50_ms": 63.0,
+      "p95_ms": 98.27,
+      "p99_ms": 111.18
+     },
+     "enviar": {
+      "n": 382,
+      "status": {
+       "200": 382
+      },
+      "p50_ms": 57.48,
+      "p95_ms": 97.7,
+      "p99_ms": 112.27
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    }
+   },
+   "S2a_primario_stop_ordenado": {
+    "nuevo_primario": "mongo2",
+    "ventana": {
+     "siguiente": {
+      "n": 392,
+      "status": {
+       "200": 392
+      },
+      "p50_ms": 58.51,
+      "p95_ms": 106.45,
+      "p99_ms": 136.87
+     },
+     "enviar": {
+      "n": 389,
+      "status": {
+       "200": 389
+      },
+      "p50_ms": 53.55,
+      "p95_ms": 99.26,
+      "p99_ms": 159.15
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    }
+   },
+   "S2b_primario_kill": {
+    "nuevo_primario": "mongo1",
+    "ventana": {
+     "siguiente": {
+      "n": 209,
+      "status": {
+       "200": 209
+      },
+      "p50_ms": 58.85,
+      "p95_ms": 97.87,
+      "p99_ms": 118.96
+     },
+     "enviar": {
+      "n": 208,
+      "status": {
+       "200": 208
+      },
+      "p50_ms": 53.69,
+      "p95_ms": 93.31,
+      "p99_ms": 117.92
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    }
+   },
+   "S3_sin_mayoria": {
+    "sondas_durante": {
+     "POST /tareas/siguiente (escritura)": {
+      "http": 503,
+      "ms": 3057,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "POST /tareas/{id}/enviar (escritura)": {
+      "http": 503,
+      "ms": 3242,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "PUT /tareas/{id}/borrador (sólo Valkey)": {
+      "http": 200,
+      "ms": 28,
+      "cuerpo": "{\"ok\":true,\"ts\":1793423670242,\"lock_ttl_ms\":120000}"
+     },
+     "GET /proyectos/{id}/exportar (lectura Mongo)": {
+      "http": 503,
+      "ms": 8646,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "POST /sesiones/recuperar": {
+      "http": 503,
+      "ms": 2999,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "GET /proyectos/{id}/editando (Valkey)": {
+      "http": 200,
+      "ms": 13,
+      "cuerpo": "{\"proyecto_id\":\"cab4f27a-8b5f-4e5b-a719-9315f2a666fe\",\"n\":7,\"editando\":[{\"anotador_id\":\"p8-esc-1-1793423533\",\"ultimo_latido\":1793423657197},{\"anotador_id\":\"p8-e"
+     },
+     "GET /analitica/q1 (sólo Parquet)": {
+      "error": "ReadTimeout"
+     },
+     "GET /salud": {
+      "http": 503,
+      "ms": 2149,
+      "cuerpo": "{\"estado\":\"caido\",\"capas\":{\"gateway\":{\"estado\":\"ok\",\"detalle\":\"\",\"latido\":{\"estado\":\"ok\",\"detalle\":\"\",\"edad_s\":1.2}},\"registro\":{\"estado\":\"caido\",\"detalle\":\"Rea"
+     }
+    },
+    "reintento_enviar_http": 409,
+    "rto_escritor": {
+     "primer_fallo_s": 3.6,
+     "ultimo_fallo_s": 88.5,
+     "rto_s": null,
+     "ventana_sin_escrituras_s": null,
+     "fallos": 132,
+     "codigos_fallo": {
+      "503": 132
+     }
+    }
+   },
+   "S4_valkey_restart": {
+    "recuperar_http": 200,
+    "borrador_sigue": true,
+    "enviar_tras_reinicio": 200,
+    "rto_escritor": {
+     "primer_fallo_s": 0.8,
+     "ultimo_fallo_s": 2.4,
+     "rto_s": 2.8,
+     "ventana_sin_escrituras_s": 2.0,
+     "fallos": 6,
+     "codigos_fallo": {
+      "503": 6
+     }
+    }
+   },
+   "S5_sesion_interrumpida": {
+    "recuperar_http": 200
+   }
+  },
+  "rpo": {
+   "envios_con_http_200": 2426,
+   "tareas_perdidas_en_mongo (RPO)": 0,
+   "con_estado_incorrecto": 0,
+   "tareas_con_dos_acks_200": 0,
+   "eventos_ack_ausentes_en_lago": 0,
+   "tareas_con_mas_de_una_fila_anotada_en_lago": 0,
+   "envios_nunca_confirmados (todos los intentos 503/error o 409)": 6,
+   "de_esos_con_409_tras_un_503 (commit ambiguo: estaban ya anotadas)": 6,
+   "de_esos_estado_en_mongo": {
+    "anotada": 6
+   },
+   "ejemplos_perdidas": []
+  },
+  "estado_final_rs": [
+   [
+    "mongo1:27017",
+    "PRIMARY",
+    1
+   ],
+   [
+    "mongo2:27017",
+    "SECONDARY",
+    1
+   ],
+   [
+    "mongo3:27017",
+    "SECONDARY",
+    1
+   ]
+  ]
+ },
+ "pasos": [
+  {
+   "titulo": "Estado inicial del replica set",
+   "hora": "23:12:11",
+   "datos": [
+    [
+     "mongo1:27017",
+     "PRIMARY",
+     1
+    ],
+    [
+     "mongo2:27017",
+     "SECONDARY",
+     1
+    ],
+    [
+     "mongo3:27017",
+     "SECONDARY",
+     1
+    ]
+   ],
+   "nota": null
+  },
+  {
+   "titulo": "S0 línea base (15 s)",
+   "hora": "23:12:27",
+   "datos": {
+    "ventana": {
+     "siguiente": {
+      "n": 214,
+      "status": {
+       "200": 214
+      },
+      "p50_ms": 64.99,
+      "p95_ms": 123.52,
+      "p99_ms": 158.71
+     },
+     "enviar": {
+      "n": 211,
+      "status": {
+       "200": 211
+      },
+      "p50_ms": 60.42,
+      "p95_ms": 118.97,
+      "p99_ms": 147.91
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S1 secundario detenido: las escrituras continúan",
+   "hora": "23:13:00",
+   "datos": {
+    "secundario_detenido": "mongo3",
+    "primario": "mongo1",
+    "ventana": {
+     "siguiente": {
+      "n": 381,
+      "status": {
+       "200": 381
+      },
+      "p50_ms": 63.0,
+      "p95_ms": 98.27,
+      "p99_ms": 111.18
+     },
+     "enviar": {
+      "n": 382,
+      "status": {
+       "200": 382
+      },
+      "p50_ms": 57.48,
+      "p95_ms": 97.7,
+      "p99_ms": 112.27
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    },
+    "salud": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "degradado",
+      "mongo": "degradado (2/3 nodos vivos; primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=997 eventos=33316)",
+      "analitica": "ok (ejecuciones=10)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "rs": [
+     [
+      "mongo1:27017",
+      "PRIMARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo3:27017",
+      "(not reachable/healthy)",
+      0
+     ]
+    ],
+    "segundos_hasta_replica_set_completo": 5.1
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S2a_primario_stop_ordenado",
+   "hora": "23:13:43",
+   "datos": {
+    "primario_detenido": "mongo1",
+    "duracion_del_comando_s": 11.0,
+    "nuevo_primario": "mongo2",
+    "segundos_hasta_nuevo_primario_desde_comando": 12.5,
+    "ventana": {
+     "siguiente": {
+      "n": 392,
+      "status": {
+       "200": 392
+      },
+      "p50_ms": 58.51,
+      "p95_ms": 106.45,
+      "p99_ms": 136.87
+     },
+     "enviar": {
+      "n": 389,
+      "status": {
+       "200": 389
+      },
+      "p50_ms": 53.55,
+      "p95_ms": 99.26,
+      "p99_ms": 159.15
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    },
+    "salud_post_eleccion": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "degradado",
+      "mongo": "degradado (2/3 nodos vivos; primario=mongo2:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=1013 eventos=34516)",
+      "analitica": "ok (ejecuciones=10)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "segundos_hasta_replica_set_completo": 3.0,
+    "rs_final": [
+     [
+      "mongo1:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "PRIMARY",
+      1
+     ],
+     [
+      "mongo3:27017",
+      "SECONDARY",
+      1
+     ]
+    ],
+    "tras_reincorporar": {
+     "ventana": {
+      "siguiente": {
+       "n": 188,
+       "status": {
+        "200": 188
+       },
+       "p50_ms": 62.63,
+       "p95_ms": 104.23,
+       "p99_ms": 156.5
+      },
+      "enviar": {
+       "n": 190,
+       "status": {
+        "200": 190
+       },
+       "p50_ms": 60.41,
+       "p95_ms": 119.69,
+       "p99_ms": 173.03
+      }
+     },
+     "rto": {
+      "primer_fallo_s": null,
+      "ultimo_fallo_s": null,
+      "rto_s": 0.0,
+      "fallos": 0,
+      "ventana_sin_escrituras_s": 0.0
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S2b_primario_kill",
+   "hora": "23:14:12",
+   "datos": {
+    "primario_detenido": "mongo2",
+    "duracion_del_comando_s": 0.5,
+    "nuevo_primario": "mongo1",
+    "segundos_hasta_nuevo_primario_desde_comando": 1.7,
+    "ventana": {
+     "siguiente": {
+      "n": 209,
+      "status": {
+       "200": 209
+      },
+      "p50_ms": 58.85,
+      "p95_ms": 97.87,
+      "p99_ms": 118.96
+     },
+     "enviar": {
+      "n": 208,
+      "status": {
+       "200": 208
+      },
+      "p50_ms": 53.69,
+      "p95_ms": 93.31,
+      "p99_ms": 117.92
+     }
+    },
+    "rto": {
+     "primer_fallo_s": null,
+     "ultimo_fallo_s": null,
+     "rto_s": 0.0,
+     "fallos": 0,
+     "ventana_sin_escrituras_s": 0.0
+    },
+    "salud_post_eleccion": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "degradado",
+      "mongo": "degradado (2/3 nodos vivos; primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=1025 eventos=35395)",
+      "analitica": "ok (ejecuciones=10)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "segundos_hasta_replica_set_completo": 5.1,
+    "rs_final": [
+     [
+      "mongo1:27017",
+      "PRIMARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo3:27017",
+      "SECONDARY",
+      1
+     ]
+    ],
+    "tras_reincorporar": {
+     "ventana": {
+      "siguiente": {
+       "n": 219,
+       "status": {
+        "200": 219
+       },
+       "p50_ms": 63.2,
+       "p95_ms": 115.94,
+       "p99_ms": 141.75
+      },
+      "enviar": {
+       "n": 219,
+       "status": {
+        "200": 219
+       },
+       "p50_ms": 58.55,
+       "p95_ms": 111.63,
+       "p99_ms": 141.02
+      }
+     },
+     "rto": {
+      "primer_fallo_s": null,
+      "ultimo_fallo_s": null,
+      "rto_s": 0.0,
+      "fallos": 0,
+      "ventana_sin_escrituras_s": 0.0
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S3 sin mayoría: escrituras 503, borrador a salvo, reanudación",
+   "hora": "23:15:43",
+   "datos": {
+    "detenidos": [
+     "mongo2",
+     "mongo3"
+    ],
+    "primario_antes": "mongo1",
+    "sondas_durante": {
+     "POST /tareas/siguiente (escritura)": {
+      "http": 503,
+      "ms": 3057,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "POST /tareas/{id}/enviar (escritura)": {
+      "http": 503,
+      "ms": 3242,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "PUT /tareas/{id}/borrador (sólo Valkey)": {
+      "http": 200,
+      "ms": 28,
+      "cuerpo": "{\"ok\":true,\"ts\":1793423670242,\"lock_ttl_ms\":120000}"
+     },
+     "GET /proyectos/{id}/exportar (lectura Mongo)": {
+      "http": 503,
+      "ms": 8646,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "POST /sesiones/recuperar": {
+      "http": 503,
+      "ms": 2999,
+      "cuerpo": "{\"detail\":\"mongo_no_disponible\"}"
+     },
+     "GET /proyectos/{id}/editando (Valkey)": {
+      "http": 200,
+      "ms": 13,
+      "cuerpo": "{\"proyecto_id\":\"cab4f27a-8b5f-4e5b-a719-9315f2a666fe\",\"n\":7,\"editando\":[{\"anotador_id\":\"p8-esc-1-1793423533\",\"ultimo_latido\":1793423657197},{\"anotador_id\":\"p8-e"
+     },
+     "GET /analitica/q1 (sólo Parquet)": {
+      "error": "ReadTimeout"
+     },
+     "GET /salud": {
+      "http": 503,
+      "ms": 2149,
+      "cuerpo": "{\"estado\":\"caido\",\"capas\":{\"gateway\":{\"estado\":\"ok\",\"detalle\":\"\",\"latido\":{\"estado\":\"ok\",\"detalle\":\"\",\"edad_s\":1.2}},\"registro\":{\"estado\":\"caido\",\"detalle\":\"Rea"
+     }
+    },
+    "salud_durante": {
+     "estado": "caido",
+     "capas": {
+      "gateway": "ok",
+      "registro": "caido (ReadTimeout)",
+      "mongo": "desconocido (registro no responde)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=1034 eventos=36015)",
+      "analitica": "ok (ejecuciones=10)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "ventana_escritor": {
+     "siguiente": {
+      "n": 3,
+      "status": {
+       "200": 3
+      },
+      "p50_ms": 20.18,
+      "p95_ms": 25.19,
+      "p99_ms": 25.19
+     },
+     "enviar": {
+      "n": 114,
+      "status": {
+       "503": 114
+      },
+      "p50_ms": null,
+      "p95_ms": null,
+      "p99_ms": null
+     }
+    },
+    "rs_durante": [
+     [
+      "mongo1:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "(not reachable/healthy)",
+      0
+     ],
+     [
+      "mongo3:27017",
+      "(not reachable/healthy)",
+      0
+     ]
+    ],
+    "segundos_hasta_replica_set_completo": 4.8,
+    "rs_final": [
+     [
+      "mongo1:27017",
+      "PRIMARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo3:27017",
+      "SECONDARY",
+      1
+     ]
+    ],
+    "reintento_enviar_http": 409,
+    "segundos_hasta_envio_exitoso_desde_restauracion": 6.2,
+    "rto_escritor": {
+     "primer_fallo_s": 3.6,
+     "ultimo_fallo_s": 88.5,
+     "rto_s": null,
+     "ventana_sin_escrituras_s": null,
+     "fallos": 132,
+     "codigos_fallo": {
+      "503": 132
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S4 reinicio de Valkey a mitad de sesión",
+   "hora": "23:15:59",
+   "datos": {
+    "segundos_hasta_valkey_ok": 3.5,
+    "recuperar_http": 200,
+    "borrador_recuperado": {
+     "v": 3,
+     "texto": "antes de reiniciar valkey"
+    },
+    "lock_valido": true,
+    "borrador_sigue": true,
+    "put_borrador_tras_reinicio": 200,
+    "enviar_tras_reinicio": 200,
+    "ventana_escritor_durante_y_despues": {
+     "siguiente": {
+      "n": 153,
+      "status": {
+       "200": 148,
+       "503": 5
+      },
+      "p50_ms": 69.91,
+      "p95_ms": 132.53,
+      "p99_ms": 1082.49
+     },
+     "enviar": {
+      "n": 149,
+      "status": {
+       "200": 148,
+       "503": 1
+      },
+      "p50_ms": 64.29,
+      "p95_ms": 127.27,
+      "p99_ms": 164.12
+     }
+    },
+    "rto_escritor": {
+     "primer_fallo_s": 0.8,
+     "ultimo_fallo_s": 2.4,
+     "rto_s": 2.8,
+     "ventana_sin_escrituras_s": 2.0,
+     "fallos": 6,
+     "codigos_fallo": {
+      "503": 6
+     }
+    },
+    "eventos_en_buffer_gateway": {
+     "estado": "ok",
+     "detalle": "",
+     "latido": {
+      "estado": "ok",
+      "detalle": "",
+      "edad_s": 3.1
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "S5 sesión interrumpida y recuperada",
+   "hora": "23:16:06",
+   "datos": {
+    "borradores_confirmados": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_ms": 1136,
+    "enviar_tras_recuperar": 200
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Replica set al terminar",
+   "hora": "23:16:18",
+   "datos": {
+    "segundos": 1.4,
+    "rs": [
+     [
+      "mongo1:27017",
+      "PRIMARY",
+      1
+     ],
+     [
+      "mongo2:27017",
+      "SECONDARY",
+      1
+     ],
+     [
+      "mongo3:27017",
+      "SECONDARY",
+      1
+     ]
+    ]
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Verificación de RPO y consistencia",
+   "hora": "23:16:41",
+   "datos": {
+    "envios_con_http_200": 2426,
+    "tareas_perdidas_en_mongo (RPO)": 0,
+    "con_estado_incorrecto": 0,
+    "tareas_con_dos_acks_200": 0,
+    "eventos_ack_ausentes_en_lago": 0,
+    "tareas_con_mas_de_una_fila_anotada_en_lago": 0,
+    "envios_nunca_confirmados (todos los intentos 503/error o 409)": 6,
+    "de_esos_con_409_tras_un_503 (commit ambiguo: estaban ya anotadas)": 6,
+    "de_esos_estado_en_mongo": {
+     "anotada": 6
+    },
+    "ejemplos_perdidas": []
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Anotadores con más de una tarea abierta (debe ser vacío)",
+   "hora": "23:16:43",
+   "datos": [],
+   "nota": null
+  },
+  {
+   "titulo": "Restauración al estado normal",
+   "hora": "23:16:47",
+   "datos": {
+    "segundos_hasta_todo_ok": 0.6,
+    "salud": {
+     "estado": "operativo",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=1047 eventos=36983)",
+      "analitica": "ok (ejecuciones=10)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Estado final del replica set",
+   "hora": "23:17:04",
+   "datos": [
+    [
+     "mongo1:27017",
+     "PRIMARY",
+     1
+    ],
+    [
+     "mongo2:27017",
+     "SECONDARY",
+     1
+    ],
+    [
+     "mongo3:27017",
+     "SECONDARY",
+     1
+    ]
+   ],
+   "nota": null
+  },
+  {
+   "titulo": "Acciones de recuperación registradas",
+   "hora": "23:17:04",
+   "datos": [
+    {
+     "t": 1793423548.72,
+     "hora": "23:12:28",
+     "accion": "S1: detener secundario mongo3 (primario=mongo1)"
+    },
+    {
+     "t": 1793423574.08,
+     "hora": "23:12:54",
+     "accion": "S1: iniciar mongo3"
+    },
+    {
+     "t": 1793423586.36,
+     "hora": "23:13:06",
+     "accion": "S2a_primario_stop_ordenado: docker compose stop -t 10 mongo1"
+    },
+    {
+     "t": 1793423610.93,
+     "hora": "23:13:30",
+     "accion": "S2a_primario_stop_ordenado: iniciar mongo1"
+    },
+    {
+     "t": 1793423624.53,
+     "hora": "23:13:44",
+     "accion": "S2b_primario_kill: docker kill mongo2"
+    },
+    {
+     "t": 1793423638.3,
+     "hora": "23:13:58",
+     "accion": "S2b_primario_kill: iniciar mongo2"
+    },
+    {
+     "t": 1793423653.71,
+     "hora": "23:14:13",
+     "accion": "S3: detener los dos secundarios ['mongo2', 'mongo3'] (primario=mongo1) -> sin mayoría"
+    },
+    {
+     "t": 1793423737.42,
+     "hora": "23:15:37",
+     "accion": "S3: iniciar ['mongo2', 'mongo3']"
+    },
+    {
+     "t": 1793423747.22,
+     "hora": "23:15:47",
+     "accion": "S4: docker compose restart valkey"
+    },
+    {
+     "t": 1793423776.91,
+     "hora": "23:16:16",
+     "accion": "escritor detenido; verificación de consistencia"
+    }
+   ],
+   "nota": null
+  }
+ ],
+ "interpretacion": "Con un secundario caído las escrituras continúan sin errores (w:majority se cumple con 2 de 3). Al caer el primario hay una ventana breve de 503 hasta que se elige otro; el RTO y los códigos observados están en cada escenario. Sin mayoría las escrituras responden 503 (nada se confirma), el borrador sigue aceptándose en Valkey y, restaurados los nodos, el envío reintentado tiene éxito. Reiniciar Valkey conserva el borrador (AOF). Toda tarea con HTTP 200 en enviar existe exactamente una vez en Mongo en estado anotada o posterior y su evento está en el datalake: RPO = 0 para escrituras confirmadas.",
+ "archivos": [
+  "evidence/p8_fallas_20261030T2312.json",
+  "evidence/p8_fallas_20261030T2312.md",
+  "p8/operaciones.json"
+ ],
+ "duracion_s": 301.6,
+ "archivo": "evidence/p8_fallas_20261030T2312.json"
+}

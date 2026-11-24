@@ -1,0 +1,198 @@
+== Physical Plan ==
+AdaptiveSparkPlan (33)
++- == Final Plan ==
+   * Sort (20)
+   +- AQEShuffleRead (19)
+      +- ShuffleQueryStage (18), Statistics(sizeInBytes=19.9 KiB, rowCount=363)
+         +- Exchange (17)
+            +- * HashAggregate (16)
+               +- AQEShuffleRead (15)
+                  +- ShuffleQueryStage (14), Statistics(sizeInBytes=19.9 KiB, rowCount=363)
+                     +- Exchange (13)
+                        +- * HashAggregate (12)
+                           +- SortAggregate (11)
+                              +- * Sort (10)
+                                 +- AQEShuffleRead (9)
+                                    +- ShuffleQueryStage (8), Statistics(sizeInBytes=2.2 MiB, rowCount=2.39E+4)
+                                       +- Exchange (7)
+                                          +- SortAggregate (6)
+                                             +- * Sort (5)
+                                                +- * Project (4)
+                                                   +- * Filter (3)
+                                                      +- * ColumnarToRow (2)
+                                                         +- Scan parquet  (1)
++- == Initial Plan ==
+   Sort (32)
+   +- Exchange (31)
+      +- HashAggregate (30)
+         +- Exchange (29)
+            +- HashAggregate (28)
+               +- SortAggregate (27)
+                  +- Sort (26)
+                     +- Exchange (25)
+                        +- SortAggregate (24)
+                           +- Sort (23)
+                              +- Project (22)
+                                 +- Filter (21)
+                                    +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+Batched: true
+Location: InMemoryFileIndex [file:/datalake/eventos]
+PartitionFilters: [isnotnull(mes#6193), (mes#6193 >= 2026-08)]
+PushedFilters: [IsNotNull(estado), IsNotNull(ts), EqualTo(estado,aprobada), GreaterThan(ts,2026-08-02 03:49:50.104)]
+ReadSchema: struct<event_id:string,ts:timestamp,modalidad:string,estado:string>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+
+(3) Filter [codegen id : 1]
+Input [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+Condition : (((isnotnull(estado#6188) AND isnotnull(ts#6178)) AND (estado#6188 = aprobada)) AND (ts#6178 > 2026-08-02 03:49:50.104))
+
+(4) Project [codegen id : 1]
+Output [3]: [event_id#6177, ts#6178, modalidad#6186]
+Input [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+
+(5) Sort [codegen id : 1]
+Input [3]: [event_id#6177, ts#6178, modalidad#6186]
+Arguments: [event_id#6177 ASC NULLS FIRST], false, 0
+
+(6) SortAggregate
+Input [3]: [event_id#6177, ts#6178, modalidad#6186]
+Keys [1]: [event_id#6177]
+Functions [2]: [partial_first(modalidad#6186, false), partial_first(ts#6178, false)]
+Aggregate Attributes [4]: [first#6270, valueSet#6271, first#6272, valueSet#6273]
+Results [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+
+(7) Exchange
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: hashpartitioning(event_id#6177, 16), ENSURE_REQUIREMENTS, [plan_id=7302]
+
+(8) ShuffleQueryStage
+Output [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: 0
+
+(9) AQEShuffleRead
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: coalesced
+
+(10) Sort [codegen id : 2]
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: [event_id#6177 ASC NULLS FIRST], false, 0
+
+(11) SortAggregate
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Keys [1]: [event_id#6177]
+Functions [2]: [first(modalidad#6186, false), first(ts#6178, false)]
+Aggregate Attributes [2]: [first(modalidad#6186)()#6252, first(ts#6178)()#6236]
+Results [2]: [first(modalidad#6186)()#6252 AS modalidad#6253, date_format(first(ts#6178)()#6236, yyyy-MM-dd, Some(UTC)) AS _groupingexpression#6235]
+
+(12) HashAggregate [codegen id : 3]
+Input [2]: [modalidad#6253, _groupingexpression#6235]
+Keys [2]: [_groupingexpression#6235, modalidad#6253]
+Functions [1]: [partial_count(1)]
+Aggregate Attributes [1]: [count#6268L]
+Results [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+
+(13) Exchange
+Input [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Arguments: hashpartitioning(_groupingexpression#6235, modalidad#6253, 16), ENSURE_REQUIREMENTS, [plan_id=7362]
+
+(14) ShuffleQueryStage
+Output [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Arguments: 1
+
+(15) AQEShuffleRead
+Input [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Arguments: coalesced
+
+(16) HashAggregate [codegen id : 4]
+Input [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Keys [2]: [_groupingexpression#6235, modalidad#6253]
+Functions [1]: [count(1)]
+Aggregate Attributes [1]: [count(1)#6230L]
+Results [3]: [_groupingexpression#6235 AS dia#6212, modalidad#6253, count(1)#6230L AS aprobadas#6231L]
+
+(17) Exchange
+Input [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: rangepartitioning(dia#6212 ASC NULLS FIRST, modalidad#6253 ASC NULLS FIRST, 16), ENSURE_REQUIREMENTS, [plan_id=7396]
+
+(18) ShuffleQueryStage
+Output [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: 2
+
+(19) AQEShuffleRead
+Input [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: coalesced
+
+(20) Sort [codegen id : 5]
+Input [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: [dia#6212 ASC NULLS FIRST, modalidad#6253 ASC NULLS FIRST], true, 0
+
+(21) Filter
+Input [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+Condition : (((isnotnull(estado#6188) AND isnotnull(ts#6178)) AND (estado#6188 = aprobada)) AND (ts#6178 > 2026-08-02 03:49:50.104))
+
+(22) Project
+Output [3]: [event_id#6177, ts#6178, modalidad#6186]
+Input [5]: [event_id#6177, ts#6178, modalidad#6186, estado#6188, mes#6193]
+
+(23) Sort
+Input [3]: [event_id#6177, ts#6178, modalidad#6186]
+Arguments: [event_id#6177 ASC NULLS FIRST], false, 0
+
+(24) SortAggregate
+Input [3]: [event_id#6177, ts#6178, modalidad#6186]
+Keys [1]: [event_id#6177]
+Functions [2]: [partial_first(modalidad#6186, false), partial_first(ts#6178, false)]
+Aggregate Attributes [4]: [first#6270, valueSet#6271, first#6272, valueSet#6273]
+Results [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+
+(25) Exchange
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: hashpartitioning(event_id#6177, 16), ENSURE_REQUIREMENTS, [plan_id=7256]
+
+(26) Sort
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Arguments: [event_id#6177 ASC NULLS FIRST], false, 0
+
+(27) SortAggregate
+Input [5]: [event_id#6177, first#6274, valueSet#6275, first#6276, valueSet#6277]
+Keys [1]: [event_id#6177]
+Functions [2]: [first(modalidad#6186, false), first(ts#6178, false)]
+Aggregate Attributes [2]: [first(modalidad#6186)()#6252, first(ts#6178)()#6236]
+Results [2]: [first(modalidad#6186)()#6252 AS modalidad#6253, date_format(first(ts#6178)()#6236, yyyy-MM-dd, Some(UTC)) AS _groupingexpression#6235]
+
+(28) HashAggregate
+Input [2]: [modalidad#6253, _groupingexpression#6235]
+Keys [2]: [_groupingexpression#6235, modalidad#6253]
+Functions [1]: [partial_count(1)]
+Aggregate Attributes [1]: [count#6268L]
+Results [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+
+(29) Exchange
+Input [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Arguments: hashpartitioning(_groupingexpression#6235, modalidad#6253, 16), ENSURE_REQUIREMENTS, [plan_id=7261]
+
+(30) HashAggregate
+Input [3]: [_groupingexpression#6235, modalidad#6253, count#6269L]
+Keys [2]: [_groupingexpression#6235, modalidad#6253]
+Functions [1]: [count(1)]
+Aggregate Attributes [1]: [count(1)#6230L]
+Results [3]: [_groupingexpression#6235 AS dia#6212, modalidad#6253, count(1)#6230L AS aprobadas#6231L]
+
+(31) Exchange
+Input [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: rangepartitioning(dia#6212 ASC NULLS FIRST, modalidad#6253 ASC NULLS FIRST, 16), ENSURE_REQUIREMENTS, [plan_id=7264]
+
+(32) Sort
+Input [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: [dia#6212 ASC NULLS FIRST, modalidad#6253 ASC NULLS FIRST], true, 0
+
+(33) AdaptiveSparkPlan
+Output [3]: [dia#6212, modalidad#6253, aprobadas#6231L]
+Arguments: isFinalPlan=true
+

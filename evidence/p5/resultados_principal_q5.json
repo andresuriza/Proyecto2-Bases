@@ -1,0 +1,457 @@
+{
+ "consulta": "q5",
+ "conjunto": "principal",
+ "filas": [
+  {
+   "cliente_id": "04fc6d82-7d15-4385-92fb-e43b99546eb4",
+   "n": 721,
+   "p50_s": 13024.147,
+   "p95_s": 109867.931,
+   "pct_incumple_sla": 1.386963
+  },
+  {
+   "cliente_id": "0822e8f3-6c03-4199-972a-846916419f82",
+   "n": 1512,
+   "p50_s": 24989.041,
+   "p95_s": 220621.147,
+   "pct_incumple_sla": 13.293651
+  },
+  {
+   "cliente_id": "0bbb2599-11ce-4dd2-b45e-d1f03139d32c",
+   "n": 1948,
+   "p50_s": 11007.225,
+   "p95_s": 79506.966,
+   "pct_incumple_sla": 3.336756
+  },
+  {
+   "cliente_id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+   "n": 1759,
+   "p50_s": 12245.037,
+   "p95_s": 93629.604,
+   "pct_incumple_sla": 3.126777
+  },
+  {
+   "cliente_id": "0dde29a6-baa4-471a-9d24-67ac778eedb3",
+   "n": 2252,
+   "p50_s": 25189.63,
+   "p95_s": 230277.067,
+   "pct_incumple_sla": 9.680284
+  },
+  {
+   "cliente_id": "0f844fef-1931-49ee-a56c-0941fbf24050",
+   "n": 278,
+   "p50_s": 9536.58,
+   "p95_s": 73078.937,
+   "pct_incumple_sla": 1.438849
+  },
+  {
+   "cliente_id": "11b7e948-d0e6-4660-bc69-dee1bb5e4bcf",
+   "n": 1405,
+   "p50_s": 7920.623,
+   "p95_s": 67467.843,
+   "pct_incumple_sla": 0.498221
+  },
+  {
+   "cliente_id": "12476f57-a5e5-45ab-aefc-fad8efc89849",
+   "n": 1334,
+   "p50_s": 11222.268,
+   "p95_s": 75152.569,
+   "pct_incumple_sla": 0.974513
+  },
+  {
+   "cliente_id": "142c3fe8-60e7-4113-ac1b-8ca1f91e1d4c",
+   "n": 1968,
+   "p50_s": 10538.316,
+   "p95_s": 72452.394,
+   "pct_incumple_sla": 0.406504
+  },
+  {
+   "cliente_id": "146d3f31-fc37-4a4c-8a15-544dc5e7ce8a",
+   "n": 1513,
+   "p50_s": 9229.694,
+   "p95_s": 74222.342,
+   "pct_incumple_sla": 0.991408
+  },
+  {
+   "cliente_id": "1a2a73ed-562b-4f79-8374-59eef50bea63",
+   "n": 1254,
+   "p50_s": 9712.423,
+   "p95_s": 65573.007,
+   "pct_incumple_sla": 0.079745
+  },
+  {
+   "cliente_id": "1a3d1fa7-bc89-40a9-a3b8-c1e9392456de",
+   "n": 333,
+   "p50_s": 13726.397,
+   "p95_s": 102179.102,
+   "pct_incumple_sla": 6.606607
+  },
+  {
+   "cliente_id": "1aaf1e75-817b-4916-a8f1-239d0a42d4f0",
+   "n": 4,
+   "p50_s": 5.82,
+   "p95_s": 12.49,
+   "pct_incumple_sla": 0.0
+  },
+  {
+   "cliente_id": "1c8eaee9-5715-4d6f-a416-1293c4c2e2e3",
+   "n": 296,
+   "p50_s": 3129.557,
+   "p95_s": 53693.415,
+   "pct_incumple_sla": 1.689189
+  },
+  {
+   "cliente_id": "23bed01d-43cf-4fde-a493-3b83757750a9",
+   "n": 3037,
+   "p50_s": 13810.214,
+   "p95_s": 127683.523,
+   "pct_incumple_sla": 2.930524
+  },
+  {
+   "cliente_id": "2720797d-32eb-4689-9be5-78c781f631d4",
+   "n": 984,
+   "p50_s": 11039.47,
+   "p95_s": 121100.542,
+   "pct_incumple_sla": 2.743902
+  },
+  {
+   "cliente_id": "38602ab6-96a4-42f2-bae8-cc938dcdcd03",
+   "n": 618,
+   "p50_s": 8084.639,
+   "p95_s": 63228.553,
+   "pct_incumple_sla": 2.912621
+  },
+  {
+   "cliente_id": "3a9bedd4-0f12-49e0-a18f-f6b6b535106e",
+   "n": 1408,
+   "p50_s": 12295.501,
+   "p95_s": 105994.226,
+   "pct_incumple_sla": 0.852273
+  },
+  {
+   "cliente_id": "3eabedcb-baa8-4dd4-88bd-64072bcfbe01",
+   "n": 2028,
+   "p50_s": 10641.625,
+   "p95_s": 74710.406,
+   "pct_incumple_sla": 0.739645
+  },
+  {
+   "cliente_id": "3fa7f104-1bf9-4e27-9c96-925eccf3a171",
+   "n": 1374,
+   "p50_s": 16189.629,
+   "p95_s": 115727.144,
+   "pct_incumple_sla": 2.037846
+  },
+  {
+   "cliente_id": "47229389-571a-4876-ac30-7511b2b9437a",
+   "n": 922,
+   "p50_s": 69648.567,
+   "p95_s": 441417.004,
+   "pct_incumple_sla": 22.017354
+  },
+  {
+   "cliente_id": "47378190-96da-4dac-b2ff-5d2a386ecbe0",
+   "n": 643,
+   "p50_s": 9144.819,
+   "p95_s": 82584.944,
+   "pct_incumple_sla": 0.622084
+  },
+  {
+   "cliente_id": "4761a454-ec09-46e0-8dba-59764e47ffca",
+   "n": 7,
+   "p50_s": 7.129,
+   "p95_s": 11.081,
+   "pct_incumple_sla": 0.0
+  },
+  {
+   "cliente_id": "50c187fc-ce17-4b4e-8837-b8a3d261a7ab",
+   "n": 3814,
+   "p50_s": 15081.123,
+   "p95_s": 134011.569,
+   "pct_incumple_sla": 3.723125
+  },
+  {
+   "cliente_id": "5304317f-af42-412f-b838-b3268e944239",
+   "n": 1452,
+   "p50_s": 13474.663,
+   "p95_s": 128369.017,
+   "pct_incumple_sla": 3.443526
+  },
+  {
+   "cliente_id": "568cc69b-1064-405c-b985-c3cf3f76be1d",
+   "n": 2802,
+   "p50_s": 14899.962,
+   "p95_s": 129291.799,
+   "pct_incumple_sla": 1.677373
+  },
+  {
+   "cliente_id": "580d7b71-d8f5-4413-9be6-128e18c26797",
+   "n": 3151,
+   "p50_s": 18225.328,
+   "p95_s": 145174.022,
+   "pct_incumple_sla": 6.981911
+  },
+  {
+   "cliente_id": "5ab33edf-6e59-4ed3-a8b3-17fa18d0752b",
+   "n": 3503,
+   "p50_s": 16490.537,
+   "p95_s": 123685.374,
+   "pct_incumple_sla": 7.821867
+  },
+  {
+   "cliente_id": "5fe67b75-57b2-482f-a060-15ddb3cbcb9c",
+   "n": 6,
+   "p50_s": 7.632,
+   "p95_s": 10.291,
+   "pct_incumple_sla": 0.0
+  },
+  {
+   "cliente_id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+   "n": 2024,
+   "p50_s": 11187.809,
+   "p95_s": 87669.938,
+   "pct_incumple_sla": 0.839921
+  },
+  {
+   "cliente_id": "6c006f61-23e2-4cb4-b2d8-567d894a05e4",
+   "n": 1725,
+   "p50_s": 9327.048,
+   "p95_s": 76654.199,
+   "pct_incumple_sla": 1.217391
+  },
+  {
+   "cliente_id": "759cde66-bacf-43d0-8b1f-9163ce9ff57f",
+   "n": 1846,
+   "p50_s": 13023.606,
+   "p95_s": 109690.396,
+   "pct_incumple_sla": 3.575298
+  },
+  {
+   "cliente_id": "7fcd9eb1-a7ca-4415-b66e-b16f508ebad7",
+   "n": 375,
+   "p50_s": 25362.641,
+   "p95_s": 229063.986,
+   "pct_incumple_sla": 7.2
+  },
+  {
+   "cliente_id": "839fbc50-1223-4513-9496-f63cdc1110c1",
+   "n": 2984,
+   "p50_s": 9628.782,
+   "p95_s": 67054.186,
+   "pct_incumple_sla": 0.938338
+  },
+  {
+   "cliente_id": "847fd9b4-e64d-4bcb-b027-53a15f987c71",
+   "n": 5309,
+   "p50_s": 19051.832,
+   "p95_s": 154323.316,
+   "pct_incumple_sla": 3.164438
+  },
+  {
+   "cliente_id": "8a0b3c33-36d8-493a-bc44-1fe7ab4220a7",
+   "n": 1409,
+   "p50_s": 14265.154,
+   "p95_s": 114700.902,
+   "pct_incumple_sla": 5.890703
+  },
+  {
+   "cliente_id": "8ce21ea3-db20-456e-9c81-5fe7ceda8bbb",
+   "n": 595,
+   "p50_s": 8056.65,
+   "p95_s": 55628.934,
+   "pct_incumple_sla": 1.680672
+  },
+  {
+   "cliente_id": "913e4de2-e0c5-4cb8-bda9-c2a90ed42f1a",
+   "n": 2133,
+   "p50_s": 19135.98,
+   "p95_s": 136078.684,
+   "pct_incumple_sla": 1.359587
+  },
+  {
+   "cliente_id": "93829b43-922f-415a-a1e3-db63ef7ddc76",
+   "n": 1763,
+   "p50_s": 14412.064,
+   "p95_s": 97949.255,
+   "pct_incumple_sla": 1.13443
+  },
+  {
+   "cliente_id": "95a76d79-bf3c-4c06-8343-08bc89fa6a68",
+   "n": 3217,
+   "p50_s": 9914.289,
+   "p95_s": 81802.188,
+   "pct_incumple_sla": 1.958346
+  },
+  {
+   "cliente_id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+   "n": 4825,
+   "p50_s": 14496.684,
+   "p95_s": 101287.541,
+   "pct_incumple_sla": 3.253886
+  },
+  {
+   "cliente_id": "9a1de644-815e-46d1-bb8f-aa1837f8a88b",
+   "n": 2073,
+   "p50_s": 14185.621,
+   "p95_s": 116372.244,
+   "pct_incumple_sla": 1.30246
+  },
+  {
+   "cliente_id": "9b49bd26-df57-459a-8715-a10343dac043",
+   "n": 1304,
+   "p50_s": 30117.793,
+   "p95_s": 197584.061,
+   "pct_incumple_sla": 6.518405
+  },
+  {
+   "cliente_id": "a013ac6e-deda-4e16-9b3d-bd5ce9a1fa6f",
+   "n": 1431,
+   "p50_s": 10150.46,
+   "p95_s": 71960.344,
+   "pct_incumple_sla": 0.489168
+  },
+  {
+   "cliente_id": "a2bc372f-7412-4293-8729-4739614ff3d7",
+   "n": 934,
+   "p50_s": 11413.332,
+   "p95_s": 77779.13,
+   "pct_incumple_sla": 1.391863
+  },
+  {
+   "cliente_id": "ab9099a4-35a2-40ae-9af3-05535ec42e08",
+   "n": 1772,
+   "p50_s": 22591.878,
+   "p95_s": 163452.488,
+   "pct_incumple_sla": 9.367946
+  },
+  {
+   "cliente_id": "ae340454-cac5-468c-a8f4-9481a0a04dc4",
+   "n": 510,
+   "p50_s": 22804.027,
+   "p95_s": 184894.06,
+   "pct_incumple_sla": 2.941176
+  },
+  {
+   "cliente_id": "b2566b41-47d1-49fd-a69d-db8054d44427",
+   "n": 1,
+   "p50_s": 1.03,
+   "p95_s": 1.03,
+   "pct_incumple_sla": 0.0
+  },
+  {
+   "cliente_id": "b38a088c-a65e-4389-b74d-0fb132e70629",
+   "n": 1132,
+   "p50_s": 8758.949,
+   "p95_s": 74114.781,
+   "pct_incumple_sla": 0.265018
+  },
+  {
+   "cliente_id": "badcc32a-c159-4f53-8a0f-4efbedcd465e",
+   "n": 1020,
+   "p50_s": 12416.627,
+   "p95_s": 77636.192,
+   "pct_incumple_sla": 4.117647
+  },
+  {
+   "cliente_id": "bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+   "n": 765,
+   "p50_s": 17984.921,
+   "p95_s": 206647.935,
+   "pct_incumple_sla": 6.535948
+  },
+  {
+   "cliente_id": "c30ff46e-8026-495f-b8cd-a88b436d76e2",
+   "n": 476,
+   "p50_s": 9489.337,
+   "p95_s": 63048.871,
+   "pct_incumple_sla": 0.840336
+  },
+  {
+   "cliente_id": "ce88cb2d-d4e8-4839-bc3e-058be0f3eab0",
+   "n": 2769,
+   "p50_s": 26774.982,
+   "p95_s": 218628.496,
+   "pct_incumple_sla": 8.595161
+  },
+  {
+   "cliente_id": "dc5c0eed-8da0-465b-b898-97b9405cacec",
+   "n": 2054,
+   "p50_s": 11046.52,
+   "p95_s": 81020.421,
+   "pct_incumple_sla": 1.801363
+  },
+  {
+   "cliente_id": "e2817efd-ae84-4217-9d53-434bb88139b9",
+   "n": 2003,
+   "p50_s": 10225.266,
+   "p95_s": 77768.493,
+   "pct_incumple_sla": 0.499251
+  },
+  {
+   "cliente_id": "e2acf72f-9e57-4f7a-a0ee-89aed453dd32",
+   "n": 2317,
+   "p50_s": 18389.333,
+   "p95_s": 142902.514,
+   "pct_incumple_sla": 5.394907
+  },
+  {
+   "cliente_id": "ec24a3c5-c754-408f-b418-8f3f8a14be62",
+   "n": 1900,
+   "p50_s": 27326.134,
+   "p95_s": 215989.059,
+   "pct_incumple_sla": 4.105263
+  },
+  {
+   "cliente_id": "ec5b227c-dfde-4fbf-bff3-50bf766ecb15",
+   "n": 1230,
+   "p50_s": 13581.297,
+   "p95_s": 103327.239,
+   "pct_incumple_sla": 0.97561
+  },
+  {
+   "cliente_id": "ece66fa2-fd51-46e6-851b-4cf36123fdf7",
+   "n": 5930,
+   "p50_s": 14324.081,
+   "p95_s": 136793.083,
+   "pct_incumple_sla": 1.062395
+  },
+  {
+   "cliente_id": "f16287e4-e9c3-49e0-b602-f8ac10f1bc81",
+   "n": 977,
+   "p50_s": 17962.476,
+   "p95_s": 147724.337,
+   "pct_incumple_sla": 2.763562
+  },
+  {
+   "cliente_id": "f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+   "n": 4041,
+   "p50_s": 11540.53,
+   "p95_s": 79398.014,
+   "pct_incumple_sla": 1.113586
+  },
+  {
+   "cliente_id": "f42d47cc-00d4-4f59-b427-3ca3287d06ca",
+   "n": 2354,
+   "p50_s": 8302.093,
+   "p95_s": 83692.286,
+   "pct_incumple_sla": 0.764656
+  },
+  {
+   "cliente_id": "fec21bbe-6624-4bfa-8fcc-a39ab683d2e6",
+   "n": 1956,
+   "p50_s": 13380.559,
+   "p95_s": 104214.567,
+   "pct_incumple_sla": 1.431493
+  },
+  {
+   "cliente_id": "ff50bde4-3825-47b8-9cab-cc97663f1c97",
+   "n": 1931,
+   "p50_s": 11317.238,
+   "p95_s": 79606.245,
+   "pct_incumple_sla": 0.7768
+  }
+ ],
+ "n_filas": 64,
+ "tiempo_s": 4.405,
+ "n_ejecucion": 34
+}

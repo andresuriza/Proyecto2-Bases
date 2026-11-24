@@ -1,0 +1,5 @@
+q1: OK (8 filas)
+q2: OK (6 filas)
+q3: OK (4 filas)
+q4: OK (3 filas)
+q5: OK (2 filas)

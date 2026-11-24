@@ -1,0 +1,132 @@
+{
+ "n_peticiones": 7547,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 908,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 453,
+   "p50": 40.3,
+   "p95": 113.25,
+   "p99": 165.78,
+   "media": 49.98,
+   "max": 271.5,
+   "status": {
+    "200": 453
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 112,
+   "p50": 36.88,
+   "p95": 140.71,
+   "p99": 196.62,
+   "media": 54.12,
+   "max": 292.83,
+   "status": {
+    "200": 112
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 26,
+   "p50": 31.71,
+   "p95": 555.12,
+   "p99": 591.34,
+   "media": 117.51,
+   "max": 591.34,
+   "status": {
+    "200": 26
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 1016,
+   "p50": 74.25,
+   "p95": 1467.18,
+   "p99": 1989.92,
+   "media": 206.73,
+   "max": 2090.58,
+   "status": {
+    "200": 1016
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 908,
+   "p50": 72.14,
+   "p95": 314.46,
+   "p99": 463.52,
+   "media": 105.74,
+   "max": 851.7,
+   "status": {
+    "200": 908
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 108,
+   "p50": 310.28,
+   "p95": 822.54,
+   "p99": 855.81,
+   "media": 365.45,
+   "max": 874.13,
+   "status": {
+    "200": 108
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 1638,
+   "p50": 39.44,
+   "p95": 131.28,
+   "p99": 224.83,
+   "media": 55.72,
+   "max": 794.12,
+   "status": {
+    "200": 1638
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 3286,
+   "p50": 22.72,
+   "p95": 119.83,
+   "p99": 246.42,
+   "media": 38.57,
+   "max": 594.83,
+   "status": {
+    "200": 3286
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "duracion_s": 90.0,
+ "envios_por_min": 605.3,
+ "rps": 83.9,
+ "config": {
+  "vus": 100,
+  "anotadores": 70,
+  "revisores": 20,
+  "consumidores": 10,
+  "duracion_s": 90.0,
+  "calentamiento_s": 0.0,
+  "edicion_s": [
+   2.0,
+   10.0
+  ],
+  "borrador_s": 2.0,
+  "proyecto": null,
+  "proyecto_por_vu": true
+ },
+ "inicio_medicion": 1793427477.023621,
+ "fin_medicion": 1793427567.023621
+}

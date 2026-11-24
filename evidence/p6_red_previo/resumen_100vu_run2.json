@@ -1,0 +1,133 @@
+{
+ "n_peticiones": 6684,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 832,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 227,
+   "p50": 82.2,
+   "p95": 268.21,
+   "p99": 447.67,
+   "media": 103.25,
+   "max": 880.17,
+   "status": {
+    "200": 227
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 118,
+   "p50": 100.71,
+   "p95": 272.84,
+   "p99": 356.11,
+   "media": 121.26,
+   "max": 442.92,
+   "status": {
+    "200": 118
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 30,
+   "p50": 109.18,
+   "p95": 483.63,
+   "p99": 1096.57,
+   "media": 192.71,
+   "max": 1096.57,
+   "status": {
+    "200": 30
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 939,
+   "p50": 202.8,
+   "p95": 2215.1,
+   "p99": 2947.42,
+   "media": 459.82,
+   "max": 3172.62,
+   "status": {
+    "200": 938,
+    "409": 1
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 832,
+   "p50": 176.63,
+   "p95": 944.77,
+   "p99": 1297.94,
+   "media": 302.91,
+   "max": 1924.45,
+   "status": {
+    "200": 832
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 106,
+   "p50": 523.61,
+   "p95": 1335.52,
+   "p99": 1472.77,
+   "media": 630.69,
+   "max": 1498.09,
+   "status": {
+    "200": 106
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 1516,
+   "p50": 92.05,
+   "p95": 281.67,
+   "p99": 524.69,
+   "media": 121.92,
+   "max": 1389.53,
+   "status": {
+    "200": 1516
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 2916,
+   "p50": 65.35,
+   "p95": 435.17,
+   "p99": 795.66,
+   "media": 126.66,
+   "max": 1953.11,
+   "status": {
+    "200": 2916
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "duracion_s": 90.0,
+ "envios_por_min": 554.7,
+ "rps": 74.3,
+ "config": {
+  "vus": 100,
+  "anotadores": 70,
+  "revisores": 20,
+  "consumidores": 10,
+  "duracion_s": 90.0,
+  "calentamiento_s": 0.0,
+  "edicion_s": [
+   2.0,
+   10.0
+  ],
+  "borrador_s": 2.0,
+  "proyecto": null,
+  "proyecto_por_vu": true
+ },
+ "inicio_medicion": 1793422947.2127464,
+ "fin_medicion": 1793423037.2127464
+}

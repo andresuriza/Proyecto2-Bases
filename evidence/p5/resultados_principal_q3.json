@@ -1,0 +1,44 @@
+{
+ "consulta": "q3",
+ "conjunto": "principal",
+ "filas": [
+  {
+   "modalidad": "imagen",
+   "tipo_tarea": "bbox",
+   "n": 36916,
+   "dur_media_s": 250.25281,
+   "dur_p95_s": 988.167
+  },
+  {
+   "modalidad": "imagen",
+   "tipo_tarea": "poligono",
+   "n": 29183,
+   "dur_media_s": 526.556351,
+   "dur_p95_s": 1255.77
+  },
+  {
+   "modalidad": "lidar",
+   "tipo_tarea": "cuboide_3d",
+   "n": 37093,
+   "dur_media_s": 4140.953623,
+   "dur_p95_s": 11776.701
+  },
+  {
+   "modalidad": "texto",
+   "tipo_tarea": "span",
+   "n": 48258,
+   "dur_media_s": 261.788223,
+   "dur_p95_s": 629.486
+  },
+  {
+   "modalidad": "video",
+   "tipo_tarea": "bbox_video",
+   "n": 36033,
+   "dur_media_s": 1745.718552,
+   "dur_p95_s": 4564.165
+  }
+ ],
+ "n_filas": 5,
+ "tiempo_s": 4.3,
+ "n_ejecucion": 32
+}

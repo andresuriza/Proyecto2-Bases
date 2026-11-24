@@ -1,0 +1,249 @@
+# Entorno de las pruebas (2026-10-31T00:20:13)
+host: Windows-11-10.0.26200-SP0 ; python host 3.14.4 ; cpu_logicos=12
+## CPU (wmic/PowerShell)
+$ powershell -NoProfile -Command Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed | Format-List
+Name                      : 13th Gen Intel(R) Core(TM) i7-1365U
+NumberOfCores             : 10
+NumberOfLogicalProcessors : 12
+MaxClockSpeed             : 1800
+
+## RAM del host
+$ powershell -NoProfile -Command $m=(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory; "RAM total: {0:N1} GiB" -f ($m/1GB)
+RAM total: 31.7 GiB
+
+## docker version
+$ docker version
+Client:
+ Version:           29.9.2
+ API version:       1.56
+ Go version:        go1.26.10
+ Git commit:        a82e528
+ Built:             Tue Oct 20 19:44:07 2026
+ OS/Arch:           windows/amd64
+ Context:           desktop-linux
+
+Server: Docker Desktop 4.97.0 (244584)
+ Engine:
+  Version:          29.9.2
+  API version:      1.56 (minimum version 1.40)
+  Go version:       go1.26.10
+  Git commit:       0367cbe
+  Built:            Tue Oct 20 18:45:02 2026
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          v2.4.2
+  GitCommit:        b7a25261e029d68978bbf290df0a62fc819b3c51
+ runc:
+  Version:          1.5.2
+  GitCommit:        v1.5.2-0-g29dd3dc2
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+## docker compose version
+$ docker compose version
+Docker Compose version v5.6.1
+
+## docker info
+$ docker info
+Client:
+ Version:    29.9.2
+ Context:    desktop-linux
+ Debug Mode: false
+ Plugins:
+  agent: Docker AI Agent Runner (Docker Inc.)
+    Version:  v1.152.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-agent.exe
+  ai: Docker AI Agent - Ask Gordon (Docker Inc.)
+    Version:  v1.33.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-ai.exe
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.38.1
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-buildx.exe
+  compose: Docker Compose (Docker Inc.)
+    Version:  v5.6.1
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-compose.exe
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.49.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-debug.exe
+  desktop: Docker Desktop commands (Docker Inc.)
+    Version:  4.97.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-desktop.exe
+  dhi: CLI for managing Docker Hardened Images (Docker Inc.)
+    Version:  v0.0.9
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-dhi.exe
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.32
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-extension.exe
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.1
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-init.exe
+  mcp: Docker MCP Plugin (Docker Inc.)
+    Version:  v0.44.2
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-mcp.exe
+  model: Docker Model Runner (Docker Inc.)
+    Version:  v1.2.9
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-model.exe
+  offload: Docker Offload (Docker Inc.)
+    Version:  v0.7.21
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-offload.exe
+  pass: Docker Pass Secrets Manager Plugin (beta) (Docker Inc.)
+    Version:  v0.3.2
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-pass.exe
+  sandbox: "docker sandbox" is deprecated, use Docker Sandboxes instead (Docker Inc.)
+    Version:  v0.13.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-sandbox.exe
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.27.0
+    Path:     C:\Users\Andres U\.docker\cli-plugins\docker-scout.exe
+
+Server:
+ Containers: 20
+  Running: 17
+  Paused: 0
+  Stopped: 3
+ Images: 18
+ Server Version: 29.9.2
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: local
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Discovered Devices:
+  cdi: docker.com/gpu=webgpu
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 nvidia runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: b7a25261e029d68978bbf290df0a62fc819b3c51
+ runc version: v1.5.2-0-g29dd3dc2
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 6.6.87.2-microsoft-standard-WSL2
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 12
+ Total Memory: 15.45GiB
+ Name: docker-desktop
+ ID: 30017223-0f1c-4ec4-a5fc-ad8086ba5a0a
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Labels:
+  com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+  ::1/128
+ Live Restore Enabled: false
+ Firewall Backend: iptables
+
+## imágenes (compose images)
+$ docker compose --profile tools images
+CONTAINER           REPOSITORY               TAG                 PLATFORM            IMAGE ID            SIZE                CREATED
+analitica           proyecto2-analitica      latest              linux/amd64         694c9a25c30d        1.59GB              3 hours ago
+gateway             proyecto2-gateway        latest              linux/amd64         f9675e142d43        221MB               About an hour ago
+herramientas        proyecto2-herramientas   latest              linux/amd64         2ae3ce4483c4        785MB               2 hours ago
+historial           proyecto2-historial      latest              linux/amd64         55cf86dfe868        449MB               3 hours ago
+mongo-init          mongo                    7                   linux/amd64         8bb4442761a6        1.18GB              4 days ago
+mongo1              mongo                    7                   linux/amd64         8bb4442761a6        1.18GB              4 days ago
+mongo2              mongo                    7                   linux/amd64         8bb4442761a6        1.18GB              4 days ago
+mongo3              mongo                    7                   linux/amd64         8bb4442761a6        1.18GB              4 days ago
+registro            proyecto2-registro       latest              linux/amd64         08230a4df7b9        229MB               About an hour ago
+sesion              proyecto2-sesion         latest              linux/amd64         90e362e6950b        219MB               About an hour ago
+spark-master        apache/spark             3.5.3               linux/amd64         d0f5d63bfbbf        1.56GB              2 years ago
+spark-worker-1      apache/spark             3.5.3               linux/amd64         d0f5d63bfbbf        1.56GB              2 years ago
+valkey              valkey/valkey            8                   linux/amd64         8f836008e098        170MB               4 days ago
+
+## contenedores (docker ps)
+$ docker ps --format table {{.Names}}	{{.Image}}	{{.Status}}	{{.Ports}}
+NAMES            IMAGE                    STATUS                    PORTS
+registro         proyecto2-registro       Up 18 minutes (healthy)   8001/tcp
+gateway          proyecto2-gateway        Up 47 minutes (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+sesion           proyecto2-sesion         Up 18 minutes (healthy)   8002/tcp
+herramientas     proyecto2-herramientas   Up 2 hours                
+analitica        proyecto2-analitica      Up 20 minutes             127.0.0.1:4040->4040/tcp
+historial        proyecto2-historial      Up 20 minutes             8003/tcp
+spark-master     apache/spark:3.5.3       Up 5 hours                127.0.0.1:18080->8080/tcp
+spark-worker-1   apache/spark:3.5.3       Up 20 minutes             
+ti4601-lab4      ti4601-lab4:local        Up 5 hours (healthy)      127.0.0.1:8888->8888/tcp
+ti4601-neo4j     neo4j:5.26-community     Up 5 hours (healthy)      127.0.0.1:7474->7474/tcp, 127.0.0.1:7687->7687/tcp
+mongo3           mongo:7                  Up 18 minutes (healthy)   27017/tcp
+mongo1           mongo:7                  Up 57 minutes (healthy)   27017/tcp
+mongo2           mongo:7                  Up 18 minutes (healthy)   27017/tcp
+valkey           valkey/valkey:8          Up 19 minutes (healthy)   6379/tcp
+ti4601-mongo-3   mongo:8.0                Up 5 hours (healthy)      27017/tcp
+ti4601-mongo-1   mongo:8.0                Up 5 hours (healthy)      27017/tcp
+ti4601-mongo-2   mongo:8.0                Up 5 hours (healthy)      27017/tcp
+
+## versiones: python servicios
+$ docker compose exec -T gateway python -c import sys,fastapi,httpx,redis;print(sys.version);print('fastapi',fastapi.__version__,'httpx',httpx.__version__,'redis-py',redis.__version__)
+3.12.16 (main, Oct 28 2026, 02:01:20) [GCC 14.2.0]
+fastapi 0.162.0 httpx 0.28.1 redis-py 6.4.0
+
+## versión pymongo (registro)
+$ docker compose exec -T registro python -c import pymongo;print('pymongo',pymongo.version)
+pymongo 4.19.0
+
+## versión MongoDB
+$ docker exec mongo1 mongod --version
+db version v7.0.45
+Build Info: {
+    "version": "7.0.45",
+    "gitVersion": "a52313e13ab55c9bddf7c3ff91dab286fa381796",
+    "openSSLVersion": "OpenSSL 3.0.2 15 Mar 2022",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "ubuntu2204",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+
+## versión Valkey
+$ docker exec valkey valkey-server --version
+Valkey server v=8.1.11 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=9f5bea182fb4dc6
+
+## versión Spark/Java (analitica)
+$ docker compose exec -T analitica bash -c java -version 2>&1; python3 -c 'import pyspark;print("pyspark",pyspark.__version__)'
+openjdk version "11.0.24" 2024-07-16
+OpenJDK Runtime Environment Temurin-11.0.24+8 (build 11.0.24+8)
+OpenJDK 64-Bit Server VM Temurin-11.0.24+8 (build 11.0.24+8, mixed mode, sharing)
+pyspark 3.5.3
+
+## docker stats (reposo)
+$ docker stats --no-stream
+CONTAINER ID   NAME             CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+c92f6c53372e   registro         0.94%     47.28MiB / 15.45GiB   0.30%     140MB / 159MB     0B / 0B           16
+804349ba46a7   gateway          0.17%     54.1MiB / 15.45GiB    0.34%     351MB / 344MB     0B / 868kB        17
+b6e45e95d166   sesion           0.26%     38.71MiB / 15.45GiB   0.24%     38.3MB / 48.5MB   0B / 0B           2
+645d41a5238c   herramientas     0.00%     1.969MiB / 15.45GiB   0.01%     261MB / 69.6MB    139kB / 17.2MB    1
+0b8bc8c286a9   analitica        0.46%     379.5MiB / 15.45GiB   2.40%     9.23MB / 1.25MB   0B / 860kB        87
+51a7bee5d6dd   historial        0.34%     339MiB / 15.45GiB     2.14%     14.1MB / 4.43MB   0B / 0B           17
+f0146f438fac   spark-master     0.11%     445.5MiB / 15.45GiB   2.82%     6.46MB / 45.6MB   64.9MB / 10.6MB   58
+60c8024b27e4   spark-worker-1   0.31%     519.3MiB / 15.45GiB   3.28%     70.2kB / 196kB    0B / 1.34MB       89
+f3d8c966cd93   ti4601-lab4      0.00%     152.5MiB / 15.45GiB   0.96%     514MB / 16.6MB    51.3MB / 485MB    2
+5c3347c94f77   ti4601-neo4j     0.80%     862.4MiB / 15.45GiB   5.45%     606kB / 167MB     258MB / 275MB     94
+d7ac194712d0   mongo3           1.55%     298.1MiB / 15.45GiB   1.88%     46.7MB / 27MB     53.2kB / 134MB    100
+b4f2da3d7efa   mongo1           6.87%     375MiB / 15.45GiB     2.37%     209MB / 496MB     1.56MB / 460MB    122
+de999fc46e27   mongo2           1.57%     293.9MiB / 15.45GiB   1.86%     46.2MB / 26.9MB   69.6kB / 130MB    100
+28e18cb17cd6   valkey           0.42%     67.83MiB / 15.45GiB   0.43%     50.9MB / 27.9MB   50.2MB / 410MB    8
+14f0c54cc988   ti4601-mongo-3   40.69%    206.9MiB / 15.45GiB   1.31%     43MB / 38.7MB     2.4MB / 350MB     108
+dd2182c77488   ti4601-mongo-1   39.01%    367.6MiB / 15.45GiB   2.32%     43.1MB / 38.8MB   6.21MB / 356MB    121
+d876eecdcb05   ti4601-mongo-2   1.27%     146.5MiB / 15.45GiB   0.93%     59.2MB / 66.5MB   2.07MB / 417MB    106

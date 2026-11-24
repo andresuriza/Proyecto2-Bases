@@ -1,0 +1,1036 @@
+{
+ "prueba": "p1_api",
+ "titulo": "P1. REST API, /salud en tres estados y exposición de puertos",
+ "fecha_hora": "2026-10-30T23:59:03",
+ "objetivo": "Ejercitar cada ruta del gateway con respuestas correctas y de error (200/201/204/404/409/422/503), mostrar /salud operativo, degradado y caído por capa, y demostrar que sólo el puerto 8000 está expuesto y que el simulador sólo contacta al gateway.",
+ "configuracion": {
+  "gateway": "http://localhost:8000",
+  "metodo_503": "detener contenedores (docker compose stop)",
+  "nota": "las rutas internas se llaman sólo a través del gateway; el cierre de un proyecto (409) se prepara con mongosh"
+ },
+ "comando": "python pruebas/p1_api.py",
+ "maquina": {
+  "so": "Windows-11-10.0.26200-SP0",
+  "python_host": "3.14.4",
+  "cpu_logicos": 12,
+  "docker": "29.9.2",
+  "docker_cpus": 12,
+  "docker_mem_gib": 15.5,
+  "docker_so": "Docker Desktop",
+  "detalle": "evidence/entorno.txt"
+ },
+ "resultado": {
+  "casos_total": 40,
+  "casos_ok": 40,
+  "casos_con_discrepancia": [],
+  "salud_normal": {
+   "estado": "operativo",
+   "capas": {
+    "gateway": "ok",
+    "registro": "ok",
+    "mongo": "ok (primario=mongo1:27017)",
+    "sesion": "ok (valkey responde)",
+    "valkey": "ok (ping ok)",
+    "historial": "ok (lotes=466 eventos=25277)",
+    "analitica": "ok (ejecuciones=0)",
+    "spark": "ok (1 worker(es) vivos, 2 cores)"
+   }
+  },
+  "escenarios_salud": {
+   "degradado_analitica": {
+    "estado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 2.5
+   },
+   "degradado_historial": {
+    "estado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 2.3
+   },
+   "degradado_spark_worker": {
+    "estado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 1.2
+   },
+   "degradado_mongo_secundario": {
+    "estado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 15.1
+   },
+   "caido_valkey": {
+    "estado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 3.1
+   },
+   "caido_mongo_sin_mayoria": {
+    "estado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 16.1
+   },
+   "caido_registro": {
+    "estado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 2.5
+   },
+   "caido_sesion": {
+    "estado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 2.2
+   }
+  },
+  "puertos_publicados": [
+   {
+    "contenedor": "gateway",
+    "bind": "0.0.0.0",
+    "host": 8000,
+    "contenedor_puerto": 8000
+   },
+   {
+    "contenedor": "gateway",
+    "bind": "[::]",
+    "host": 8000,
+    "contenedor_puerto": 8000
+   },
+   {
+    "contenedor": "analitica",
+    "bind": "127.0.0.1",
+    "host": 4040,
+    "contenedor_puerto": 4040
+   },
+   {
+    "contenedor": "spark-master",
+    "bind": "127.0.0.1",
+    "host": 18080,
+    "contenedor_puerto": 8080
+   }
+  ],
+  "conexiones_host": {
+   "127.0.0.1:27017 (mongo1)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:6379 (valkey)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:8001 (registro)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:8002 (sesion)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:8003 (historial)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:8004 (analitica)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:7077 (spark-master)": "NO CONECTA (TimeoutError)",
+   "127.0.0.1:8000 (gateway (debe abrir))": "CONECTA"
+  },
+  "puertos_remotos_simulador": [
+   8000
+  ],
+  "imports_prohibidos": {
+   "registro importa redis/valkey": [],
+   "sesion importa pymongo": [],
+   "analitica importa pymongo": [],
+   "simulador importa pymongo/redis": [],
+   "pruebas importan pymongo/redis": []
+  }
+ },
+ "pasos": [
+  {
+   "titulo": "Salud inicial",
+   "hora": "23:59:06",
+   "datos": {
+    "estado": "operativo",
+    "capas": {
+     "gateway": "ok",
+     "registro": "ok",
+     "mongo": "ok (primario=mongo1:27017)",
+     "sesion": "ok (valkey responde)",
+     "valkey": "ok (ping ok)",
+     "historial": "ok (lotes=465 eventos=25267)",
+     "analitica": "ok (ejecuciones=1)",
+     "spark": "ok (1 worker(es) vivos, 2 cores)"
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Compactación previa del lago (muchos archivos pequeños hacen lenta a Spark)",
+   "hora": "23:59:06",
+   "datos": [],
+   "nota": null
+  },
+  {
+   "titulo": "Estado en Mongo tras el rechazo (vuelve a disponible)",
+   "hora": "23:59:10",
+   "datos": "{\n  _id: '8c2ae256-59ee-4919-bebc-223aeb0bd43c',\n  estado: 'disponible',\n  asignacion: null,\n  ultima_revision: {\n    revisor_id: 'p1-revisor',\n    resultado: 'rechazada',\n    motivo_codigo: 'calidad_baja',\n    ts: ISODate('2026-10-31T05:59:09.406Z')\n  },\n  version: 6\n}",
+   "nota": null
+  },
+  {
+   "titulo": "X-Request-ID propagado",
+   "hora": "23:59:16",
+   "datos": {
+    "enviado": "p1-trazabilidad-123",
+    "devuelto": "p1-trazabilidad-123"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Tabla de rutas y códigos HTTP",
+   "hora": "23:59:39",
+   "datos": [
+    {
+     "caso": "salud normal",
+     "metodo": "GET",
+     "ruta": "/salud",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"estado\": \"operativo\", \"capas\": {\"gateway\": {\"estado\": \"ok\", \"detalle\": \"\", \"latido\": {\"estado\": \"ok\", \"detalle\": \"\", \"edad_s\": 1.9}}, \"registro\": {\"estado\": \"ok\", \"detalle\": \"\", \"ms\": 11, \"latido\": {\"estado\": \"ok\", \"detalle\": \"\", \"edad_s\": 1.9}}, \"mongo\": {\"",
+     "x_request_id": "d72acc0a34df445ebbb857558d60ca85"
+    },
+    {
+     "caso": "crear proyecto",
+     "metodo": "POST",
+     "ruta": "/proyectos",
+     "esperado": 201,
+     "obtenido": 201,
+     "ok": true,
+     "cuerpo": "{\"_id\": \"4a3d58f8-d82d-407b-b55b-7f611a789923\", \"cliente_id\": \"06b874de-bbf8-4462-b123-40e954b66d85\", \"nombre\": \"x\", \"modalidad\": \"imagen\", \"taxonomia\": [{\"etiqueta\": \"a\", \"instruccion\": \"b\"}], \"reglas\": {}, \"sla_horas\": 24, \"estado\": \"activo\", \"creado_en\": \"2",
+     "x_request_id": "8efb2558f8a4482f83101ee7af12300a"
+    },
+    {
+     "caso": "crear proyecto con modalidad invalida",
+     "metodo": "POST",
+     "ruta": "/proyectos",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"literal_error\", \"loc\": [\"body\", \"modalidad\"], \"msg\": \"Input should be 'texto', 'imagen', 'video' or 'lidar'\", \"input\": \"audio\", \"ctx\": {\"expected\": \"'texto', 'imagen', 'video' or 'lidar'\"}}]}",
+     "x_request_id": "87ed28a507f34b548b68cd3bc34a8ed6"
+    },
+    {
+     "caso": "crear proyecto sin taxonomia",
+     "metodo": "POST",
+     "ruta": "/proyectos",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"too_short\", \"loc\": [\"body\", \"taxonomia\"], \"msg\": \"List should have at least 1 item after validation, not 0\", \"input\": [], \"ctx\": {\"field_type\": \"List\", \"min_length\": 1, \"actual_length\": 0}}]}",
+     "x_request_id": "21c0602d3816419997cc07928d8dca99"
+    },
+    {
+     "caso": "lote en proyecto inexistente",
+     "metodo": "POST",
+     "ruta": "/proyectos/no-existe/lotes",
+     "esperado": 404,
+     "obtenido": 404,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"proyecto_no_existe\"}",
+     "x_request_id": "d940c83d71d644f1bcea45180204f784"
+    },
+    {
+     "caso": "lote con sha256 invalido",
+     "metodo": "POST",
+     "ruta": "/proyectos/7f546067-18df-4d6f-ae01-063d84f19beb/lotes",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"string_pattern_mismatch\", \"loc\": [\"body\", \"tareas\", 0, \"archivo\", \"sha256\"], \"msg\": \"String should match pattern '^[0-9a-fA-F]{64}$'\", \"input\": \"xyz\", \"ctx\": {\"pattern\": \"^[0-9a-fA-F]{64}$\"}}]}",
+     "x_request_id": "c6a46345abf2473f855ad95eb0295245"
+    },
+    {
+     "caso": "lote valido (6 tareas via crear_proyecto)",
+     "metodo": "POST",
+     "ruta": "/proyectos/7f546067-18df-4d6f-ae01-063d84f19beb/lotes",
+     "esperado": 201,
+     "obtenido": 201,
+     "ok": true,
+     "cuerpo": "{\"batch_id\": \"caac91d4-cac7-456a-9dc2-56b3d8d76f57\", \"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"n_tareas\": 1, \"tarea_ids\": [\"41a0fe41-c819-47f6-b1de-c18bf7fb93b4\"]}",
+     "x_request_id": "af2b67e61feb4946a712709d6eb9202c"
+    },
+    {
+     "caso": "lote en proyecto cerrado",
+     "metodo": "POST",
+     "ruta": "/proyectos/f80ff9fa-f03a-4173-87dc-bb1d5c7866d4/lotes",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"proyecto_cerrado\"}",
+     "x_request_id": "a202afba4d7444d9a1d49d9bc6d36fb0"
+    },
+    {
+     "caso": "siguiente sin cuerpo valido",
+     "metodo": "POST",
+     "ruta": "/tareas/siguiente",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"missing\", \"loc\": [\"body\", \"anotador_id\"], \"msg\": \"Field required\", \"input\": {}}]}",
+     "x_request_id": "4747e092034549d79fd7b8e86ebbc692"
+    },
+    {
+     "caso": "siguiente (asignacion)",
+     "metodo": "POST",
+     "ruta": "/tareas/siguiente",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea\": {\"_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"cliente_id\": \"1aaf1e75-817b-4916-a8f1-239d0a42d4f0\", \"batch_id\": \"aaa81f52-b14b-4693-8452-7cdbaa596d98\", \"modalidad\": \"imagen\", \"tipo_tarea\": \"bbo",
+     "x_request_id": "3f5f799a1bc9419a9638e6cc0ea0f3a2"
+    },
+    {
+     "caso": "siguiente de nuevo (reanuda la abierta)",
+     "metodo": "POST",
+     "ruta": "/tareas/siguiente",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea\": {\"_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"cliente_id\": \"1aaf1e75-817b-4916-a8f1-239d0a42d4f0\", \"batch_id\": \"aaa81f52-b14b-4693-8452-7cdbaa596d98\", \"modalidad\": \"imagen\", \"tipo_tarea\": \"bbo",
+     "x_request_id": "55b0055d9c1e4b8ead395d287be3dd2d"
+    },
+    {
+     "caso": "borrador valido",
+     "metodo": "PUT",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/borrador",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"ok\": true, \"ts\": 1793426348065, \"lock_ttl_ms\": 120000}",
+     "x_request_id": "785693d417dc46f6ac233721abfa1f17"
+    },
+    {
+     "caso": "borrador con token invalido",
+     "metodo": "PUT",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/borrador",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"lock_no_vigente_o_token_invalido\"}",
+     "x_request_id": "1ab2c46c8bf24f3aad3903630d950cf0"
+    },
+    {
+     "caso": "recuperar sesion",
+     "metodo": "POST",
+     "ruta": "/sesiones/recuperar",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea\": {\"_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"cliente_id\": \"1aaf1e75-817b-4916-a8f1-239d0a42d4f0\", \"batch_id\": \"aaa81f52-b14b-4693-8452-7cdbaa596d98\", \"modalidad\": \"imagen\", \"tipo_tarea\": \"bbo",
+     "x_request_id": "a154ecc70524414194ad7f406fac22c6"
+    },
+    {
+     "caso": "recuperar sin sesion",
+     "metodo": "POST",
+     "ruta": "/sesiones/recuperar",
+     "esperado": 404,
+     "obtenido": 404,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"sin_sesion_recuperable\"}",
+     "x_request_id": "8516ef76d11c421ab47cff5628b93af9"
+    },
+    {
+     "caso": "enviar con token invalido",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/enviar",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"token_o_lock_invalido\"}",
+     "x_request_id": "4c71b2e2eb554346b88a8c8b093bb522"
+    },
+    {
+     "caso": "enviar con otro anotador (token ajeno)",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/enviar",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": {\"error\": \"conflicto\", \"estado_actual\": \"abierta\"}}",
+     "x_request_id": "501774452fb3496882c01411b0167f73"
+    },
+    {
+     "caso": "enviar",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/enviar",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"estado\": \"anotada\", \"version\": 2, \"evento_id\": \"dced685d-b93c-4179-8d30-fa5498dd9971\"}",
+     "x_request_id": "c64d2e22aab74f08a90fc6fcf8294e02"
+    },
+    {
+     "caso": "segundo enviar (ya enviada)",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/enviar",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"token_o_lock_invalido\"}",
+     "x_request_id": "4b20f432817448ef8fcbb1a35c07dee4"
+    },
+    {
+     "caso": "enviar con cuerpo incompleto",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/enviar",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"missing\", \"loc\": [\"body\", \"token\"], \"msg\": \"Field required\", \"input\": {\"anotador_id\": \"p1-anot-A\"}}, {\"type\": \"missing\", \"loc\": [\"body\", \"anotacion\"], \"msg\": \"Field required\", \"input\": {\"anotador_id\": \"p1-anot-A\"}}]}",
+     "x_request_id": "c1e66db2fada4fe385d32607922767ba"
+    },
+    {
+     "caso": "liberar con token invalido",
+     "metodo": "POST",
+     "ruta": "/tareas/8c2ae256-59ee-4919-bebc-223aeb0bd43c/liberar",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": {\"error\": \"conflicto\", \"estado_actual\": \"abierta\"}}",
+     "x_request_id": "a30cf6d3ba354e8b869d1d3ed3f29642"
+    },
+    {
+     "caso": "liberar",
+     "metodo": "POST",
+     "ruta": "/tareas/8c2ae256-59ee-4919-bebc-223aeb0bd43c/liberar",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea_id\": \"8c2ae256-59ee-4919-bebc-223aeb0bd43c\", \"estado\": \"disponible\", \"version\": 2}",
+     "x_request_id": "d4ce8fafd1834cedbccc513013b69bd8"
+    },
+    {
+     "caso": "liberar tarea inexistente",
+     "metodo": "POST",
+     "ruta": "/tareas/no-existe/liberar",
+     "esperado": 404,
+     "obtenido": 404,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"tarea_no_existe\"}",
+     "x_request_id": "4f533d377aa04959b9007893be9638b3"
+    },
+    {
+     "caso": "revision: aprobar sin iniciar",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/revision",
+     "esperado": 409,
+     "obtenido": 409,
+     "ok": true,
+     "cuerpo": "{\"detail\": {\"error\": \"conflicto\", \"estado_actual\": \"anotada\"}}",
+     "x_request_id": "860e6358eed84e10b7f950b331aba176"
+    },
+    {
+     "caso": "revision: iniciar",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/revision",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"estado\": \"en_revision\", \"version\": 3, \"evento\": \"en_revision\"}",
+     "x_request_id": "df19c69b21264e5eb58813e946eed093"
+    },
+    {
+     "caso": "revision: rechazar sin motivo",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/revision",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"value_error\", \"loc\": [\"body\"], \"msg\": \"Value error, motivo_codigo es obligatorio para rechazar\", \"input\": {\"revisor_id\": \"p1-revisor\", \"accion\": \"rechazar\"}, \"ctx\": {\"error\": {}}}]}",
+     "x_request_id": "ae46238cb5084a22b8173710e033d133"
+    },
+    {
+     "caso": "revision: accion invalida",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/revision",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"literal_error\", \"loc\": [\"body\", \"accion\"], \"msg\": \"Input should be 'iniciar', 'aprobar' or 'rechazar'\", \"input\": \"borrar\", \"ctx\": {\"expected\": \"'iniciar', 'aprobar' or 'rechazar'\"}}]}",
+     "x_request_id": "f93d3fca44e54a7e939c80193809c422"
+    },
+    {
+     "caso": "revision: aprobar",
+     "metodo": "POST",
+     "ruta": "/tareas/b38ce4a0-2332-4a6f-9719-b2cd1da15197/revision",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"estado\": \"aprobada\", \"version\": 4, \"evento\": \"aprobada\"}",
+     "x_request_id": "756aef1d2e5b4464baabf0a274e36fdf"
+    },
+    {
+     "caso": "revision: tarea inexistente",
+     "metodo": "POST",
+     "ruta": "/tareas/no-existe/revision",
+     "esperado": 404,
+     "obtenido": 404,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"tarea_no_existe\"}",
+     "x_request_id": "3e19ca50a745429b87e17a95f6b927bc"
+    },
+    {
+     "caso": "revision: rechazar con motivo",
+     "metodo": "POST",
+     "ruta": "/tareas/8c2ae256-59ee-4919-bebc-223aeb0bd43c/revision",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"tarea_id\": \"8c2ae256-59ee-4919-bebc-223aeb0bd43c\", \"estado\": \"disponible\", \"version\": 6, \"evento\": \"rechazada\"}",
+     "x_request_id": "3b1be993208a4c3c8c9aaaab5710a6da"
+    },
+    {
+     "caso": "siguiente sin tareas disponibles",
+     "metodo": "POST",
+     "ruta": "/tareas/siguiente",
+     "esperado": 204,
+     "obtenido": 204,
+     "ok": true,
+     "cuerpo": "",
+     "x_request_id": "72b234bfe131426390002f3bf63aef19"
+    },
+    {
+     "caso": "exportar (aprobadas)",
+     "metodo": "GET",
+     "ruta": "/proyectos/7f546067-18df-4d6f-ae01-063d84f19beb/exportar",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"items\": [{\"_id\": \"b38ce4a0-2332-4a6f-9719-b2cd1da15197\", \"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"cliente_id\": \"1aaf1e75-817b-4916-a8f1-239d0a42d4f0\", \"batch_id\": \"aaa81f52-b14b-4693-8452-7cdbaa596d98\", \"modalidad\": \"imagen\", \"tipo_tarea\": \"bb",
+     "x_request_id": "539b3c0e563f408fa7af06715aee6ae2"
+    },
+    {
+     "caso": "exportar limite invalido",
+     "metodo": "GET",
+     "ruta": "/proyectos/7f546067-18df-4d6f-ae01-063d84f19beb/exportar",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"greater_than_equal\", \"loc\": [\"query\", \"limite\"], \"msg\": \"Input should be greater than or equal to 1\", \"input\": \"0\", \"ctx\": {\"ge\": 1}}]}",
+     "x_request_id": "f9657903ea354bf0a180f1ef0dfcf7d5"
+    },
+    {
+     "caso": "editando",
+     "metodo": "GET",
+     "ruta": "/proyectos/7f546067-18df-4d6f-ae01-063d84f19beb/editando",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"proyecto_id\": \"7f546067-18df-4d6f-ae01-063d84f19beb\", \"n\": 0, \"editando\": []}",
+     "x_request_id": "cc8fa80ca3294ab981327fd0deda06af"
+    },
+    {
+     "caso": "analitica q1 principal",
+     "metodo": "GET",
+     "ruta": "/analitica/q1",
+     "esperado": 200,
+     "obtenido": 200,
+     "ok": true,
+     "cuerpo": "{\"consulta\": \"q1\", \"conjunto\": \"principal\", \"filas\": [{\"dia\": \"2026-08-02\", \"modalidad\": \"imagen\", \"aprobadas\": 30}, {\"dia\": \"2026-08-02\", \"modalidad\": \"lidar\", \"aprobadas\": 39}, {\"dia\": \"2026-08-02\", \"modalidad\": \"texto\", \"aprobadas\": 29}, {\"dia\": \"2026-08-02",
+     "x_request_id": "9fd43c67e25c409abfd4ec14309b0e0c"
+    },
+    {
+     "caso": "analitica consulta invalida",
+     "metodo": "GET",
+     "ruta": "/analitica/q9",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"literal_error\", \"loc\": [\"path\", \"consulta\"], \"msg\": \"Input should be 'q1', 'q2', 'q3', 'q4' or 'q5'\", \"input\": \"q9\", \"ctx\": {\"expected\": \"'q1', 'q2', 'q3', 'q4' or 'q5'\"}}]}",
+     "x_request_id": "3d345fe41cec42e38b057f1532220ff6"
+    },
+    {
+     "caso": "analitica conjunto invalido",
+     "metodo": "GET",
+     "ruta": "/analitica/q1",
+     "esperado": 422,
+     "obtenido": 422,
+     "ok": true,
+     "cuerpo": "{\"detail\": [{\"type\": \"literal_error\", \"loc\": [\"query\", \"conjunto\"], \"msg\": \"Input should be 'principal' or 'grande'\", \"input\": \"xx\", \"ctx\": {\"expected\": \"'principal' or 'grande'\"}}]}",
+     "x_request_id": "e51e8eea064b4d7c9a19a0bbce6fbf07"
+    },
+    {
+     "caso": "ruta inexistente",
+     "metodo": "GET",
+     "ruta": "/no-existe",
+     "esperado": 404,
+     "obtenido": 404,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"Not Found\"}",
+     "x_request_id": "9e41dc3b90f7497aa41290954dd23a26"
+    },
+    {
+     "caso": "registro detenido: siguiente -> 503",
+     "metodo": "POST",
+     "ruta": "/tareas/siguiente",
+     "esperado": 503,
+     "obtenido": 503,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"registro_no_disponible\"}",
+     "x_request_id": "582f9f0ea37949a1a809eb0f6c3647da"
+    },
+    {
+     "caso": "analitica detenida: GET /analitica/q1 -> 503",
+     "metodo": "GET",
+     "ruta": "/analitica/q1",
+     "esperado": 503,
+     "obtenido": 503,
+     "ok": true,
+     "cuerpo": "{\"detail\": \"analitica_no_disponible\"}",
+     "x_request_id": "0dd2ca1a53004ad8a30bc62ce5b84be0"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "titulo": "/salud normal",
+   "hora": "23:59:40",
+   "datos": {
+    "estado": "operativo",
+    "capas": {
+     "gateway": "ok",
+     "registro": "ok",
+     "mongo": "ok (primario=mongo1:27017)",
+     "sesion": "ok (valkey responde)",
+     "valkey": "ok (ping ok)",
+     "historial": "ok (lotes=466 eventos=25277)",
+     "analitica": "ok (ejecuciones=0)",
+     "spark": "ok (1 worker(es) vivos, 2 cores)"
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: degradado (analitica detenida)",
+   "hora": "23:59:56",
+   "datos": {
+    "detenidos": [
+     "analitica"
+    ],
+    "estado_esperado": "degradado",
+    "estado_alcanzado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 2.5,
+    "cambios_observados": [
+     {
+      "t_s": 2.5,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "analitica": "caido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=466 eventos=25277)",
+      "analitica": "caido (ConnectTimeout)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 8.0
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: degradado (historial detenido)",
+   "hora": "00:00:06",
+   "datos": {
+    "detenidos": [
+     "historial"
+    ],
+    "estado_esperado": "degradado",
+    "estado_alcanzado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 2.3,
+    "cambios_observados": [
+     {
+      "t_s": 2.3,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "historial": "caido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "caido (ConnectTimeout)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 2.1
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: degradado (spark-worker-1 detenido)",
+   "hora": "00:00:20",
+   "datos": {
+    "detenidos": [
+     "spark-worker-1"
+    ],
+    "estado_esperado": "degradado",
+    "estado_alcanzado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 1.2,
+    "cambios_observados": [
+     {
+      "t_s": 1.2,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "analitica": "degradado"
+      }
+     },
+     {
+      "t_s": 3.2,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "analitica": "degradado",
+       "spark": "degradado"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=0 eventos=0)",
+      "analitica": "degradado (ejecuciones=0)",
+      "spark": "degradado (master vivo sin workers)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 8.1
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: degradado (secundario mongo3 detenido)",
+   "hora": "00:00:43",
+   "datos": {
+    "detenidos": [
+     "mongo3"
+    ],
+    "estado_esperado": "degradado",
+    "estado_alcanzado": "degradado",
+    "http": 200,
+    "segundos_hasta_ver_estado": 15.1,
+    "cambios_observados": [
+     {
+      "t_s": 4.0,
+      "http": 200,
+      "estado": "operativo",
+      "capas_no_ok": {}
+     },
+     {
+      "t_s": 15.1,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "registro": "degradado",
+       "mongo": "degradado"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "degradado",
+     "capas": {
+      "gateway": "ok",
+      "registro": "degradado",
+      "mongo": "degradado (2/3 nodos vivos; primario=mongo1:27017)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=0 eventos=0)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 3.5
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: caido (valkey detenido)",
+   "hora": "00:01:17",
+   "datos": {
+    "detenidos": [
+     "valkey"
+    ],
+    "estado_esperado": "caido",
+    "estado_alcanzado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 3.1,
+    "cambios_observados": [
+     {
+      "t_s": 3.1,
+      "http": 503,
+      "estado": "caido",
+      "capas_no_ok": {
+       "sesion": "caido",
+       "valkey": "caido",
+       "historial": "degradado",
+       "spark": "desconocido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "caido",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "caido (ReadTimeout)",
+      "valkey": "caido (TimeoutError)",
+      "historial": "degradado (error reciente: ConnectionError: Connection closed by server.)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "desconocido (Valkey caido: no se puede leer el latido)"
+     }
+    },
+    "sonda": {
+     "siguiente_http": 503,
+     "salud_http": 503
+    },
+    "segundos_restauracion_todo_ok": 11.4
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: caido (mongo2 y mongo3 detenidos: sin primario)",
+   "hora": "00:01:52",
+   "datos": {
+    "detenidos": [
+     "mongo2",
+     "mongo3"
+    ],
+    "estado_esperado": "caido",
+    "estado_alcanzado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 16.1,
+    "cambios_observados": [
+     {
+      "t_s": 3.9,
+      "http": 200,
+      "estado": "operativo",
+      "capas_no_ok": {}
+     },
+     {
+      "t_s": 12.0,
+      "http": 200,
+      "estado": "degradado",
+      "capas_no_ok": {
+       "registro": "degradado",
+       "mongo": "degradado"
+      }
+     },
+     {
+      "t_s": 16.1,
+      "http": 503,
+      "estado": "caido",
+      "capas_no_ok": {
+       "registro": "caido",
+       "mongo": "desconocido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "caido",
+     "capas": {
+      "gateway": "ok",
+      "registro": "caido (ReadTimeout)",
+      "mongo": "desconocido (registro no responde)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=0 eventos=0)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": {
+     "siguiente_http": 503
+    },
+    "segundos_restauracion_todo_ok": 8.9
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: caido (registro detenido)",
+   "hora": "00:02:04",
+   "datos": {
+    "detenidos": [
+     "registro"
+    ],
+    "estado_esperado": "caido",
+    "estado_alcanzado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 2.5,
+    "cambios_observados": [
+     {
+      "t_s": 2.5,
+      "http": 503,
+      "estado": "caido",
+      "capas_no_ok": {
+       "registro": "caido",
+       "mongo": "desconocido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "caido",
+     "capas": {
+      "gateway": "ok",
+      "registro": "caido (ConnectTimeout)",
+      "mongo": "desconocido (registro no responde)",
+      "sesion": "ok (valkey responde)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=0 eventos=0)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 2.1
+   },
+   "nota": null
+  },
+  {
+   "titulo": "/salud: caido (sesion detenida)",
+   "hora": "00:02:14",
+   "datos": {
+    "detenidos": [
+     "sesion"
+    ],
+    "estado_esperado": "caido",
+    "estado_alcanzado": "caido",
+    "http": 503,
+    "segundos_hasta_ver_estado": 2.2,
+    "cambios_observados": [
+     {
+      "t_s": 2.2,
+      "http": 503,
+      "estado": "caido",
+      "capas_no_ok": {
+       "sesion": "caido"
+      }
+     }
+    ],
+    "cuerpo_final": {
+     "estado": "caido",
+     "capas": {
+      "gateway": "ok",
+      "registro": "ok",
+      "mongo": "ok (primario=mongo1:27017)",
+      "sesion": "caido (ConnectTimeout)",
+      "valkey": "ok (ping ok)",
+      "historial": "ok (lotes=0 eventos=0)",
+      "analitica": "ok (ejecuciones=0)",
+      "spark": "ok (1 worker(es) vivos, 2 cores)"
+     }
+    },
+    "sonda": null,
+    "segundos_restauracion_todo_ok": 2.2
+   },
+   "nota": null
+  },
+  {
+   "titulo": "docker compose ps",
+   "hora": "00:02:14",
+   "datos": "NAME             IMAGE                    COMMAND                  SERVICE          CREATED             STATUS                            PORTS\nanalitica        proyecto2-analitica      \"/opt/entrypoint.sh …\"   analitica        2 hours ago         Up 2 minutes                      127.0.0.1:4040->4040/tcp\ngateway          proyecto2-gateway        \"uvicorn gateway.mai…\"   gateway          29 minutes ago      Up 29 minutes (healthy)           0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp\nherramientas     proyecto2-herramientas   \"sleep infinity\"         herramientas     About an hour ago   Up About an hour                  \nhistorial        proyecto2-historial      \"uvicorn historial.m…\"   historial        2 hours ago         Up 2 minutes                      8003/tcp\nmongo1           mongo:7                  \"docker-entrypoint.s…\"   mongo1           5 hours ago         Up 39 minutes (healthy)           27017/tcp\nmongo2           mongo:7                  \"docker-entrypoint.s…\"   mongo2           5 hours ago         Up 31 seconds (healthy)           27017/tcp\nmongo3           mongo:7                  \"docker-entrypoint.s…\"   mongo3           5 hours ago         Up 31 seconds (healthy)           27017/tcp\nregistro         proyecto2-registro       \"uvicorn registro.ma…\"   registro         24 minutes ago      Up 12 seconds (healthy)           8001/tcp\nsesion           proyecto2-sesion         \"uvicorn sesion.main…\"   sesion           29 minutes ago      Up 2 seconds (health: starting)   8002/tcp\nspark-master     apache/spark:3.5.3       \"/opt/entrypoint.sh …\"   spark-master     4 hours ago         Up 4 hours                        127.0.0.1:18080->8080/tcp\nspark-worker-1   apache/spark:3.5.3       \"/opt/entrypoint.sh …\"   spark-worker-1   4 hours ago         Up 2 minutes                      \nvalkey           valkey/valkey:8          \"tini -- docker-entr…\"   valkey           5 hours ago         Up About a minute (healthy)       6379/tcp\n",
+   "nota": null
+  },
+  {
+   "titulo": "docker ps --format (puertos)",
+   "hora": "00:02:14",
+   "datos": "NAMES            PORTS\nregistro         8001/tcp\ngateway          0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp\nsesion           8002/tcp\nherramientas     \nanalitica        127.0.0.1:4040->4040/tcp\nhistorial        8003/tcp\nspark-master     127.0.0.1:18080->8080/tcp\nspark-worker-1   \nmongo3           27017/tcp\nmongo1           27017/tcp\nmongo2           27017/tcp\nvalkey           6379/tcp\n",
+   "nota": null
+  },
+  {
+   "titulo": "Puertos publicados al host",
+   "hora": "00:02:14",
+   "datos": [
+    {
+     "contenedor": "gateway",
+     "bind": "0.0.0.0",
+     "host": 8000,
+     "contenedor_puerto": 8000
+    },
+    {
+     "contenedor": "gateway",
+     "bind": "[::]",
+     "host": 8000,
+     "contenedor_puerto": 8000
+    },
+    {
+     "contenedor": "analitica",
+     "bind": "127.0.0.1",
+     "host": 4040,
+     "contenedor_puerto": 4040
+    },
+    {
+     "contenedor": "spark-master",
+     "bind": "127.0.0.1",
+     "host": 18080,
+     "contenedor_puerto": 8080
+    }
+   ],
+   "nota": "0.0.0.0/[::]:8000 = gateway (único público). 127.0.0.1:4040 (Spark UI del driver) y 127.0.0.1:18080 (UI del master) son de administración y sólo escuchan en loopback; no reciben tráfico de usuarios."
+  },
+  {
+   "titulo": "Intento de conexión desde el host a puertos internos",
+   "hora": "00:02:28",
+   "datos": {
+    "127.0.0.1:27017 (mongo1)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:6379 (valkey)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:8001 (registro)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:8002 (sesion)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:8003 (historial)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:8004 (analitica)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:7077 (spark-master)": "NO CONECTA (TimeoutError)",
+    "127.0.0.1:8000 (gateway (debe abrir))": "CONECTA"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Conexiones TCP del proceso del simulador (Get-NetTCPConnection)",
+   "hora": "00:02:43",
+   "datos": {
+    "puertos_remotos": [
+     8000
+    ],
+    "tabla": "OwningProcess LocalPort RemoteAddress RemotePort       State\n------------- --------- ------------- ----------       -----\n        69936     64189 ::1                 8000 Established\n\n\n\nPUERTOS_REMOTOS=8000"
+   },
+   "nota": "Todos los puertos remotos del simulador deben ser 8000 (gateway). Se excluye el par de sockets loopback que asyncio (Proactor) abre consigo mismo (127.0.0.1 <-> 127.0.0.1, puertos locales del mismo proceso)."
+  },
+  {
+   "titulo": "Aislamiento modular (búsqueda estática de imports prohibidos; listas vacías = cumple)",
+   "hora": "00:02:44",
+   "datos": {
+    "registro importa redis/valkey": [],
+    "sesion importa pymongo": [],
+    "analitica importa pymongo": [],
+    "simulador importa pymongo/redis": [],
+    "pruebas importan pymongo/redis": []
+   },
+   "nota": null
+  }
+ ],
+ "interpretacion": "Se ejercitaron todas las rutas del gateway con sus códigos de éxito y de error; los 503 se provocaron deteniendo registro/analítica. /salud responde 200 operativo en estado normal, 200 degradado cuando falla una capa no esencial (analítica, historial, Spark, un secundario de Mongo) y 503 caído cuando falta una capa de núcleo (Valkey, Mongo sin mayoría, registro, sesión), siempre con cuerpo por capa. Sólo el puerto 8000 es público; 4040 y 18080 están ligados a 127.0.0.1 (administración) y los puertos internos rechazan conexiones desde el host. Las conexiones TCP del simulador van únicamente al 8000.",
+ "archivos": [
+  "evidence/p1_api_20261030T2359.json",
+  "evidence/p1_api_20261030T2359.md"
+ ],
+ "duracion_s": 220.4,
+ "archivo": "evidence/p1_api_20261030T2359.json"
+}

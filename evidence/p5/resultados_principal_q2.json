@@ -1,0 +1,2536 @@
+{
+ "consulta": "q2",
+ "conjunto": "principal",
+ "filas": [
+  {
+   "equipo_id": null,
+   "mes": "2026-10",
+   "aprobadas": 4,
+   "rechazadas": 5,
+   "proporcion_aprobadas": 0.444444
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2025-11",
+   "aprobadas": 14,
+   "rechazadas": 29,
+   "proporcion_aprobadas": 0.325581
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2025-12",
+   "aprobadas": 96,
+   "rechazadas": 114,
+   "proporcion_aprobadas": 0.457143
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-01",
+   "aprobadas": 131,
+   "rechazadas": 184,
+   "proporcion_aprobadas": 0.415873
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-02",
+   "aprobadas": 177,
+   "rechazadas": 227,
+   "proporcion_aprobadas": 0.438119
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-03",
+   "aprobadas": 264,
+   "rechazadas": 325,
+   "proporcion_aprobadas": 0.448217
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-04",
+   "aprobadas": 280,
+   "rechazadas": 371,
+   "proporcion_aprobadas": 0.430108
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-05",
+   "aprobadas": 249,
+   "rechazadas": 345,
+   "proporcion_aprobadas": 0.419192
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-06",
+   "aprobadas": 217,
+   "rechazadas": 308,
+   "proporcion_aprobadas": 0.413333
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-07",
+   "aprobadas": 202,
+   "rechazadas": 301,
+   "proporcion_aprobadas": 0.40159
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-08",
+   "aprobadas": 199,
+   "rechazadas": 284,
+   "proporcion_aprobadas": 0.412008
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-09",
+   "aprobadas": 160,
+   "rechazadas": 219,
+   "proporcion_aprobadas": 0.422164
+  },
+  {
+   "equipo_id": "0f02bad0-e706-4ef4-a6aa-9385dd59ba71",
+   "mes": "2026-10",
+   "aprobadas": 537,
+   "rechazadas": 319,
+   "proporcion_aprobadas": 0.627336
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2025-11",
+   "aprobadas": 32,
+   "rechazadas": 29,
+   "proporcion_aprobadas": 0.52459
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2025-12",
+   "aprobadas": 133,
+   "rechazadas": 76,
+   "proporcion_aprobadas": 0.636364
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-01",
+   "aprobadas": 229,
+   "rechazadas": 104,
+   "proporcion_aprobadas": 0.687688
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-02",
+   "aprobadas": 279,
+   "rechazadas": 140,
+   "proporcion_aprobadas": 0.665871
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-03",
+   "aprobadas": 432,
+   "rechazadas": 177,
+   "proporcion_aprobadas": 0.70936
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-04",
+   "aprobadas": 460,
+   "rechazadas": 187,
+   "proporcion_aprobadas": 0.710974
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-05",
+   "aprobadas": 427,
+   "rechazadas": 207,
+   "proporcion_aprobadas": 0.673502
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-06",
+   "aprobadas": 381,
+   "rechazadas": 158,
+   "proporcion_aprobadas": 0.706865
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-07",
+   "aprobadas": 323,
+   "rechazadas": 174,
+   "proporcion_aprobadas": 0.649899
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-08",
+   "aprobadas": 293,
+   "rechazadas": 154,
+   "proporcion_aprobadas": 0.655481
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-09",
+   "aprobadas": 298,
+   "rechazadas": 119,
+   "proporcion_aprobadas": 0.714628
+  },
+  {
+   "equipo_id": "1eb0e38a-675d-45af-bc36-5296dca02eec",
+   "mes": "2026-10",
+   "aprobadas": 823,
+   "rechazadas": 258,
+   "proporcion_aprobadas": 0.761332
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2025-11",
+   "aprobadas": 43,
+   "rechazadas": 5,
+   "proporcion_aprobadas": 0.895833
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2025-12",
+   "aprobadas": 161,
+   "rechazadas": 24,
+   "proporcion_aprobadas": 0.87027
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-01",
+   "aprobadas": 266,
+   "rechazadas": 49,
+   "proporcion_aprobadas": 0.844444
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-02",
+   "aprobadas": 352,
+   "rechazadas": 68,
+   "proporcion_aprobadas": 0.838095
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-03",
+   "aprobadas": 527,
+   "rechazadas": 65,
+   "proporcion_aprobadas": 0.890203
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-04",
+   "aprobadas": 574,
+   "rechazadas": 81,
+   "proporcion_aprobadas": 0.876336
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-05",
+   "aprobadas": 531,
+   "rechazadas": 81,
+   "proporcion_aprobadas": 0.867647
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-06",
+   "aprobadas": 440,
+   "rechazadas": 58,
+   "proporcion_aprobadas": 0.883534
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-07",
+   "aprobadas": 420,
+   "rechazadas": 62,
+   "proporcion_aprobadas": 0.871369
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-08",
+   "aprobadas": 418,
+   "rechazadas": 51,
+   "proporcion_aprobadas": 0.891258
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-09",
+   "aprobadas": 371,
+   "rechazadas": 48,
+   "proporcion_aprobadas": 0.885442
+  },
+  {
+   "equipo_id": "2a935d62-3c83-4dc0-9944-1fa5c0e9ab30",
+   "mes": "2026-10",
+   "aprobadas": 625,
+   "rechazadas": 119,
+   "proporcion_aprobadas": 0.840054
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2025-11",
+   "aprobadas": 35,
+   "rechazadas": 25,
+   "proporcion_aprobadas": 0.583333
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2025-12",
+   "aprobadas": 138,
+   "rechazadas": 53,
+   "proporcion_aprobadas": 0.722513
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-01",
+   "aprobadas": 245,
+   "rechazadas": 106,
+   "proporcion_aprobadas": 0.698006
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-02",
+   "aprobadas": 270,
+   "rechazadas": 125,
+   "proporcion_aprobadas": 0.683544
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-03",
+   "aprobadas": 393,
+   "rechazadas": 190,
+   "proporcion_aprobadas": 0.674099
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-04",
+   "aprobadas": 431,
+   "rechazadas": 197,
+   "proporcion_aprobadas": 0.686306
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-05",
+   "aprobadas": 435,
+   "rechazadas": 182,
+   "proporcion_aprobadas": 0.705024
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-06",
+   "aprobadas": 374,
+   "rechazadas": 175,
+   "proporcion_aprobadas": 0.681239
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-07",
+   "aprobadas": 356,
+   "rechazadas": 155,
+   "proporcion_aprobadas": 0.696673
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-08",
+   "aprobadas": 357,
+   "rechazadas": 141,
+   "proporcion_aprobadas": 0.716867
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-09",
+   "aprobadas": 286,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.711443
+  },
+  {
+   "equipo_id": "2f923996-d9f1-45d0-9482-2f5382010c62",
+   "mes": "2026-10",
+   "aprobadas": 781,
+   "rechazadas": 224,
+   "proporcion_aprobadas": 0.777114
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2025-11",
+   "aprobadas": 34,
+   "rechazadas": 17,
+   "proporcion_aprobadas": 0.666667
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2025-12",
+   "aprobadas": 162,
+   "rechazadas": 55,
+   "proporcion_aprobadas": 0.746544
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-01",
+   "aprobadas": 244,
+   "rechazadas": 91,
+   "proporcion_aprobadas": 0.728358
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-02",
+   "aprobadas": 303,
+   "rechazadas": 96,
+   "proporcion_aprobadas": 0.759398
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-03",
+   "aprobadas": 451,
+   "rechazadas": 156,
+   "proporcion_aprobadas": 0.742998
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-04",
+   "aprobadas": 457,
+   "rechazadas": 162,
+   "proporcion_aprobadas": 0.738288
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-05",
+   "aprobadas": 433,
+   "rechazadas": 148,
+   "proporcion_aprobadas": 0.745267
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-06",
+   "aprobadas": 426,
+   "rechazadas": 136,
+   "proporcion_aprobadas": 0.758007
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-07",
+   "aprobadas": 362,
+   "rechazadas": 120,
+   "proporcion_aprobadas": 0.751037
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-08",
+   "aprobadas": 327,
+   "rechazadas": 101,
+   "proporcion_aprobadas": 0.764019
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-09",
+   "aprobadas": 290,
+   "rechazadas": 122,
+   "proporcion_aprobadas": 0.703883
+  },
+  {
+   "equipo_id": "369147eb-89a2-488b-92c1-36e019985f15",
+   "mes": "2026-10",
+   "aprobadas": 697,
+   "rechazadas": 189,
+   "proporcion_aprobadas": 0.786682
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2025-11",
+   "aprobadas": 23,
+   "rechazadas": 27,
+   "proporcion_aprobadas": 0.46
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2025-12",
+   "aprobadas": 118,
+   "rechazadas": 90,
+   "proporcion_aprobadas": 0.567308
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-01",
+   "aprobadas": 211,
+   "rechazadas": 146,
+   "proporcion_aprobadas": 0.591036
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-02",
+   "aprobadas": 252,
+   "rechazadas": 149,
+   "proporcion_aprobadas": 0.628429
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-03",
+   "aprobadas": 360,
+   "rechazadas": 208,
+   "proporcion_aprobadas": 0.633803
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-04",
+   "aprobadas": 407,
+   "rechazadas": 247,
+   "proporcion_aprobadas": 0.622324
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-05",
+   "aprobadas": 381,
+   "rechazadas": 233,
+   "proporcion_aprobadas": 0.620521
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-06",
+   "aprobadas": 312,
+   "rechazadas": 228,
+   "proporcion_aprobadas": 0.577778
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-07",
+   "aprobadas": 290,
+   "rechazadas": 176,
+   "proporcion_aprobadas": 0.622318
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-08",
+   "aprobadas": 271,
+   "rechazadas": 180,
+   "proporcion_aprobadas": 0.600887
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-09",
+   "aprobadas": 260,
+   "rechazadas": 147,
+   "proporcion_aprobadas": 0.638821
+  },
+  {
+   "equipo_id": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+   "mes": "2026-10",
+   "aprobadas": 490,
+   "rechazadas": 222,
+   "proporcion_aprobadas": 0.688202
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2025-11",
+   "aprobadas": 13,
+   "rechazadas": 29,
+   "proporcion_aprobadas": 0.309524
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2025-12",
+   "aprobadas": 109,
+   "rechazadas": 99,
+   "proporcion_aprobadas": 0.524038
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-01",
+   "aprobadas": 173,
+   "rechazadas": 172,
+   "proporcion_aprobadas": 0.501449
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-02",
+   "aprobadas": 174,
+   "rechazadas": 195,
+   "proporcion_aprobadas": 0.471545
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-03",
+   "aprobadas": 284,
+   "rechazadas": 337,
+   "proporcion_aprobadas": 0.457327
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-04",
+   "aprobadas": 320,
+   "rechazadas": 335,
+   "proporcion_aprobadas": 0.48855
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-05",
+   "aprobadas": 246,
+   "rechazadas": 358,
+   "proporcion_aprobadas": 0.407285
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-06",
+   "aprobadas": 204,
+   "rechazadas": 279,
+   "proporcion_aprobadas": 0.42236
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-07",
+   "aprobadas": 200,
+   "rechazadas": 260,
+   "proporcion_aprobadas": 0.434783
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-08",
+   "aprobadas": 231,
+   "rechazadas": 236,
+   "proporcion_aprobadas": 0.494647
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-09",
+   "aprobadas": 171,
+   "rechazadas": 199,
+   "proporcion_aprobadas": 0.462162
+  },
+  {
+   "equipo_id": "3f07f814-91d6-4f78-a3e9-de99f10c718b",
+   "mes": "2026-10",
+   "aprobadas": 525,
+   "rechazadas": 301,
+   "proporcion_aprobadas": 0.635593
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2025-11",
+   "aprobadas": 29,
+   "rechazadas": 33,
+   "proporcion_aprobadas": 0.467742
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2025-12",
+   "aprobadas": 100,
+   "rechazadas": 114,
+   "proporcion_aprobadas": 0.46729
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-01",
+   "aprobadas": 167,
+   "rechazadas": 143,
+   "proporcion_aprobadas": 0.53871
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-02",
+   "aprobadas": 220,
+   "rechazadas": 217,
+   "proporcion_aprobadas": 0.503432
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-03",
+   "aprobadas": 289,
+   "rechazadas": 280,
+   "proporcion_aprobadas": 0.507909
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-04",
+   "aprobadas": 338,
+   "rechazadas": 340,
+   "proporcion_aprobadas": 0.498525
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-05",
+   "aprobadas": 308,
+   "rechazadas": 290,
+   "proporcion_aprobadas": 0.51505
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-06",
+   "aprobadas": 307,
+   "rechazadas": 262,
+   "proporcion_aprobadas": 0.539543
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-07",
+   "aprobadas": 234,
+   "rechazadas": 253,
+   "proporcion_aprobadas": 0.480493
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-08",
+   "aprobadas": 232,
+   "rechazadas": 238,
+   "proporcion_aprobadas": 0.493617
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-09",
+   "aprobadas": 197,
+   "rechazadas": 174,
+   "proporcion_aprobadas": 0.530997
+  },
+  {
+   "equipo_id": "4bf50b52-309d-458c-a7a0-c3d77c967f79",
+   "mes": "2026-10",
+   "aprobadas": 745,
+   "rechazadas": 317,
+   "proporcion_aprobadas": 0.701507
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2025-11",
+   "aprobadas": 34,
+   "rechazadas": 15,
+   "proporcion_aprobadas": 0.693878
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2025-12",
+   "aprobadas": 158,
+   "rechazadas": 57,
+   "proporcion_aprobadas": 0.734884
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-01",
+   "aprobadas": 245,
+   "rechazadas": 113,
+   "proporcion_aprobadas": 0.684358
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-02",
+   "aprobadas": 290,
+   "rechazadas": 92,
+   "proporcion_aprobadas": 0.759162
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-03",
+   "aprobadas": 430,
+   "rechazadas": 129,
+   "proporcion_aprobadas": 0.769231
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-04",
+   "aprobadas": 485,
+   "rechazadas": 158,
+   "proporcion_aprobadas": 0.754277
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-05",
+   "aprobadas": 472,
+   "rechazadas": 149,
+   "proporcion_aprobadas": 0.760064
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-06",
+   "aprobadas": 393,
+   "rechazadas": 131,
+   "proporcion_aprobadas": 0.75
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-07",
+   "aprobadas": 368,
+   "rechazadas": 120,
+   "proporcion_aprobadas": 0.754098
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-08",
+   "aprobadas": 332,
+   "rechazadas": 121,
+   "proporcion_aprobadas": 0.732892
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-09",
+   "aprobadas": 282,
+   "rechazadas": 109,
+   "proporcion_aprobadas": 0.721228
+  },
+  {
+   "equipo_id": "4ccc9bc2-a53f-4a28-abf3-e3fc21813d25",
+   "mes": "2026-10",
+   "aprobadas": 579,
+   "rechazadas": 164,
+   "proporcion_aprobadas": 0.779273
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2025-11",
+   "aprobadas": 40,
+   "rechazadas": 16,
+   "proporcion_aprobadas": 0.714286
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2025-12",
+   "aprobadas": 161,
+   "rechazadas": 48,
+   "proporcion_aprobadas": 0.770335
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-01",
+   "aprobadas": 269,
+   "rechazadas": 83,
+   "proporcion_aprobadas": 0.764205
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-02",
+   "aprobadas": 302,
+   "rechazadas": 108,
+   "proporcion_aprobadas": 0.736585
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-03",
+   "aprobadas": 407,
+   "rechazadas": 134,
+   "proporcion_aprobadas": 0.752311
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-04",
+   "aprobadas": 496,
+   "rechazadas": 145,
+   "proporcion_aprobadas": 0.773791
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-05",
+   "aprobadas": 457,
+   "rechazadas": 132,
+   "proporcion_aprobadas": 0.775891
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-06",
+   "aprobadas": 421,
+   "rechazadas": 126,
+   "proporcion_aprobadas": 0.769653
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-07",
+   "aprobadas": 382,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.767068
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-08",
+   "aprobadas": 300,
+   "rechazadas": 106,
+   "proporcion_aprobadas": 0.738916
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-09",
+   "aprobadas": 271,
+   "rechazadas": 88,
+   "proporcion_aprobadas": 0.754875
+  },
+  {
+   "equipo_id": "655238a6-43ff-4011-bd1a-85dd506e5a9a",
+   "mes": "2026-10",
+   "aprobadas": 541,
+   "rechazadas": 143,
+   "proporcion_aprobadas": 0.790936
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2025-11",
+   "aprobadas": 47,
+   "rechazadas": 2,
+   "proporcion_aprobadas": 0.959184
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2025-12",
+   "aprobadas": 182,
+   "rechazadas": 23,
+   "proporcion_aprobadas": 0.887805
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-01",
+   "aprobadas": 312,
+   "rechazadas": 32,
+   "proporcion_aprobadas": 0.906977
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-02",
+   "aprobadas": 341,
+   "rechazadas": 42,
+   "proporcion_aprobadas": 0.890339
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-03",
+   "aprobadas": 538,
+   "rechazadas": 62,
+   "proporcion_aprobadas": 0.896667
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-04",
+   "aprobadas": 580,
+   "rechazadas": 56,
+   "proporcion_aprobadas": 0.91195
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-05",
+   "aprobadas": 569,
+   "rechazadas": 60,
+   "proporcion_aprobadas": 0.90461
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-06",
+   "aprobadas": 480,
+   "rechazadas": 66,
+   "proporcion_aprobadas": 0.879121
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-07",
+   "aprobadas": 424,
+   "rechazadas": 57,
+   "proporcion_aprobadas": 0.881497
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-08",
+   "aprobadas": 451,
+   "rechazadas": 48,
+   "proporcion_aprobadas": 0.903808
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-09",
+   "aprobadas": 369,
+   "rechazadas": 47,
+   "proporcion_aprobadas": 0.887019
+  },
+  {
+   "equipo_id": "6c4a37ea-4906-47f2-b47b-6dbac8fe3ccd",
+   "mes": "2026-10",
+   "aprobadas": 728,
+   "rechazadas": 132,
+   "proporcion_aprobadas": 0.846512
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2025-11",
+   "aprobadas": 21,
+   "rechazadas": 19,
+   "proporcion_aprobadas": 0.525
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2025-12",
+   "aprobadas": 140,
+   "rechazadas": 87,
+   "proporcion_aprobadas": 0.61674
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-01",
+   "aprobadas": 222,
+   "rechazadas": 135,
+   "proporcion_aprobadas": 0.621849
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-02",
+   "aprobadas": 246,
+   "rechazadas": 170,
+   "proporcion_aprobadas": 0.591346
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-03",
+   "aprobadas": 330,
+   "rechazadas": 238,
+   "proporcion_aprobadas": 0.580986
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-04",
+   "aprobadas": 397,
+   "rechazadas": 247,
+   "proporcion_aprobadas": 0.61646
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-05",
+   "aprobadas": 361,
+   "rechazadas": 229,
+   "proporcion_aprobadas": 0.611864
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-06",
+   "aprobadas": 297,
+   "rechazadas": 177,
+   "proporcion_aprobadas": 0.626582
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-07",
+   "aprobadas": 311,
+   "rechazadas": 198,
+   "proporcion_aprobadas": 0.611002
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-08",
+   "aprobadas": 248,
+   "rechazadas": 177,
+   "proporcion_aprobadas": 0.583529
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-09",
+   "aprobadas": 248,
+   "rechazadas": 147,
+   "proporcion_aprobadas": 0.627848
+  },
+  {
+   "equipo_id": "75523327-0262-4f73-9292-2f83ef8c485b",
+   "mes": "2026-10",
+   "aprobadas": 516,
+   "rechazadas": 256,
+   "proporcion_aprobadas": 0.668394
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2025-11",
+   "aprobadas": 21,
+   "rechazadas": 23,
+   "proporcion_aprobadas": 0.477273
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2025-12",
+   "aprobadas": 100,
+   "rechazadas": 109,
+   "proporcion_aprobadas": 0.478469
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-01",
+   "aprobadas": 183,
+   "rechazadas": 178,
+   "proporcion_aprobadas": 0.506925
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-02",
+   "aprobadas": 196,
+   "rechazadas": 223,
+   "proporcion_aprobadas": 0.46778
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-03",
+   "aprobadas": 284,
+   "rechazadas": 289,
+   "proporcion_aprobadas": 0.495637
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-04",
+   "aprobadas": 305,
+   "rechazadas": 314,
+   "proporcion_aprobadas": 0.49273
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-05",
+   "aprobadas": 314,
+   "rechazadas": 324,
+   "proporcion_aprobadas": 0.492163
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-06",
+   "aprobadas": 251,
+   "rechazadas": 269,
+   "proporcion_aprobadas": 0.482692
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-07",
+   "aprobadas": 242,
+   "rechazadas": 254,
+   "proporcion_aprobadas": 0.487903
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-08",
+   "aprobadas": 234,
+   "rechazadas": 249,
+   "proporcion_aprobadas": 0.484472
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-09",
+   "aprobadas": 215,
+   "rechazadas": 241,
+   "proporcion_aprobadas": 0.471491
+  },
+  {
+   "equipo_id": "944528c0-0ef8-42d6-b7fd-564637bb3eec",
+   "mes": "2026-10",
+   "aprobadas": 594,
+   "rechazadas": 283,
+   "proporcion_aprobadas": 0.677309
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2025-11",
+   "aprobadas": 26,
+   "rechazadas": 18,
+   "proporcion_aprobadas": 0.590909
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2025-12",
+   "aprobadas": 124,
+   "rechazadas": 85,
+   "proporcion_aprobadas": 0.593301
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-01",
+   "aprobadas": 196,
+   "rechazadas": 158,
+   "proporcion_aprobadas": 0.553672
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-02",
+   "aprobadas": 252,
+   "rechazadas": 191,
+   "proporcion_aprobadas": 0.568849
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-03",
+   "aprobadas": 359,
+   "rechazadas": 266,
+   "proporcion_aprobadas": 0.5744
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-04",
+   "aprobadas": 378,
+   "rechazadas": 280,
+   "proporcion_aprobadas": 0.574468
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-05",
+   "aprobadas": 314,
+   "rechazadas": 267,
+   "proporcion_aprobadas": 0.540448
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-06",
+   "aprobadas": 289,
+   "rechazadas": 238,
+   "proporcion_aprobadas": 0.548387
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-07",
+   "aprobadas": 283,
+   "rechazadas": 221,
+   "proporcion_aprobadas": 0.561508
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-08",
+   "aprobadas": 229,
+   "rechazadas": 184,
+   "proporcion_aprobadas": 0.554479
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-09",
+   "aprobadas": 215,
+   "rechazadas": 228,
+   "proporcion_aprobadas": 0.485327
+  },
+  {
+   "equipo_id": "956b8c0c-a849-4b92-ab52-52e314fcdd54",
+   "mes": "2026-10",
+   "aprobadas": 529,
+   "rechazadas": 240,
+   "proporcion_aprobadas": 0.687906
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2025-11",
+   "aprobadas": 26,
+   "rechazadas": 14,
+   "proporcion_aprobadas": 0.65
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2025-12",
+   "aprobadas": 148,
+   "rechazadas": 61,
+   "proporcion_aprobadas": 0.708134
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-01",
+   "aprobadas": 232,
+   "rechazadas": 119,
+   "proporcion_aprobadas": 0.660969
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-02",
+   "aprobadas": 301,
+   "rechazadas": 120,
+   "proporcion_aprobadas": 0.714964
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-03",
+   "aprobadas": 381,
+   "rechazadas": 185,
+   "proporcion_aprobadas": 0.673145
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-04",
+   "aprobadas": 452,
+   "rechazadas": 183,
+   "proporcion_aprobadas": 0.711811
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-05",
+   "aprobadas": 397,
+   "rechazadas": 198,
+   "proporcion_aprobadas": 0.667227
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-06",
+   "aprobadas": 376,
+   "rechazadas": 140,
+   "proporcion_aprobadas": 0.728682
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-07",
+   "aprobadas": 345,
+   "rechazadas": 143,
+   "proporcion_aprobadas": 0.706967
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-08",
+   "aprobadas": 308,
+   "rechazadas": 131,
+   "proporcion_aprobadas": 0.701595
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-09",
+   "aprobadas": 272,
+   "rechazadas": 114,
+   "proporcion_aprobadas": 0.704663
+  },
+  {
+   "equipo_id": "958ca9ba-0cd6-40c2-8ea2-622b504867ba",
+   "mes": "2026-10",
+   "aprobadas": 567,
+   "rechazadas": 199,
+   "proporcion_aprobadas": 0.740209
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2025-11",
+   "aprobadas": 32,
+   "rechazadas": 12,
+   "proporcion_aprobadas": 0.727273
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2025-12",
+   "aprobadas": 139,
+   "rechazadas": 59,
+   "proporcion_aprobadas": 0.70202
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-01",
+   "aprobadas": 217,
+   "rechazadas": 112,
+   "proporcion_aprobadas": 0.659574
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-02",
+   "aprobadas": 299,
+   "rechazadas": 128,
+   "proporcion_aprobadas": 0.700234
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-03",
+   "aprobadas": 395,
+   "rechazadas": 183,
+   "proporcion_aprobadas": 0.683391
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-04",
+   "aprobadas": 475,
+   "rechazadas": 201,
+   "proporcion_aprobadas": 0.702663
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-05",
+   "aprobadas": 456,
+   "rechazadas": 194,
+   "proporcion_aprobadas": 0.701538
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-06",
+   "aprobadas": 380,
+   "rechazadas": 161,
+   "proporcion_aprobadas": 0.702403
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-07",
+   "aprobadas": 281,
+   "rechazadas": 123,
+   "proporcion_aprobadas": 0.695545
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-08",
+   "aprobadas": 298,
+   "rechazadas": 153,
+   "proporcion_aprobadas": 0.660754
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-09",
+   "aprobadas": 261,
+   "rechazadas": 115,
+   "proporcion_aprobadas": 0.694149
+  },
+  {
+   "equipo_id": "9e8fc965-0a2c-427e-9832-685694340a03",
+   "mes": "2026-10",
+   "aprobadas": 528,
+   "rechazadas": 182,
+   "proporcion_aprobadas": 0.743662
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2025-11",
+   "aprobadas": 31,
+   "rechazadas": 19,
+   "proporcion_aprobadas": 0.62
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2025-12",
+   "aprobadas": 144,
+   "rechazadas": 75,
+   "proporcion_aprobadas": 0.657534
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-01",
+   "aprobadas": 271,
+   "rechazadas": 84,
+   "proporcion_aprobadas": 0.76338
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-02",
+   "aprobadas": 306,
+   "rechazadas": 118,
+   "proporcion_aprobadas": 0.721698
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-03",
+   "aprobadas": 432,
+   "rechazadas": 182,
+   "proporcion_aprobadas": 0.703583
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-04",
+   "aprobadas": 419,
+   "rechazadas": 174,
+   "proporcion_aprobadas": 0.706577
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-05",
+   "aprobadas": 399,
+   "rechazadas": 180,
+   "proporcion_aprobadas": 0.689119
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-06",
+   "aprobadas": 397,
+   "rechazadas": 168,
+   "proporcion_aprobadas": 0.702655
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-07",
+   "aprobadas": 330,
+   "rechazadas": 142,
+   "proporcion_aprobadas": 0.699153
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-08",
+   "aprobadas": 313,
+   "rechazadas": 142,
+   "proporcion_aprobadas": 0.687912
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-09",
+   "aprobadas": 293,
+   "rechazadas": 152,
+   "proporcion_aprobadas": 0.658427
+  },
+  {
+   "equipo_id": "acdabacc-1165-4210-9854-3881118a9d29",
+   "mes": "2026-10",
+   "aprobadas": 863,
+   "rechazadas": 250,
+   "proporcion_aprobadas": 0.775382
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2025-11",
+   "aprobadas": 44,
+   "rechazadas": 17,
+   "proporcion_aprobadas": 0.721311
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2025-12",
+   "aprobadas": 158,
+   "rechazadas": 44,
+   "proporcion_aprobadas": 0.782178
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-01",
+   "aprobadas": 242,
+   "rechazadas": 94,
+   "proporcion_aprobadas": 0.720238
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-02",
+   "aprobadas": 284,
+   "rechazadas": 115,
+   "proporcion_aprobadas": 0.711779
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-03",
+   "aprobadas": 403,
+   "rechazadas": 152,
+   "proporcion_aprobadas": 0.726126
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-04",
+   "aprobadas": 480,
+   "rechazadas": 169,
+   "proporcion_aprobadas": 0.739599
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-05",
+   "aprobadas": 447,
+   "rechazadas": 155,
+   "proporcion_aprobadas": 0.742525
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-06",
+   "aprobadas": 402,
+   "rechazadas": 131,
+   "proporcion_aprobadas": 0.754221
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-07",
+   "aprobadas": 368,
+   "rechazadas": 129,
+   "proporcion_aprobadas": 0.740443
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-08",
+   "aprobadas": 375,
+   "rechazadas": 107,
+   "proporcion_aprobadas": 0.778008
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-09",
+   "aprobadas": 274,
+   "rechazadas": 113,
+   "proporcion_aprobadas": 0.70801
+  },
+  {
+   "equipo_id": "b758588d-ab73-495b-b44a-54b842c18a62",
+   "mes": "2026-10",
+   "aprobadas": 597,
+   "rechazadas": 187,
+   "proporcion_aprobadas": 0.76148
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2025-11",
+   "aprobadas": 45,
+   "rechazadas": 24,
+   "proporcion_aprobadas": 0.652174
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2025-12",
+   "aprobadas": 91,
+   "rechazadas": 81,
+   "proporcion_aprobadas": 0.52907
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-01",
+   "aprobadas": 210,
+   "rechazadas": 153,
+   "proporcion_aprobadas": 0.578512
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-02",
+   "aprobadas": 279,
+   "rechazadas": 193,
+   "proporcion_aprobadas": 0.591102
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-03",
+   "aprobadas": 340,
+   "rechazadas": 207,
+   "proporcion_aprobadas": 0.621572
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-04",
+   "aprobadas": 385,
+   "rechazadas": 254,
+   "proporcion_aprobadas": 0.602504
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-05",
+   "aprobadas": 341,
+   "rechazadas": 257,
+   "proporcion_aprobadas": 0.570234
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-06",
+   "aprobadas": 342,
+   "rechazadas": 195,
+   "proporcion_aprobadas": 0.636872
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-07",
+   "aprobadas": 319,
+   "rechazadas": 205,
+   "proporcion_aprobadas": 0.608779
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-08",
+   "aprobadas": 266,
+   "rechazadas": 159,
+   "proporcion_aprobadas": 0.625882
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-09",
+   "aprobadas": 222,
+   "rechazadas": 177,
+   "proporcion_aprobadas": 0.556391
+  },
+  {
+   "equipo_id": "b7e99aca-a970-45e1-8e46-d534c88a618e",
+   "mes": "2026-10",
+   "aprobadas": 601,
+   "rechazadas": 242,
+   "proporcion_aprobadas": 0.71293
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2025-11",
+   "aprobadas": 41,
+   "rechazadas": 6,
+   "proporcion_aprobadas": 0.87234
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2025-12",
+   "aprobadas": 176,
+   "rechazadas": 37,
+   "proporcion_aprobadas": 0.826291
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-01",
+   "aprobadas": 279,
+   "rechazadas": 35,
+   "proporcion_aprobadas": 0.888535
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-02",
+   "aprobadas": 376,
+   "rechazadas": 56,
+   "proporcion_aprobadas": 0.87037
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-03",
+   "aprobadas": 488,
+   "rechazadas": 70,
+   "proporcion_aprobadas": 0.874552
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-04",
+   "aprobadas": 586,
+   "rechazadas": 106,
+   "proporcion_aprobadas": 0.846821
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-05",
+   "aprobadas": 543,
+   "rechazadas": 102,
+   "proporcion_aprobadas": 0.84186
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-06",
+   "aprobadas": 457,
+   "rechazadas": 83,
+   "proporcion_aprobadas": 0.846296
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-07",
+   "aprobadas": 403,
+   "rechazadas": 74,
+   "proporcion_aprobadas": 0.844864
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-08",
+   "aprobadas": 390,
+   "rechazadas": 73,
+   "proporcion_aprobadas": 0.842333
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-09",
+   "aprobadas": 330,
+   "rechazadas": 56,
+   "proporcion_aprobadas": 0.854922
+  },
+  {
+   "equipo_id": "bf7b539b-0f9a-4a4b-8acd-4e10bc594585",
+   "mes": "2026-10",
+   "aprobadas": 594,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.83662
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2025-11",
+   "aprobadas": 18,
+   "rechazadas": 28,
+   "proporcion_aprobadas": 0.391304
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2025-12",
+   "aprobadas": 88,
+   "rechazadas": 84,
+   "proporcion_aprobadas": 0.511628
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-01",
+   "aprobadas": 171,
+   "rechazadas": 175,
+   "proporcion_aprobadas": 0.49422
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-02",
+   "aprobadas": 189,
+   "rechazadas": 222,
+   "proporcion_aprobadas": 0.459854
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-03",
+   "aprobadas": 276,
+   "rechazadas": 289,
+   "proporcion_aprobadas": 0.488496
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-04",
+   "aprobadas": 296,
+   "rechazadas": 355,
+   "proporcion_aprobadas": 0.454685
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-05",
+   "aprobadas": 294,
+   "rechazadas": 364,
+   "proporcion_aprobadas": 0.446809
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-06",
+   "aprobadas": 227,
+   "rechazadas": 275,
+   "proporcion_aprobadas": 0.452191
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-07",
+   "aprobadas": 217,
+   "rechazadas": 238,
+   "proporcion_aprobadas": 0.476923
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-08",
+   "aprobadas": 195,
+   "rechazadas": 241,
+   "proporcion_aprobadas": 0.447248
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-09",
+   "aprobadas": 210,
+   "rechazadas": 219,
+   "proporcion_aprobadas": 0.48951
+  },
+  {
+   "equipo_id": "c07a30f2-edd4-453b-90f0-fd0a750cab75",
+   "mes": "2026-10",
+   "aprobadas": 594,
+   "rechazadas": 286,
+   "proporcion_aprobadas": 0.675
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2025-11",
+   "aprobadas": 37,
+   "rechazadas": 17,
+   "proporcion_aprobadas": 0.685185
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2025-12",
+   "aprobadas": 121,
+   "rechazadas": 94,
+   "proporcion_aprobadas": 0.562791
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-01",
+   "aprobadas": 210,
+   "rechazadas": 136,
+   "proporcion_aprobadas": 0.606936
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-02",
+   "aprobadas": 226,
+   "rechazadas": 181,
+   "proporcion_aprobadas": 0.555283
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-03",
+   "aprobadas": 336,
+   "rechazadas": 239,
+   "proporcion_aprobadas": 0.584348
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-04",
+   "aprobadas": 386,
+   "rechazadas": 267,
+   "proporcion_aprobadas": 0.591118
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-05",
+   "aprobadas": 389,
+   "rechazadas": 238,
+   "proporcion_aprobadas": 0.620415
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-06",
+   "aprobadas": 304,
+   "rechazadas": 205,
+   "proporcion_aprobadas": 0.59725
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-07",
+   "aprobadas": 265,
+   "rechazadas": 204,
+   "proporcion_aprobadas": 0.565032
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-08",
+   "aprobadas": 277,
+   "rechazadas": 191,
+   "proporcion_aprobadas": 0.59188
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-09",
+   "aprobadas": 219,
+   "rechazadas": 165,
+   "proporcion_aprobadas": 0.570312
+  },
+  {
+   "equipo_id": "c8b8d9c6-ed30-49cf-83e4-58fc63f2ae24",
+   "mes": "2026-10",
+   "aprobadas": 581,
+   "rechazadas": 244,
+   "proporcion_aprobadas": 0.704242
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2025-11",
+   "aprobadas": 35,
+   "rechazadas": 13,
+   "proporcion_aprobadas": 0.729167
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2025-12",
+   "aprobadas": 170,
+   "rechazadas": 39,
+   "proporcion_aprobadas": 0.813397
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-01",
+   "aprobadas": 257,
+   "rechazadas": 84,
+   "proporcion_aprobadas": 0.753666
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-02",
+   "aprobadas": 320,
+   "rechazadas": 99,
+   "proporcion_aprobadas": 0.763723
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-03",
+   "aprobadas": 466,
+   "rechazadas": 105,
+   "proporcion_aprobadas": 0.816112
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-04",
+   "aprobadas": 541,
+   "rechazadas": 125,
+   "proporcion_aprobadas": 0.812312
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-05",
+   "aprobadas": 499,
+   "rechazadas": 134,
+   "proporcion_aprobadas": 0.78831
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-06",
+   "aprobadas": 409,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.779048
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-07",
+   "aprobadas": 378,
+   "rechazadas": 91,
+   "proporcion_aprobadas": 0.80597
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-08",
+   "aprobadas": 342,
+   "rechazadas": 98,
+   "proporcion_aprobadas": 0.777273
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-09",
+   "aprobadas": 355,
+   "rechazadas": 85,
+   "proporcion_aprobadas": 0.806818
+  },
+  {
+   "equipo_id": "d605e770-8a63-4881-bfd0-f9d5a6f2f7b8",
+   "mes": "2026-10",
+   "aprobadas": 732,
+   "rechazadas": 163,
+   "proporcion_aprobadas": 0.817877
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2025-11",
+   "aprobadas": 34,
+   "rechazadas": 25,
+   "proporcion_aprobadas": 0.576271
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2025-12",
+   "aprobadas": 158,
+   "rechazadas": 65,
+   "proporcion_aprobadas": 0.70852
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-01",
+   "aprobadas": 233,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.667622
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-02",
+   "aprobadas": 265,
+   "rechazadas": 166,
+   "proporcion_aprobadas": 0.614849
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-03",
+   "aprobadas": 370,
+   "rechazadas": 189,
+   "proporcion_aprobadas": 0.661896
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-04",
+   "aprobadas": 396,
+   "rechazadas": 227,
+   "proporcion_aprobadas": 0.635634
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-05",
+   "aprobadas": 375,
+   "rechazadas": 195,
+   "proporcion_aprobadas": 0.657895
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-06",
+   "aprobadas": 338,
+   "rechazadas": 194,
+   "proporcion_aprobadas": 0.635338
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-07",
+   "aprobadas": 328,
+   "rechazadas": 136,
+   "proporcion_aprobadas": 0.706897
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-08",
+   "aprobadas": 303,
+   "rechazadas": 151,
+   "proporcion_aprobadas": 0.667401
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-09",
+   "aprobadas": 256,
+   "rechazadas": 136,
+   "proporcion_aprobadas": 0.653061
+  },
+  {
+   "equipo_id": "da4bd9ca-eb5c-4467-80ba-cd647a0ecfea",
+   "mes": "2026-10",
+   "aprobadas": 643,
+   "rechazadas": 230,
+   "proporcion_aprobadas": 0.736541
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2025-11",
+   "aprobadas": 27,
+   "rechazadas": 25,
+   "proporcion_aprobadas": 0.519231
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2025-12",
+   "aprobadas": 111,
+   "rechazadas": 104,
+   "proporcion_aprobadas": 0.516279
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-01",
+   "aprobadas": 185,
+   "rechazadas": 158,
+   "proporcion_aprobadas": 0.539359
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-02",
+   "aprobadas": 250,
+   "rechazadas": 195,
+   "proporcion_aprobadas": 0.561798
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-03",
+   "aprobadas": 300,
+   "rechazadas": 253,
+   "proporcion_aprobadas": 0.542495
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-04",
+   "aprobadas": 371,
+   "rechazadas": 266,
+   "proporcion_aprobadas": 0.582418
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-05",
+   "aprobadas": 348,
+   "rechazadas": 270,
+   "proporcion_aprobadas": 0.563107
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-06",
+   "aprobadas": 282,
+   "rechazadas": 226,
+   "proporcion_aprobadas": 0.555118
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-07",
+   "aprobadas": 271,
+   "rechazadas": 229,
+   "proporcion_aprobadas": 0.542
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-08",
+   "aprobadas": 224,
+   "rechazadas": 216,
+   "proporcion_aprobadas": 0.509091
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-09",
+   "aprobadas": 231,
+   "rechazadas": 185,
+   "proporcion_aprobadas": 0.555288
+  },
+  {
+   "equipo_id": "ed2662e9-17e0-41b7-b810-238303c72ba8",
+   "mes": "2026-10",
+   "aprobadas": 626,
+   "rechazadas": 290,
+   "proporcion_aprobadas": 0.683406
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2025-11",
+   "aprobadas": 52,
+   "rechazadas": 10,
+   "proporcion_aprobadas": 0.83871
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2025-12",
+   "aprobadas": 177,
+   "rechazadas": 31,
+   "proporcion_aprobadas": 0.850962
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-01",
+   "aprobadas": 285,
+   "rechazadas": 55,
+   "proporcion_aprobadas": 0.838235
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-02",
+   "aprobadas": 309,
+   "rechazadas": 78,
+   "proporcion_aprobadas": 0.79845
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-03",
+   "aprobadas": 463,
+   "rechazadas": 81,
+   "proporcion_aprobadas": 0.851103
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-04",
+   "aprobadas": 561,
+   "rechazadas": 119,
+   "proporcion_aprobadas": 0.825
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-05",
+   "aprobadas": 564,
+   "rechazadas": 92,
+   "proporcion_aprobadas": 0.859756
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-06",
+   "aprobadas": 441,
+   "rechazadas": 78,
+   "proporcion_aprobadas": 0.849711
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-07",
+   "aprobadas": 436,
+   "rechazadas": 70,
+   "proporcion_aprobadas": 0.86166
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-08",
+   "aprobadas": 376,
+   "rechazadas": 84,
+   "proporcion_aprobadas": 0.817391
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-09",
+   "aprobadas": 365,
+   "rechazadas": 62,
+   "proporcion_aprobadas": 0.854801
+  },
+  {
+   "equipo_id": "ef48e8d5-50fd-4d3f-85d5-169590b2b633",
+   "mes": "2026-10",
+   "aprobadas": 465,
+   "rechazadas": 88,
+   "proporcion_aprobadas": 0.840868
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2025-11",
+   "aprobadas": 17,
+   "rechazadas": 34,
+   "proporcion_aprobadas": 0.333333
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2025-12",
+   "aprobadas": 71,
+   "rechazadas": 133,
+   "proporcion_aprobadas": 0.348039
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-01",
+   "aprobadas": 97,
+   "rechazadas": 209,
+   "proporcion_aprobadas": 0.316993
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-02",
+   "aprobadas": 127,
+   "rechazadas": 268,
+   "proporcion_aprobadas": 0.321519
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-03",
+   "aprobadas": 161,
+   "rechazadas": 394,
+   "proporcion_aprobadas": 0.29009
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-04",
+   "aprobadas": 215,
+   "rechazadas": 460,
+   "proporcion_aprobadas": 0.318519
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-05",
+   "aprobadas": 186,
+   "rechazadas": 471,
+   "proporcion_aprobadas": 0.283105
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-06",
+   "aprobadas": 159,
+   "rechazadas": 391,
+   "proporcion_aprobadas": 0.289091
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-07",
+   "aprobadas": 153,
+   "rechazadas": 314,
+   "proporcion_aprobadas": 0.327623
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-08",
+   "aprobadas": 137,
+   "rechazadas": 280,
+   "proporcion_aprobadas": 0.328537
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-09",
+   "aprobadas": 109,
+   "rechazadas": 272,
+   "proporcion_aprobadas": 0.286089
+  },
+  {
+   "equipo_id": "f5f59b22-0e8f-48e0-a84d-82e587f7e1fb",
+   "mes": "2026-10",
+   "aprobadas": 420,
+   "rechazadas": 368,
+   "proporcion_aprobadas": 0.532995
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2025-11",
+   "aprobadas": 27,
+   "rechazadas": 14,
+   "proporcion_aprobadas": 0.658537
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2025-12",
+   "aprobadas": 176,
+   "rechazadas": 64,
+   "proporcion_aprobadas": 0.733333
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-01",
+   "aprobadas": 252,
+   "rechazadas": 84,
+   "proporcion_aprobadas": 0.75
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-02",
+   "aprobadas": 298,
+   "rechazadas": 102,
+   "proporcion_aprobadas": 0.745
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-03",
+   "aprobadas": 415,
+   "rechazadas": 192,
+   "proporcion_aprobadas": 0.68369
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-04",
+   "aprobadas": 494,
+   "rechazadas": 184,
+   "proporcion_aprobadas": 0.728614
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-05",
+   "aprobadas": 408,
+   "rechazadas": 169,
+   "proporcion_aprobadas": 0.707106
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-06",
+   "aprobadas": 356,
+   "rechazadas": 157,
+   "proporcion_aprobadas": 0.693957
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-07",
+   "aprobadas": 344,
+   "rechazadas": 144,
+   "proporcion_aprobadas": 0.704918
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-08",
+   "aprobadas": 308,
+   "rechazadas": 136,
+   "proporcion_aprobadas": 0.693694
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-09",
+   "aprobadas": 298,
+   "rechazadas": 109,
+   "proporcion_aprobadas": 0.732187
+  },
+  {
+   "equipo_id": "fc3d3348-008d-4127-a104-61e32a25a888",
+   "mes": "2026-10",
+   "aprobadas": 548,
+   "rechazadas": 202,
+   "proporcion_aprobadas": 0.730667
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2025-11",
+   "aprobadas": 50,
+   "rechazadas": 12,
+   "proporcion_aprobadas": 0.806452
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2025-12",
+   "aprobadas": 180,
+   "rechazadas": 35,
+   "proporcion_aprobadas": 0.837209
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-01",
+   "aprobadas": 303,
+   "rechazadas": 44,
+   "proporcion_aprobadas": 0.873199
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-02",
+   "aprobadas": 346,
+   "rechazadas": 79,
+   "proporcion_aprobadas": 0.814118
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-03",
+   "aprobadas": 475,
+   "rechazadas": 113,
+   "proporcion_aprobadas": 0.807823
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-04",
+   "aprobadas": 557,
+   "rechazadas": 116,
+   "proporcion_aprobadas": 0.827637
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-05",
+   "aprobadas": 559,
+   "rechazadas": 95,
+   "proporcion_aprobadas": 0.85474
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-06",
+   "aprobadas": 417,
+   "rechazadas": 88,
+   "proporcion_aprobadas": 0.825743
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-07",
+   "aprobadas": 425,
+   "rechazadas": 101,
+   "proporcion_aprobadas": 0.807985
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-08",
+   "aprobadas": 381,
+   "rechazadas": 86,
+   "proporcion_aprobadas": 0.815846
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-09",
+   "aprobadas": 329,
+   "rechazadas": 77,
+   "proporcion_aprobadas": 0.810345
+  },
+  {
+   "equipo_id": "fed4057d-bb02-4576-b512-c4c3b253d218",
+   "mes": "2026-10",
+   "aprobadas": 563,
+   "rechazadas": 131,
+   "proporcion_aprobadas": 0.811239
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2025-11",
+   "aprobadas": 26,
+   "rechazadas": 19,
+   "proporcion_aprobadas": 0.577778
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2025-12",
+   "aprobadas": 121,
+   "rechazadas": 71,
+   "proporcion_aprobadas": 0.630208
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-01",
+   "aprobadas": 211,
+   "rechazadas": 119,
+   "proporcion_aprobadas": 0.639394
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-02",
+   "aprobadas": 251,
+   "rechazadas": 148,
+   "proporcion_aprobadas": 0.629073
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-03",
+   "aprobadas": 379,
+   "rechazadas": 223,
+   "proporcion_aprobadas": 0.629568
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-04",
+   "aprobadas": 407,
+   "rechazadas": 237,
+   "proporcion_aprobadas": 0.631988
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-05",
+   "aprobadas": 393,
+   "rechazadas": 206,
+   "proporcion_aprobadas": 0.656093
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-06",
+   "aprobadas": 361,
+   "rechazadas": 213,
+   "proporcion_aprobadas": 0.62892
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-07",
+   "aprobadas": 322,
+   "rechazadas": 169,
+   "proporcion_aprobadas": 0.655804
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-08",
+   "aprobadas": 303,
+   "rechazadas": 178,
+   "proporcion_aprobadas": 0.629938
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-09",
+   "aprobadas": 230,
+   "rechazadas": 142,
+   "proporcion_aprobadas": 0.61828
+  },
+  {
+   "equipo_id": "ff002d4d-9020-49e4-bf9a-b5c29f044aed",
+   "mes": "2026-10",
+   "aprobadas": 603,
+   "rechazadas": 207,
+   "proporcion_aprobadas": 0.744444
+  }
+ ],
+ "n_filas": 361,
+ "tiempo_s": 4.246,
+ "n_ejecucion": 31
+}

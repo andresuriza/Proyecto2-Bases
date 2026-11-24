@@ -1,0 +1,132 @@
+{
+ "n_peticiones": 699,
+ "errores": 0,
+ "tasa_error_pct": 0.0,
+ "envios_ok": 83,
+ "por_endpoint": {
+  "GET /proyectos/{id}/exportar": {
+   "n": 19,
+   "p50": 46.96,
+   "p95": 226.31,
+   "p99": 226.31,
+   "media": 57.56,
+   "max": 226.31,
+   "status": {
+    "200": 19
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "GET /salud": {
+   "n": 14,
+   "p50": 51.46,
+   "p95": 175.31,
+   "p99": 175.31,
+   "media": 64.28,
+   "max": 175.31,
+   "status": {
+    "200": 14
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /sesiones/recuperar": {
+   "n": 1,
+   "p50": 103.11,
+   "p95": 103.11,
+   "p99": 103.11,
+   "media": 103.11,
+   "max": 103.11,
+   "status": {
+    "200": 1
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/siguiente": {
+   "n": 98,
+   "p50": 116.06,
+   "p95": 265.66,
+   "p99": 631.98,
+   "media": 137.93,
+   "max": 631.98,
+   "status": {
+    "200": 98
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/enviar": {
+   "n": 83,
+   "p50": 110.59,
+   "p95": 192.07,
+   "p99": 246.78,
+   "media": 121.32,
+   "max": 246.78,
+   "status": {
+    "200": 83
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/liberar": {
+   "n": 15,
+   "p50": 179.19,
+   "p95": 525.44,
+   "p99": 525.44,
+   "media": 239.64,
+   "max": 525.44,
+   "status": {
+    "200": 15
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "POST /tareas/{id}/revision": {
+   "n": 152,
+   "p50": 98.81,
+   "p95": 164.94,
+   "p99": 457.44,
+   "media": 112.43,
+   "max": 587.99,
+   "status": {
+    "200": 152
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  },
+  "PUT /tareas/{id}/borrador": {
+   "n": 317,
+   "p50": 87.93,
+   "p95": 185.94,
+   "p99": 565.16,
+   "media": 108.98,
+   "max": 843.79,
+   "status": {
+    "200": 317
+   },
+   "errores": 0,
+   "tasa_error_pct": 0.0
+  }
+ },
+ "duracion_s": 90.0,
+ "envios_por_min": 55.3,
+ "rps": 7.8,
+ "config": {
+  "vus": 10,
+  "anotadores": 7,
+  "revisores": 2,
+  "consumidores": 1,
+  "duracion_s": 90.0,
+  "calentamiento_s": 0.0,
+  "edicion_s": [
+   2.0,
+   10.0
+  ],
+  "borrador_s": 2.0,
+  "proyecto": null,
+  "proyecto_por_vu": true
+ },
+ "inicio_medicion": 1793420598.340044,
+ "fin_medicion": 1793420688.340044
+}

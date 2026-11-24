@@ -1,0 +1,160 @@
+{
+ "max_ts": "2026-10-30T10:02:00+00:00",
+ "corte_q1": "2026-08-01T10:02:00+00:00",
+ "eventos_unicos": 56,
+ "q1": [
+  {
+   "dia": "2026-08-01",
+   "modalidad": "imagen",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-09-15",
+   "modalidad": "imagen",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-09-22",
+   "modalidad": "texto",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-10-22",
+   "modalidad": "lidar",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-10-26",
+   "modalidad": "lidar",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-10-28",
+   "modalidad": "texto",
+   "aprobadas": 1
+  },
+  {
+   "dia": "2026-10-29",
+   "modalidad": "texto",
+   "aprobadas": 2
+  },
+  {
+   "dia": "2026-10-30",
+   "modalidad": "imagen",
+   "aprobadas": 1
+  }
+ ],
+ "q2": [
+  {
+   "equipo_id": "E1",
+   "mes": "2026-08",
+   "aprobadas": 1,
+   "rechazadas": 0,
+   "proporcion_aprobadas": 1.0
+  },
+  {
+   "equipo_id": "E1",
+   "mes": "2026-09",
+   "aprobadas": 2,
+   "rechazadas": 0,
+   "proporcion_aprobadas": 1.0
+  },
+  {
+   "equipo_id": "E1",
+   "mes": "2026-10",
+   "aprobadas": 4,
+   "rechazadas": 0,
+   "proporcion_aprobadas": 1.0
+  },
+  {
+   "equipo_id": "E2",
+   "mes": "2026-08",
+   "aprobadas": 1,
+   "rechazadas": 0,
+   "proporcion_aprobadas": 1.0
+  },
+  {
+   "equipo_id": "E2",
+   "mes": "2026-09",
+   "aprobadas": 0,
+   "rechazadas": 1,
+   "proporcion_aprobadas": 0.0
+  },
+  {
+   "equipo_id": "E2",
+   "mes": "2026-10",
+   "aprobadas": 2,
+   "rechazadas": 2,
+   "proporcion_aprobadas": 0.5
+  }
+ ],
+ "q3": [
+  {
+   "modalidad": "imagen",
+   "tipo_tarea": "bbox",
+   "n": 3,
+   "dur_media_s": 580.0,
+   "dur_p95_s": 720.0
+  },
+  {
+   "modalidad": "imagen",
+   "tipo_tarea": "poligono",
+   "n": 2,
+   "dur_media_s": 990.0,
+   "dur_p95_s": 1080.0
+  },
+  {
+   "modalidad": "lidar",
+   "tipo_tarea": "cuboide_3d",
+   "n": 4,
+   "dur_media_s": 3675.0,
+   "dur_p95_s": 4800.0
+  },
+  {
+   "modalidad": "texto",
+   "tipo_tarea": "span",
+   "n": 5,
+   "dur_media_s": 1260.0,
+   "dur_p95_s": 1800.0
+  }
+ ],
+ "q4": [
+  {
+   "cliente_id": "C1",
+   "proyecto_id": "P1",
+   "rechazadas": 1,
+   "aprobadas": 4,
+   "proporcion_rechazadas": 0.2
+  },
+  {
+   "cliente_id": "C1",
+   "proyecto_id": "P2",
+   "rechazadas": 1,
+   "aprobadas": 2,
+   "proporcion_rechazadas": 0.3333333333333333
+  },
+  {
+   "cliente_id": "C2",
+   "proyecto_id": "P3",
+   "rechazadas": 1,
+   "aprobadas": 4,
+   "proporcion_rechazadas": 0.2
+  }
+ ],
+ "q5": [
+  {
+   "cliente_id": "C1",
+   "n": 6,
+   "p50_s": 9000.0,
+   "p95_s": 181800.0,
+   "pct_incumple_sla": 33.333333333333336
+  },
+  {
+   "cliente_id": "C2",
+   "n": 4,
+   "p50_s": 2640.0,
+   "p95_s": 3720.0,
+   "pct_incumple_sla": 0.0
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{
+ "fecha": "2026-10-30 ~23:58 (hora local)",
+ "comando": "python pruebas/comun.py   (compactar_lago_principal -> POST /compactar del historial)",
+ "nota": "Salida real de la compactación del mes 2026-10 tras las pruebas P6 y P8. Dedujo 77 filas duplicadas por event_id: son compatibles con reentregas at-least-once del stream tras los reinicios/SIGKILL de Valkey de P3 y P8 (XACK perdidos por appendfsync everysec); no se verificó evento por evento. Spark las deduplica de todos modos.",
+ "resultado": [{"mes": "2026-10", "archivos_antes": 576, "http": 200, "origenes": 576, "duplicados_eliminados": 77}]
+}

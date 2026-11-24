@@ -1,0 +1,318 @@
+{
+ "prueba": "p3_sesion",
+ "titulo": "P3. Sesión: borrador recuperable, Valkey con AOF y vencimiento del candado",
+ "fecha_hora": "2026-10-30T23:31:10",
+ "objetivo": "Interrumpir (matar el proceso) a un usuario en plena edición y recuperar el borrador con edad <= 5 s; reiniciar Valkey y comprobar que el borrador sigue; dejar vencer el candado y comprobar que la tarea se re-ofrece sin dos dueños.",
+ "configuracion": {
+  "borrador_cada_s": 2,
+  "trials_interrupcion": 5,
+  "lock_ttl_ms_prueba_expiracion": 10000,
+  "lock_ttl_ms_defecto": 120000,
+  "persistencia_valkey": "appendonly yes, appendfsync everysec"
+ },
+ "comando": "python pruebas/p3_sesion.py",
+ "maquina": {
+  "so": "Windows-11-10.0.26200-SP0",
+  "python_host": "3.14.4",
+  "cpu_logicos": 12,
+  "docker": "29.9.2",
+  "docker_cpus": 12,
+  "docker_mem_gib": 15.5,
+  "docker_so": "Docker Desktop",
+  "detalle": "evidence/entorno.txt"
+ },
+ "resultado": {
+  "borrador_edad_ms": {
+   "n": 5,
+   "min": 572,
+   "max": 1801,
+   "mediana": 883
+  },
+  "todas_edades_le_5s": true,
+  "contenido_recuperado_igual_al_ultimo_ack": true,
+  "valkey_restart_conserva_borrador": true,
+  "valkey_kill9_conserva_borrador": true,
+  "candado_se_renueva_con_latidos": true,
+  "candado_vencido_reofrecido": true,
+  "segundos_hasta_reoferta": 10.6,
+  "tareas_con_dos_duenos": 0,
+  "LOCK_TTL_MS_restaurado": {
+   "registro": "120000",
+   "sesion": "120000",
+   "gateway": "120000"
+  }
+ },
+ "pasos": [
+  {
+   "titulo": "Configuración de persistencia de Valkey",
+   "hora": "23:31:14",
+   "datos": {
+    "appendonly": [
+     "appendonly",
+     "yes"
+    ],
+    "appendfsync": [
+     "appendfsync",
+     "everysec"
+    ],
+    "aof": [
+     "aof_enabled:1",
+     "aof_last_write_status:ok"
+    ]
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Interrupción 1",
+   "hora": "23:31:20",
+   "datos": {
+    "trial": 1,
+    "tarea_id": "4c7ebef0-930a-47ca-bbab-6a00810fa2b6",
+    "edicion_antes_de_matar_s": 6.31,
+    "borradores_confirmados": 3,
+    "ultimo_borrador_confirmado": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_borrador_ms_reportada": 1055,
+    "edad_desde_ultimo_ack_cliente_ms": 1120,
+    "edad_desde_kill_ms": 4,
+    "token_igual": true,
+    "lock_valido": true,
+    "contenido_coincide_con_ultimo_ack": true,
+    "cumple_edad_max_5s": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Interrupción 2",
+   "hora": "23:31:28",
+   "datos": {
+    "trial": 2,
+    "tarea_id": "c12bd7b5-99be-4a1c-b98c-a68c25deacaf",
+    "edicion_antes_de_matar_s": 7.28,
+    "borradores_confirmados": 3,
+    "ultimo_borrador_confirmado": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_borrador_ms_reportada": 1801,
+    "edad_desde_ultimo_ack_cliente_ms": 1861,
+    "edad_desde_kill_ms": 3,
+    "token_igual": true,
+    "lock_valido": true,
+    "contenido_coincide_con_ultimo_ack": true,
+    "cumple_edad_max_5s": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Interrupción 3",
+   "hora": "23:31:34",
+   "datos": {
+    "trial": 3,
+    "tarea_id": "3ecae180-5c30-477b-80fa-a4e627cc9f05",
+    "edicion_antes_de_matar_s": 6.16,
+    "borradores_confirmados": 3,
+    "ultimo_borrador_confirmado": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_borrador_ms_reportada": 645,
+    "edad_desde_ultimo_ack_cliente_ms": 705,
+    "edad_desde_kill_ms": 2,
+    "token_igual": true,
+    "lock_valido": true,
+    "contenido_coincide_con_ultimo_ack": true,
+    "cumple_edad_max_5s": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Interrupción 4",
+   "hora": "23:31:40",
+   "datos": {
+    "trial": 4,
+    "tarea_id": "761099ae-ac0a-4232-81e7-7107e1071170",
+    "edicion_antes_de_matar_s": 6.31,
+    "borradores_confirmados": 3,
+    "ultimo_borrador_confirmado": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_borrador_ms_reportada": 883,
+    "edad_desde_ultimo_ack_cliente_ms": 952,
+    "edad_desde_kill_ms": 3,
+    "token_igual": true,
+    "lock_valido": true,
+    "contenido_coincide_con_ultimo_ack": true,
+    "cumple_edad_max_5s": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Interrupción 5",
+   "hora": "23:31:47",
+   "datos": {
+    "trial": 5,
+    "tarea_id": "db9e4df6-e554-422a-b342-f256c5c73761",
+    "edicion_antes_de_matar_s": 6.23,
+    "borradores_confirmados": 3,
+    "ultimo_borrador_confirmado": 3,
+    "recuperar_http": 200,
+    "version_recuperada": 3,
+    "edad_borrador_ms_reportada": 572,
+    "edad_desde_ultimo_ack_cliente_ms": 633,
+    "edad_desde_kill_ms": 4,
+    "token_igual": true,
+    "lock_valido": true,
+    "contenido_coincide_con_ultimo_ack": true,
+    "cumple_edad_max_5s": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Reinicio ordenado de Valkey (docker compose restart valkey)",
+   "hora": "23:31:53",
+   "datos": {
+    "segundos_hasta_valkey_ok_en_salud": 2.2,
+    "recuperar_http": 200,
+    "borrador_antes": {
+     "v": 3,
+     "pre": "restart"
+    },
+    "borrador_despues": {
+     "v": 3,
+     "pre": "restart"
+    },
+    "edad_ms_despues": 5013,
+    "lock_valido_despues": true,
+    "lock_ttl_ms_despues": 114988,
+    "aof_tras_reinicio": [
+     "aof_enabled:1"
+    ]
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Caída abrupta de Valkey (docker kill = SIGKILL) 2.2 s después del último borrador",
+   "hora": "23:31:58",
+   "datos": {
+    "recuperar_http": 200,
+    "borrador_despues": {
+     "v": 4,
+     "pre": "crash"
+    },
+    "lock_valido": true,
+    "conserva_borrador": true
+   },
+   "nota": "everysec puede perder hasta ~1 s de escrituras; aquí la última escritura tenía >2 s, por lo que ya estaba en disco."
+  },
+  {
+   "titulo": "La tarea se puede enviar tras el reinicio de Valkey",
+   "hora": "23:31:58",
+   "datos": {
+    "enviar_http": 200
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Servicios reiniciados con TTL reducido",
+   "hora": "23:32:14",
+   "datos": {
+    "LOCK_TTL_MS por servicio": {
+     "registro": "10000",
+     "sesion": "10000",
+     "gateway": "10000"
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Candado renovado por latidos (borrador cada 2 s) durante 2.5 x TTL",
+   "hora": "23:32:43",
+   "datos": {
+    "duracion_s": 25.4,
+    "borradores_http": {
+     "200": 12
+    },
+    "siguiente_de_B_http": {
+     "204": 12
+    },
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Abandono de A: vence el candado y la tarea se re-ofrece a B",
+   "hora": "23:32:53",
+   "datos": {
+    "ttl_ms": 10000,
+    "segundos_desde_ultimo_latido_de_A_hasta_oferta_a_B": 10.6,
+    "sondeos_de_B [s desde el ultimo latido de A, http]": [
+     [
+      2.1,
+      204
+     ],
+     [
+      3.2,
+      204
+     ],
+     [
+      4.2,
+      204
+     ],
+     [
+      5.3,
+      204
+     ],
+     [
+      6.4,
+      204
+     ],
+     [
+      7.4,
+      204
+     ],
+     [
+      8.5,
+      409
+     ],
+     [
+      9.6,
+      409
+     ],
+     [
+      10.6,
+      200
+     ]
+    ],
+    "mongo_dueno_tras_oferta": "p3-ladron-B",
+    "mongo_estado": "abierta",
+    "mongo_version": 6,
+    "token_del_lock_valkey_es_el_de_B": true,
+    "A_borrador_con_token_viejo_http": 409,
+    "A_enviar_con_token_viejo_http": 409,
+    "B_enviar_http": 200,
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Restauración de valores por defecto",
+   "hora": "23:33:01",
+   "datos": {
+    "LOCK_TTL_MS": {
+     "registro": "120000",
+     "sesion": "120000",
+     "gateway": "120000"
+    },
+    "segundos_hasta_ok": 1.9
+   },
+   "nota": null
+  }
+ ],
+ "interpretacion": "El borrador recuperado tras matar el proceso del editor tuvo una edad inferior a 5 s en todos los intentos y su contenido coincide con el último borrador confirmado por el servidor. Tras reiniciar Valkey (ordenado y con SIGKILL) el borrador y el candado siguen presentes gracias a AOF everysec. Con TTL=10 s, los latidos mantienen el candado y, al abandonar, la tarea vuelve a ofrecerse a otro anotador una vez vencido (Mongo y Valkey coinciden en un único dueño; el token del primero recibe 409).",
+ "archivos": [
+  "evidence/p3_sesion_20261030T2331.json",
+  "evidence/p3_sesion_20261030T2331.md"
+ ],
+ "duracion_s": 110.9,
+ "archivo": "evidence/p3_sesion_20261030T2331.json"
+}

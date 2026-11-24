@@ -1,0 +1,836 @@
+{
+ "prueba": "p2_concurrencia",
+ "titulo": "P2. Registro, réplicas y concurrencia de asignación",
+ "fecha_hora": "2026-10-30T21:41:11",
+ "objetivo": "Estado del replica set; 50 solicitudes simultáneas con 10 tareas libres (10 asignaciones y 40 respuestas 204, ninguna tarea con dos dueños); segundo envío -> 409 sin fila extra en el datalake; w:majority vs w:1; explain de los índices.",
+ "configuracion": {
+  "rondas_concurrentes": 3,
+  "solicitudes_por_ronda": 50,
+  "tareas_libres": 10,
+  "ops_bench": 600,
+  "hilos_bench": 8,
+  "rondas_bench_por_modo": 3,
+  "mecanismo": "ProcessPoolExecutor (50 procesos) con barrera de reloj; httpx contra el gateway"
+ },
+ "comando": "python pruebas/p2_concurrencia.py",
+ "maquina": {
+  "so": "Windows-11-10.0.26200-SP0",
+  "python_host": "3.14.4",
+  "cpu_logicos": 12,
+  "docker": "29.9.2",
+  "docker_cpus": 12,
+  "docker_mem_gib": 15.5,
+  "docker_so": "Docker Desktop",
+  "detalle": "evidence/entorno.txt"
+ },
+ "resultado": {
+  "rondas_concurrentes": [
+   {
+    "ronda": 1,
+    "codigos": {
+     "204": 40,
+     "200": 10
+    },
+    "cumple": true,
+    "dispersion_inicio_ms": 10.4
+   },
+   {
+    "ronda": 2,
+    "codigos": {
+     "200": 10,
+     "204": 40
+    },
+    "cumple": true,
+    "dispersion_inicio_ms": 22.8
+   },
+   {
+    "ronda": 3,
+    "codigos": {
+     "204": 40,
+     "200": 10
+    },
+    "cumple": true,
+    "dispersion_inicio_ms": 25.3
+   }
+  ],
+  "todas_las_rondas_cumplen": true,
+  "segundo_enviar": 409,
+  "fila_extra_en_lago": false,
+  "w_majority_vs_w1": {
+   "majority": {
+    "enviar": {
+     "p50_ms": 169.83,
+     "p95_ms": 306.13,
+     "p99_ms": 418.14,
+     "n_total": 1800
+    },
+    "siguiente": {
+     "p50_ms": 172.06,
+     "p95_ms": 304.27,
+     "p99_ms": 391.46,
+     "n_total": 1800
+    },
+    "ciclos_por_s_media": 20.7
+   },
+   "w1": {
+    "enviar": {
+     "p50_ms": 165.62,
+     "p95_ms": 296.41,
+     "p99_ms": 375.32,
+     "n_total": 1800
+    },
+    "siguiente": {
+     "p50_ms": 166.01,
+     "p95_ms": 291.23,
+     "p99_ms": 369.33,
+     "n_total": 1800
+    },
+    "ciclos_por_s_media": 21.2
+   }
+  },
+  "w_directo_en_mongo": [
+   {
+    "w": "majority",
+    "n": 1500,
+    "total_ms": 18395,
+    "media_ms": 12.263333333333334,
+    "p50_ms": 11,
+    "p95_ms": 19,
+    "p99_ms": 25
+   },
+   {
+    "w": "1",
+    "n": 1500,
+    "total_ms": 5882,
+    "media_ms": 3.921333333333333,
+    "p50_ms": 3,
+    "p95_ms": 7,
+    "p99_ms": 11
+   },
+   {
+    "w": "majority",
+    "n": 1500,
+    "total_ms": 19390,
+    "media_ms": 12.926666666666666,
+    "p50_ms": 12,
+    "p95_ms": 21,
+    "p99_ms": 28
+   },
+   {
+    "w": "1",
+    "n": 1500,
+    "total_ms": 6553,
+    "media_ms": 4.3693333333333335,
+    "p50_ms": 4,
+    "p95_ms": 8,
+    "p99_ms": 12
+   },
+   {
+    "w": "majority",
+    "n": 1500,
+    "total_ms": 18916,
+    "media_ms": 12.610666666666667,
+    "p50_ms": 12,
+    "p95_ms": 19,
+    "p99_ms": 29
+   },
+   {
+    "w": "1",
+    "n": 1500,
+    "total_ms": 6536,
+    "media_ms": 4.357333333333333,
+    "p50_ms": 4,
+    "p95_ms": 9,
+    "p99_ms": 14
+   }
+  ],
+  "MONGO_W_restaurado": "majority",
+  "replica_set": {
+   "mongo1:27017": "PRIMARY",
+   "mongo2:27017": "SECONDARY",
+   "mongo3:27017": "SECONDARY"
+  }
+ },
+ "pasos": [
+  {
+   "titulo": "rs.status() resumen",
+   "hora": "21:41:15",
+   "datos": {
+    "set": "rs0",
+    "miembros": [
+     {
+      "nombre": "mongo1:27017",
+      "estado": "PRIMARY",
+      "salud": 1,
+      "optime": "2026-10-31T03:40:56.000Z",
+      "uptime_s": 8362
+     },
+     {
+      "nombre": "mongo2:27017",
+      "estado": "SECONDARY",
+      "salud": 1,
+      "optime": "2026-10-31T03:40:56.000Z",
+      "pingMs": {
+       "high": 0,
+       "low": 0,
+       "unsigned": false
+      },
+      "uptime_s": 1278
+     },
+     {
+      "nombre": "mongo3:27017",
+      "estado": "SECONDARY",
+      "salud": 1,
+      "optime": "2026-10-31T03:40:56.000Z",
+      "pingMs": {
+       "high": 0,
+       "low": 0,
+       "unsigned": false
+      },
+      "uptime_s": 1278
+     }
+    ],
+    "prioridades": [
+     {
+      "host": "mongo1:27017",
+      "prioridad": 2,
+      "votos": 1
+     },
+     {
+      "host": "mongo2:27017",
+      "prioridad": 1,
+      "votos": 1
+     },
+     {
+      "host": "mongo3:27017",
+      "prioridad": 1,
+      "votos": 1
+     }
+    ],
+    "writeConcernMajorityJournalDefault": true,
+    "defaultRW": {
+     "w": "majority",
+     "wtimeout": 0
+    }
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Pool de procesos",
+   "hora": "21:41:46",
+   "datos": {
+    "procesos_distintos": 50
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Ronda concurrente 1",
+   "hora": "21:41:55",
+   "datos": {
+    "ronda": 1,
+    "proyecto_id": "7df29b97-f13c-46b0-a66c-7cebe575677b",
+    "codigos": {
+     "204": 40,
+     "200": 10
+    },
+    "tareas_distintas_en_respuestas_200": 10,
+    "dispersion_inicio_ms": 10.4,
+    "latencia_ms": {
+     "n": 50,
+     "p50_ms": 908.43,
+     "p95_ms": 1001.15,
+     "p99_ms": 1004.08,
+     "media_ms": 882.41,
+     "max_ms": 1004.08
+    },
+    "mongo": {
+     "por_estado": [
+      {
+       "_id": "abierta",
+       "n": 10
+      }
+     ],
+     "anotadores_con_mas_de_una_tarea": 0,
+     "tareas_abiertas": 10,
+     "anotadores_distintos_en_abiertas": 10
+    },
+    "locks_valkey_con_token_del_dueno": 10,
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Ronda concurrente 2",
+   "hora": "21:42:03",
+   "datos": {
+    "ronda": 2,
+    "proyecto_id": "74264948-fea3-48f8-aa7f-e41ee136eccb",
+    "codigos": {
+     "200": 10,
+     "204": 40
+    },
+    "tareas_distintas_en_respuestas_200": 10,
+    "dispersion_inicio_ms": 22.8,
+    "latencia_ms": {
+     "n": 50,
+     "p50_ms": 1501.64,
+     "p95_ms": 1624.26,
+     "p99_ms": 1641.42,
+     "media_ms": 1475.8,
+     "max_ms": 1641.42
+    },
+    "mongo": {
+     "por_estado": [
+      {
+       "_id": "abierta",
+       "n": 10
+      }
+     ],
+     "anotadores_con_mas_de_una_tarea": 0,
+     "tareas_abiertas": 10,
+     "anotadores_distintos_en_abiertas": 10
+    },
+    "locks_valkey_con_token_del_dueno": 10,
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Ronda concurrente 3",
+   "hora": "21:42:10",
+   "datos": {
+    "ronda": 3,
+    "proyecto_id": "7488351e-48ca-49d1-87d3-0bef828f179f",
+    "codigos": {
+     "204": 40,
+     "200": 10
+    },
+    "tareas_distintas_en_respuestas_200": 10,
+    "dispersion_inicio_ms": 25.3,
+    "latencia_ms": {
+     "n": 50,
+     "p50_ms": 1706.51,
+     "p95_ms": 1846.47,
+     "p99_ms": 1851.15,
+     "media_ms": 1653.27,
+     "max_ms": 1851.15
+    },
+    "mongo": {
+     "por_estado": [
+      {
+       "_id": "abierta",
+       "n": 10
+      }
+     ],
+     "anotadores_con_mas_de_una_tarea": 0,
+     "tareas_abiertas": 10,
+     "anotadores_distintos_en_abiertas": 10
+    },
+    "locks_valkey_con_token_del_dueno": 10,
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Segundo envío de una tarea ya enviada",
+   "hora": "21:42:26",
+   "datos": {
+    "tarea_id": "87ace0db-f8fc-47dd-84d9-a940c1d2bd65",
+    "primer_enviar": 200,
+    "segundo_enviar": 409,
+    "enviar_otro_anotador_mismo_token": 409,
+    "filas_lago_tras_6s": [
+     [
+      "abierta",
+      "5990ab34"
+     ],
+     [
+      "anotada",
+      "1d8b3219"
+     ]
+    ],
+    "filas_lago_tras_12s": [
+     [
+      "abierta",
+      "5990ab34"
+     ],
+     [
+      "anotada",
+      "1d8b3219"
+     ]
+    ],
+    "filas_estado_anotada": 1,
+    "mongo": "{\n  _id: '87ace0db-f8fc-47dd-84d9-a940c1d2bd65',\n  estado: 'anotada',\n  version: 2,\n  ultimo_evento_id: '1d8b3219-4e20-490e-8d05-972cd6d2b005'\n}",
+    "cumple": true
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=majority",
+   "hora": "21:43:05",
+   "datos": {
+    "proyecto_id": "53edbc5b-95f4-471f-934d-948fd514340f",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 28.8,
+    "ciclos_por_s": 20.8,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 164.5,
+     "p95_ms": 293.82,
+     "p99_ms": 366.67,
+     "media_ms": 177.96,
+     "max_ms": 470.55
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 164.17,
+     "p95_ms": 286.13,
+     "p99_ms": 424.17,
+     "media_ms": 177.01,
+     "max_ms": 550.53
+    },
+    "errores": {
+     "sig": 0,
+     "env": 0
+    },
+    "MONGO_W_en_contenedor": "majority"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=1",
+   "hora": "21:43:46",
+   "datos": {
+    "proyecto_id": "bb3c0ad0-451c-44e6-9fad-bea277b6c7fb",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 31.0,
+    "ciclos_por_s": 19.4,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 179.75,
+     "p95_ms": 334.81,
+     "p99_ms": 382.0,
+     "media_ms": 196.48,
+     "max_ms": 484.9
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 176.5,
+     "p95_ms": 336.02,
+     "p99_ms": 416.89,
+     "media_ms": 195.85,
+     "max_ms": 488.62
+    },
+    "errores": {
+     "sig": 0,
+     "env": 0
+    },
+    "MONGO_W_en_contenedor": "1"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=majority",
+   "hora": "21:44:33",
+   "datos": {
+    "proyecto_id": "5c3aa70e-7b58-42eb-ab5e-69ef9ddcd236",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 34.7,
+    "ciclos_por_s": 17.3,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 201.15,
+     "p95_ms": 382.94,
+     "p99_ms": 507.17,
+     "media_ms": 216.1,
+     "max_ms": 571.95
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 196.56,
+     "p95_ms": 382.61,
+     "p99_ms": 506.22,
+     "media_ms": 215.6,
+     "max_ms": 686.72
+    },
+    "errores": {
+     "sig": 0,
+     "env": 1
+    },
+    "MONGO_W_en_contenedor": "majority"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=1",
+   "hora": "21:45:08",
+   "datos": {
+    "proyecto_id": "96e9807c-fbb2-4a12-a759-562eeeade4c7",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 26.2,
+    "ciclos_por_s": 22.9,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 151.14,
+     "p95_ms": 243.86,
+     "p99_ms": 299.46,
+     "media_ms": 158.92,
+     "max_ms": 394.72
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 152.01,
+     "p95_ms": 239.13,
+     "p99_ms": 311.2,
+     "media_ms": 157.92,
+     "max_ms": 401.6
+    },
+    "errores": {
+     "sig": 0,
+     "env": 0
+    },
+    "MONGO_W_en_contenedor": "1"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=majority",
+   "hora": "21:45:43",
+   "datos": {
+    "proyecto_id": "2c68c7f4-28a1-44fb-940c-e6fbe77d65a9",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 25.1,
+    "ciclos_por_s": 23.9,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 150.54,
+     "p95_ms": 236.04,
+     "p99_ms": 300.53,
+     "media_ms": 158.71,
+     "max_ms": 399.9
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 148.76,
+     "p95_ms": 249.64,
+     "p99_ms": 324.04,
+     "media_ms": 158.52,
+     "max_ms": 400.35
+    },
+    "errores": {
+     "sig": 0,
+     "env": 0
+    },
+    "MONGO_W_en_contenedor": "majority"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Microbenchmark con MONGO_W=1",
+   "hora": "21:46:21",
+   "datos": {
+    "proyecto_id": "27509880-fae1-4dd0-913e-b2195f71d6f2",
+    "ops": 600,
+    "hilos": 8,
+    "duracion_s": 28.3,
+    "ciclos_por_s": 21.2,
+    "siguiente": {
+     "n": 600,
+     "p50_ms": 167.15,
+     "p95_ms": 295.02,
+     "p99_ms": 426.52,
+     "media_ms": 180.25,
+     "max_ms": 545.39
+    },
+    "enviar": {
+     "n": 600,
+     "p50_ms": 168.35,
+     "p95_ms": 314.09,
+     "p99_ms": 397.87,
+     "media_ms": 181.48,
+     "max_ms": 508.12
+    },
+    "errores": {
+     "sig": 0,
+     "env": 0
+    },
+    "MONGO_W_en_contenedor": "1"
+   },
+   "nota": null
+  },
+  {
+   "titulo": "Comparación w:majority vs w:1 (media de las rondas)",
+   "hora": "21:46:28",
+   "datos": {
+    "majority": {
+     "enviar": {
+      "p50_ms": 169.83,
+      "p95_ms": 306.13,
+      "p99_ms": 418.14,
+      "n_total": 1800
+     },
+     "siguiente": {
+      "p50_ms": 172.06,
+      "p95_ms": 304.27,
+      "p99_ms": 391.46,
+      "n_total": 1800
+     },
+     "ciclos_por_s_media": 20.7
+    },
+    "w1": {
+     "enviar": {
+      "p50_ms": 165.62,
+      "p95_ms": 296.41,
+      "p99_ms": 375.32,
+      "n_total": 1800
+     },
+     "siguiente": {
+      "p50_ms": 166.01,
+      "p95_ms": 291.23,
+      "p99_ms": 369.33,
+      "n_total": 1800
+     },
+     "ciclos_por_s_media": 21.2
+    }
+   },
+   "nota": "Los valores son medias de los percentiles de cada ronda. En un solo host con 3 nodos en contenedores la latencia de replicación es mínima, así que la diferencia NO permite inferir el rendimiento de un clúster distribuido."
+  },
+  {
+   "titulo": "w:majority vs w:1 directamente en Mongo (1500 updateOne secuenciales, 3 pares, resolución 1 ms)",
+   "hora": "21:47:45",
+   "datos": [
+    {
+     "w": "majority",
+     "n": 1500,
+     "total_ms": 18395,
+     "media_ms": 12.263333333333334,
+     "p50_ms": 11,
+     "p95_ms": 19,
+     "p99_ms": 25
+    },
+    {
+     "w": "1",
+     "n": 1500,
+     "total_ms": 5882,
+     "media_ms": 3.921333333333333,
+     "p50_ms": 3,
+     "p95_ms": 7,
+     "p99_ms": 11
+    },
+    {
+     "w": "majority",
+     "n": 1500,
+     "total_ms": 19390,
+     "media_ms": 12.926666666666666,
+     "p50_ms": 12,
+     "p95_ms": 21,
+     "p99_ms": 28
+    },
+    {
+     "w": "1",
+     "n": 1500,
+     "total_ms": 6553,
+     "media_ms": 4.3693333333333335,
+     "p50_ms": 4,
+     "p95_ms": 8,
+     "p99_ms": 12
+    },
+    {
+     "w": "majority",
+     "n": 1500,
+     "total_ms": 18916,
+     "media_ms": 12.610666666666667,
+     "p50_ms": 12,
+     "p95_ms": 19,
+     "p99_ms": 29
+    },
+    {
+     "w": "1",
+     "n": 1500,
+     "total_ms": 6536,
+     "media_ms": 4.357333333333333,
+     "p50_ms": 4,
+     "p95_ms": 9,
+     "p99_ms": 14
+    }
+   ],
+   "nota": "Sin HTTP ni gateway: aísla el coste del reconocimiento de la mayoría en un clúster local de 3 contenedores."
+  },
+  {
+   "titulo": "explain(executionStats) por consulta",
+   "hora": "21:47:47",
+   "datos": {
+    "proyecto_probado": "a5135ea0-fa53-434d-a6d5-901d8b621d41",
+    "total_tareas": 66067,
+    "explain": {
+     "1_asignar_con_proyecto (tareas_proyecto_estado_prioridad + tareas_estado_expira)": {
+      "plan": [
+       "LIMIT",
+       "FETCH",
+       "SORT_MERGE",
+       "IXSCAN(tareas_proyecto_estado_prioridad)",
+       "FETCH",
+       "IXSCAN(tareas_proyecto_estado_prioridad)"
+      ],
+      "nReturned": 1,
+      "keysExaminadas": 1,
+      "docsExaminados": 1,
+      "ms": 0
+     },
+     "1b_asignar_con_proyecto_forzando_COLLSCAN (comparacion)": {
+      "plan": [
+       "SORT",
+       "COLLSCAN"
+      ],
+      "nReturned": 1,
+      "keysExaminadas": 0,
+      "docsExaminados": 66067,
+      "ms": 114
+     },
+     "2_asignar_sin_proyecto (global)": {
+      "plan": [
+       "SUBPLAN",
+       "LIMIT",
+       "FETCH",
+       "SORT_MERGE",
+       "IXSCAN(tareas_estado_prioridad_expira)",
+       "IXSCAN(tareas_estado_prioridad_expira)"
+      ],
+      "nReturned": 1,
+      "keysExaminadas": 2,
+      "docsExaminados": 1,
+      "ms": 0
+     },
+     "3_reanudar_tarea_abierta_del_anotador (tareas_anotador_estado)": {
+      "plan": [
+       "LIMIT",
+       "FETCH",
+       "IXSCAN(tareas_anotador_estado)"
+      ],
+      "nReturned": 0,
+      "keysExaminadas": 1,
+      "docsExaminados": 1,
+      "ms": 1
+     },
+     "4_tareas_de_un_batch (tareas_batch)": {
+      "plan": [
+       "FETCH",
+       "IXSCAN(tareas_batch)"
+      ],
+      "nReturned": 100,
+      "keysExaminadas": 100,
+      "docsExaminados": 100,
+      "ms": 0
+     },
+     "5_proyectos_activos_del_cliente (proyectos_cliente_estado)": {
+      "plan": [
+       "FETCH",
+       "IXSCAN(proyectos_cliente_estado)"
+      ],
+      "nReturned": 1,
+      "keysExaminadas": 1,
+      "docsExaminados": 1,
+      "ms": 0
+     },
+     "6_EXTRA_tareas_abiertas_vencidas (tareas_estado_expira)": {
+      "plan": [
+       "FETCH",
+       "IXSCAN(tareas_estado_prioridad_expira)"
+      ],
+      "nReturned": 58,
+      "keysExaminadas": 59,
+      "docsExaminados": 58,
+      "ms": 0
+     },
+     "6b_EXTRA_sin_indice_forzando_COLLSCAN (comparacion)": {
+      "plan": [
+       "COLLSCAN"
+      ],
+      "nReturned": 58,
+      "keysExaminadas": 0,
+      "docsExaminados": 66067,
+      "ms": 48
+     },
+     "7_exportar_aprobadas_paginado": {
+      "plan": [
+       "SORT",
+       "FETCH",
+       "IXSCAN(tareas_proyecto_estado_prioridad)"
+      ],
+      "nReturned": 0,
+      "keysExaminadas": 0,
+      "docsExaminados": 0,
+      "ms": 0
+     }
+    },
+    "indices": {
+     "tareas": [
+      {
+       "nombre": "_id_",
+       "clave": {
+        "_id": 1
+       }
+      },
+      {
+       "nombre": "tareas_proyecto_estado_prioridad",
+       "clave": {
+        "proyecto_id": 1,
+        "estado": 1,
+        "prioridad": -1
+       }
+      },
+      {
+       "nombre": "tareas_anotador_estado",
+       "clave": {
+        "asignacion.anotador_id": 1,
+        "estado": 1
+       }
+      },
+      {
+       "nombre": "tareas_batch",
+       "clave": {
+        "batch_id": 1
+       }
+      },
+      {
+       "nombre": "tareas_estado_prioridad_expira",
+       "clave": {
+        "estado": 1,
+        "prioridad": -1,
+        "asignacion.expira": 1
+       }
+      }
+     ],
+     "proyectos": [
+      {
+       "nombre": "_id_",
+       "clave": {
+        "_id": 1
+       }
+      },
+      {
+       "nombre": "proyectos_cliente_estado",
+       "clave": {
+        "cliente_id": 1,
+        "estado": 1
+       }
+      }
+     ]
+    }
+   },
+   "nota": null
+  }
+ ],
+ "interpretacion": "Con 10 tareas libres y 50 solicitudes simultáneas se obtuvieron exactamente 10 asignaciones (200) y 40 respuestas 204 en cada una de las 3 rondas; la asignación es el findOneAndUpdate atómico de Mongo, por lo que ninguna tarea tuvo dos dueños (comprobado en las respuestas, con agregación en Mongo y con los tokens de los locks en Valkey). El segundo envío devolvió 409 y el lago no recibió una fila extra. La comparación w:majority/w:1 se midió en una sola máquina (3 nodos en contenedores): w:1 evita esperar la confirmación de la mayoría, pero la diferencia absoluta es pequeña porque no hay latencia de red real entre los nodos; no es extrapolable a un clúster distribuido. Los explain muestran qué índice usa cada consulta.",
+ "archivos": [
+  "evidence/p2_concurrencia_20261030T2141.json",
+  "evidence/p2_concurrencia_20261030T2141.md"
+ ],
+ "duracion_s": 395.9,
+ "archivo": "evidence/p2_concurrencia_20261030T2141.json"
+}
