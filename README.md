@@ -2,7 +2,7 @@
 
 TI-4601 Bases de Datos Avanzadas (TEC). Gateway REST como única entrada; registro (MongoDB, 3 nodos, `w:majority`), sesión (Valkey con AOF `everysec`), historial (micro-lotes Parquet) y analítica (Apache Spark sólo lectura). Todo corre en contenedores.
 
-- Informe (PDF con apéndices): `informe/informe.pdf` (fuente `informe/informe.tex`; las tablas se generan con `python pruebas/informe_tablas.py` a partir de `evidence/`).
+- Informe (PDF con apéndices): se entrega en TEC Digital y no se versiona en este repositorio. Sus tablas se generan con `python pruebas/informe_tablas.py` a partir de `evidence/`.
 - Contratos internos: `CONTRATOS.md`. Endpoints del gateway y de los servicios internos: `endpoints/`. Datos de prueba: `datos/README.md`. Evidencia: `evidence/` (`evidence/README.md` es el índice y `evidence/RESUMEN.md` reúne las cifras clave con su archivo).
 
 ## Estructura del repositorio
@@ -17,7 +17,8 @@ TI-4601 Bases de Datos Avanzadas (TEC). Gateway REST como única entrada; regist
 | `pruebas/` | pruebas P1–P8, `run_all.ps1`, gráficas, resumen e índice de evidencia, generador de tablas del informe |
 | `evidence/` | resultados originales de las pruebas |
 | `datos/` | documentación de la generación y carga de datos |
-| `informe/` | informe técnico (LaTeX y PDF) |
+
+El enunciado propone la carpeta `proyecto2/`; aquí la raíz del repositorio cumple ese papel y conserva la misma separación de componentes.
 
 ## 1. Requisitos previos
 
@@ -129,7 +130,7 @@ docker exec herramientas python /sim/simulador.py --url http://gateway:8000 --vu
 
 **Dónde queda la evidencia:** cada prueba escribe un par `evidence/<prueba>_<AAAAMMDDThhmm>.json/.md` (fecha y hora, objetivo, configuración, comando, resultado, interpretación y archivos de respaldo); P5/P6/P8 dejan además `evidence/p5/`, `p6/`, `p6_host/`, `p6_red_previo/`, `p8/` y `graficas/`. Índice: `evidence/README.md`.
 
-**Informe:** `python pruebas/informe_tablas.py` regenera `informe/tablas/*.tex` desde `evidence/`; compile con `latexmk -pdf informe.tex` dentro de `informe/` (o `docker run --rm -v <copia local>:/doc -w /doc texlive/texlive:latest-medium latexmk -pdf informe.tex`; el paquete `xurl` puede requerir `tlmgr install xurl`; copie la carpeta a un disco local si el repositorio está en Drive).
+**Tablas del informe:** `python pruebas/informe_tablas.py` escribe `informe/tablas/*.tex` a partir de `evidence/` (carpeta local, no versionada); esos archivos se suben al proyecto LaTeX del informe.
 
 ## 6. Solución de problemas
 
